@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R coding | Christian Ryan</title>
+    <link>/categories/r-coding/</link>
+      <atom:link href="/categories/r-coding/index.xml" rel="self" type="application/rss+xml" />
+    <description>R coding</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 12 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>R coding</title>
+      <link>/categories/r-coding/</link>
+    </image>
+    
+    <item>
+      <title>Plotting multiple histograms on the same graph</title>
+      <link>/post/plotting-multiple-histograms-on-the-same-graph/</link>
+      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/plotting-multiple-histograms-on-the-same-graph/</guid>
+      <description>
+
+
+&lt;p&gt;So I was trying to compare the distribution of two samples, and normally I would plot two separate histograms. But it turns out you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form. Let’s pull out the data for the Rosenberg Self-Esteem Scale (note that there are two different scoring methods in common use on this scale - on the website they have used a 1 - 4 Likert scale for the data output as a csv, but it is not unusual to see the use of a 0 - 3 scale, (which is the method used to give participants on the website feedback) so we need to be cautious when comparing these total scores with published norms (see &lt;a href=&#34;https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale&#34; class=&#34;uri&#34;&gt;https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale&lt;/a&gt;)).&lt;/p&gt;
+&lt;p&gt;First we will load two packages we are going to use. We want the &lt;strong&gt;tidyverse&lt;/strong&gt; for manipulating the variables and we will use the &lt;strong&gt;psych&lt;/strong&gt; package for creating total scores on the measure itself.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(psych)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next we want to set an url object to direct the download.file() to the right place to pull the data. I have called it &lt;em&gt;my_url&lt;/em&gt; for simplicity. We pass this as the first argument in the download.file() function. We then set a destination for the file to be saved with the &lt;em&gt;dest&lt;/em&gt; argument. Finally we use unzip to unpack the zipped file.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;my_url &amp;lt;- &amp;quot;http://openpsychometrics.org/_rawdata/RSE.zip&amp;quot;
+download.file(url = my_url, dest=&amp;quot;data.zip&amp;quot;, mode=&amp;quot;wb&amp;quot;) 
+unzip (&amp;quot;data.zip&amp;quot;, exdir = &amp;quot;./&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we can import the data with the read_tsv() function. We can’t use the read_csv() function with the data, because despite having a .csv extension, the data is actually tab-separated not comma-separated.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- read_tsv(&amp;quot;RSE/data.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the Rosenberg Self-Esteem scale Items 2, 5, 6, 8, 9 are normally reverse scored. However, whoever loaded the questions on the website put them in a different order, with items 3, 5, 8, 9, 10 needing reversing. We need to create a total score for the measure and to be mindful of the reverse coded items. The &lt;em&gt;psych&lt;/em&gt; package provides a function for this called scoreFast. We need to pass it a list called keys.list which specifies the direction of each item in turn (items are scored as-is if they have no leading ‘-’ minus sign, but all items with a minus are reverse scored). We won’t bother recoding the data from the 1 - 4 scale to 0 - 3 as it makes little difference for your graphs.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;keys.list &amp;lt;- list(c(&amp;#39;Q1&amp;#39;, &amp;#39;Q2&amp;#39;, &amp;#39;-Q3&amp;#39;, &amp;#39;Q4&amp;#39;, &amp;#39;-Q5&amp;#39;, &amp;#39;Q6&amp;#39;, &amp;#39;Q7&amp;#39;, &amp;#39;-Q8&amp;#39;, &amp;#39;-Q9&amp;#39;, &amp;#39;-Q10&amp;#39;))
+df$total &amp;lt;- scoreFast(keys.list, items = df[1:10], totals = TRUE, min = 1, max = 4)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we have our dataset, we can look at comparing distributions. We might want to know if the distribution of self-esteem scores differs between men and women. Checking the codebook on the website, we can see that males are coded as ‘1’ and females as ‘2’.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;men &amp;lt;- df %&amp;gt;% 
+  filter(gender == 1)
+women &amp;lt;- df %&amp;gt;% 
+  filter(gender == 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So let’s plot the total self-esteem scores for the women in the sample as a simple histogram.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(women$total)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt; We can see a fairly normal distribution of scores. We can check the mean, but we might predict it is around 25.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(women$total)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 25.74368&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next we can add the men’s scores to the same plot. Here we simply create the first plot, then make a second plot with the argument &lt;strong&gt;add&lt;/strong&gt; set to TRUE. We will set the density to 35 so we can see throught the bars on the histogram.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(women$total, col = &amp;#39;red&amp;#39;, main = &amp;quot;Histogram of Total scores on Rosenberg Self-Esteem Scale&amp;quot;, xlab = &amp;quot;Total score&amp;quot;)
+hist(men$total, add = TRUE, col = &amp;#39;blue&amp;#39;, density = 35)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;I have used the pipe to separate my data into individual gender dataframes, but this is only one way to do it, and I do find this code very easy to read. However, we could have done the same thing using a traditional R approach of indexing instead.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(df$total[df$gender== 2], col = &amp;#39;orchid&amp;#39;, main = &amp;quot;Histogram of Total scores on Rosenberg Self-Esteem Scale&amp;quot;, xlab = &amp;quot;Total score&amp;quot;)
+hist(df$total[df$gender==1], add = TRUE, col = &amp;#39;royalblue&amp;#39;, density = 40)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now we have seen the distributions, we might wonder if the sexes differ on the measure of self-esteem. Let’s run a quick t-test to see.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;t.test(men$total, women$total)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  Welch Two Sample t-test
+## 
+## data:  men$total and women$total
+## t = 23.785, df = 37496, p-value &amp;lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  1.436304 1.694284
+## sample estimates:
+## mean of x mean of y 
+##  27.30897  25.74368&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Yes they do! With men having a significantly higher mean score on self-esteem (though the absolute difference is quite small.)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
