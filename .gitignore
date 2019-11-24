@@ -1,0 +1,26 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+config
+config.toml
+import_refs.R
+import_refs_2.R
+references/
+script.R
+Global site tag.docx
+content
+Netsite.Rproj
+works.bib
+themes
+static/
+resources/
+website3.Rproj
+
+
+Website problem solving.docx
+bibtex_2academic.R
+pub_calling_script.R
+my_bib.bib
+index.Rmd
+.DS_Store
