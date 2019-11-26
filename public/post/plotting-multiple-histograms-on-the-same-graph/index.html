@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="So I was trying to compare the distribution of two samples, and normally I would plot two separate histograms. But it turns out you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form.">
+  <meta name="description" content="Recently, while trying to compare the distribution of two samples, I discovered that you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form. Let’s pull out the data for the Rosenberg Self-Esteem Scale (note that there are two different scoring methods in common use on this scale - on the website they have used a 1 - 4 Likert scale for the data output as a csv, but it is not unusual to see the use of a 0 - 3 scale, (which is the method used to give participants on the website feedback) so we need to be cautious when comparing these total scores with published norms (see https://socy.">
 
   
   <link rel="alternate" hreflang="en-us" href="../../post/plotting-multiple-histograms-on-the-same-graph/">
@@ -116,7 +116,7 @@
   <meta property="og:site_name" content="Christian Ryan">
   <meta property="og:url" content="/post/plotting-multiple-histograms-on-the-same-graph/">
   <meta property="og:title" content="Plotting multiple histograms on the same graph | Christian Ryan">
-  <meta property="og:description" content="So I was trying to compare the distribution of two samples, and normally I would plot two separate histograms. But it turns out you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form."><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:description" content="Recently, while trying to compare the distribution of two samples, I discovered that you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form. Let’s pull out the data for the Rosenberg Self-Esteem Scale (note that there are two different scoring methods in common use on this scale - on the website they have used a 1 - 4 Likert scale for the data output as a csv, but it is not unusual to see the use of a 0 - 3 scale, (which is the method used to give participants on the website feedback) so we need to be cautious when comparing these total scores with published norms (see https://socy."><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
@@ -168,7 +168,7 @@
       "url": "/img/icon-512.png"
     }
   },
-  "description": "So I was trying to compare the distribution of two samples, and normally I would plot two separate histograms. But it turns out you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form."
+  "description": "Recently, while trying to compare the distribution of two samples, I discovered that you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form. Let’s pull out the data for the Rosenberg Self-Esteem Scale (note that there are two different scoring methods in common use on this scale - on the website they have used a 1 - 4 Likert scale for the data output as a csv, but it is not unusual to see the use of a 0 - 3 scale, (which is the method used to give participants on the website feedback) so we need to be cautious when comparing these total scores with published norms (see https://socy."
 }
 </script>
 
@@ -454,7 +454,7 @@
       
 
 
-<p>So I was trying to compare the distribution of two samples, and normally I would plot two separate histograms. But it turns out you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form. Let’s pull out the data for the Rosenberg Self-Esteem Scale (note that there are two different scoring methods in common use on this scale - on the website they have used a 1 - 4 Likert scale for the data output as a csv, but it is not unusual to see the use of a 0 - 3 scale, (which is the method used to give participants on the website feedback) so we need to be cautious when comparing these total scores with published norms (see <a href="https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale" class="uri">https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale</a>)).</p>
+<p>Recently, while trying to compare the distribution of two samples, I discovered that you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form. Let’s pull out the data for the Rosenberg Self-Esteem Scale (note that there are two different scoring methods in common use on this scale - on the website they have used a 1 - 4 Likert scale for the data output as a csv, but it is not unusual to see the use of a 0 - 3 scale, (which is the method used to give participants on the website feedback) so we need to be cautious when comparing these total scores with published norms (see <a href="https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale" class="uri">https://socy.umd.edu/about-us/using-rosenberg-self-esteem-scale</a>)).</p>
 <p>First we will load two packages we are going to use. We want the <strong>tidyverse</strong> for manipulating the variables and we will use the <strong>psych</strong> package for creating total scores on the measure itself.</p>
 <pre class="r"><code>library(tidyverse)
 library(psych)</code></pre>
