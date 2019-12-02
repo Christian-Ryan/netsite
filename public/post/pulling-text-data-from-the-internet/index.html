@@ -492,8 +492,8 @@
 
 <p>I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in ‘You are a thing and I love you’ - the wonderful new book on AI by Janelle Shane. She mentions training an AI on a dream dataset available at dreamreasearch.net. The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: <a href="http://www.dreambank.net/random_sample.cgi" class="uri">http://www.dreambank.net/random_sample.cgi</a> one can select a dream source.</p>
 <div class="figure">
-<img src="dreamselect.png" alt="Image from dream website" />
-<p class="caption">Image from dream website</p>
+<img src="dreamselect.png" />
+
 </div>
 <p>We will need a few packages for this process - <strong>rvest</strong> is useful for pulling data from online sources. The two text packages <strong>stringr</strong> and <strong>stringi</strong> offer a range of tools for managing text data. The <strong>tidyverse</strong> will simplify the management of the dataset and <strong>knitr</strong> is useful for managing the display of text in Rmarkdown documents.</p>
 <pre class="r"><code>library(rvest)
@@ -530,7 +530,7 @@ custom_view(df[1:5,])</code></pre>
 ##  [73] &quot;491&quot; &quot;499&quot; &quot;503&quot; &quot;506&quot; &quot;528&quot; &quot;530&quot; &quot;537&quot; &quot;540&quot; &quot;543&quot; &quot;547&quot; &quot;550&quot; &quot;556&quot;
 ##  [85] &quot;563&quot; &quot;582&quot; &quot;586&quot; &quot;606&quot; &quot;609&quot; &quot;616&quot; &quot;620&quot; &quot;629&quot; &quot;641&quot; &quot;652&quot; &quot;659&quot; &quot;660&quot;
 ##  [97] &quot;664&quot; &quot;666&quot; &quot;667&quot; &quot;681&quot;</code></pre>
-<p>This worked fine, so lets create a new variable called code to store this data in our dataframe. This will be our id code for each dream.</p>
+<p>This worked fine, so let’s create a new variable called code to store this data in our dataframe. This will be our id code for each dream.</p>
 <pre class="r"><code>df$code &lt;- substr(df$dream, 4, 6)</code></pre>
 <p>The column with the code should come first, so we will swap the order of columns with a simple index call - concatenating the order of variables, passed as the second argument.</p>
 <pre class="r"><code>df &lt;- df[,c(2,1)]</code></pre>
