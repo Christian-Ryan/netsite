@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in ‘You are a thing and I love you’ - the wonderful new book on AI by Janelle Shane.">
+  <meta name="description" content="I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in “You are a thing and I love you” - the wonderful new book on AI by Janelle Shane.">
 
   
   <link rel="alternate" hreflang="en-us" href="../../post/pulling-text-data-from-the-internet/">
@@ -152,7 +152,7 @@
   <meta property="og:site_name" content="Christian Ryan">
   <meta property="og:url" content="/post/pulling-text-data-from-the-internet/">
   <meta property="og:title" content="Pulling text data from the internet | Christian Ryan">
-  <meta property="og:description" content="I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in ‘You are a thing and I love you’ - the wonderful new book on AI by Janelle Shane."><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:description" content="I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in “You are a thing and I love you” - the wonderful new book on AI by Janelle Shane."><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
@@ -204,7 +204,7 @@
       "url": "/img/icon-512.png"
     }
   },
-  "description": "I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in ‘You are a thing and I love you’ - the wonderful new book on AI by Janelle Shane."
+  "description": "I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in “You are a thing and I love you” - the wonderful new book on AI by Janelle Shane."
 }
 </script>
 
@@ -490,7 +490,9 @@
       
 
 
-<p>I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in ‘You are a thing and I love you’ - the wonderful new book on AI by Janelle Shane. She mentions training an AI on a dream dataset available at dreamreasearch.net. The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: <a href="http://www.dreambank.net/random_sample.cgi" class="uri">http://www.dreambank.net/random_sample.cgi</a> one can select a dream source.</p>
+<p>I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in <strong>“You are a thing and I love you”</strong> - the wonderful new book on AI by Janelle Shane.</p>
+<p><a href="https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243" class="uri">https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243</a></p>
+<p>She mentions training an AI on a dream dataset available at dreamreasearch.net. The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: <a href="http://www.dreambank.net/random_sample.cgi" class="uri">http://www.dreambank.net/random_sample.cgi</a> one can select a dream source.</p>
 <div class="figure">
 <img src="dreamselect.png" />
 
@@ -504,10 +506,11 @@ library(knitr)</code></pre>
 <p>Let’s start by taking a look at the dreams of college women from the 1940’s. We set an address for the url, then pass this as an argument to the read_html() function.</p>
 <pre class="r"><code>url &lt;- &quot;http://www.dreambank.net/random_sample.cgi?series=hall_female&amp;min=100&amp;max=300&amp;n=100&quot;
 page &lt;- read_html(url)</code></pre>
-<p>I followed the instructions in Kwartler (‘Text Mining in Practice with R’, 2017) and checking the field with the dream text on the webpage in Chrome, with the SelectorGadget, it revealed that these fields were labelled as “span”. So we can include this as the type of node to select in the html_node() function from <strong>rvest</strong>. This allows us to pull the html text from these fields and store them in a new variable called posts. Then to convert this html_text to raw text and store it in a new variable called dream.</p>
+<p>I followed the guidance in Kwartler (<strong>‘Text Mining in Practice with R’</strong>, 2017) and checked the field with the dream text on the webpage in Chrome using the SelectorGadget plugin. This revealed that these text fields were labelled as “span”. So we can include this as the type of node to select in the html_node() function from <strong>rvest</strong>. This allows us to pull the html text from just these fields and store them in a new variable called posts, then I will convert this html_text to raw text and store it in a variable called dream. I suppose I could have wrapped the html_nodes call within the html_text function and skipped creating an intermediate variable (posts), but I think it makes the code more readable this way.</p>
 <pre class="r"><code>posts &lt;- html_nodes(page, &#39;span&#39;)
 dream &lt;- html_text(posts)</code></pre>
-<p>We can convert this to a dataframe - we will use the tidyverse version, a tibble, as this will avoid problems of the dreams being converted to factors.</p>
+<p>We can convert this to a dataframe - we will use the tidyverse version, a tibble, as this will avoid problems of the dreams being converted to factors. For more on why this can be problematic, read <strong>“stringsAsFactors: An unauthorized biography”</strong> by Roger Peng at this site:</p>
+<p><a href="https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/" class="uri">https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/</a></p>
 <pre class="r"><code>df &lt;- tibble(dream = dream)</code></pre>
 <p>Let’s take a quick peak at the data. We can create a quick function to truncate the display of the dreams to 60 characters. We will call this function custom_view(). We will restrict the view to just the first 5 rows as well, using indexing.</p>
 <pre class="r"><code>custom_view &lt;- function(x) data.frame(lapply(x, substr, 1, 60))
