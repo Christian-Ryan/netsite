@@ -135,6 +135,12 @@ dream &amp;lt;- html_text(posts)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can convert this to a dataframe - we will use the tidyverse version, a tibble, as this will avoid problems of the dreams being converted to factors. For more on why this can be problematic, read &lt;strong&gt;“stringsAsFactors: An unauthorized biography”&lt;/strong&gt; by Roger Peng at this site:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/&#34; class=&#34;uri&#34;&gt;https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/&lt;/a&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- tibble(dream = dream)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As a side-note, we could have done each of these steps with a more tidyverse syntax, by using the pipe, though this may have meant that each of the substeps was less transparent. We could have taken the pages object that contains our raw data and piped it through the various functions to extract just the dreams, then converted it into a tibble. As we haven’t declared a name for the one variable in the tibble, we need to use the rename function to assign the name ‘dream’ to the column.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- page %&amp;gt;% 
+  html_nodes(&amp;#39;span&amp;#39;) %&amp;gt;% 
+  html_text() %&amp;gt;% 
+  tibble() %&amp;gt;% 
+  rename(&amp;#39;dream&amp;#39; = &amp;#39;.&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Let’s take a quick peak at the data. We can create a quick function to truncate the display of the dreams to 60 characters. We will call this function custom_view(). We will restrict the view to just the first 5 rows as well, using indexing.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;custom_view &amp;lt;- function(x) data.frame(lapply(x, substr, 1, 60))
 custom_view(df[1:5,])&lt;/code&gt;&lt;/pre&gt;
