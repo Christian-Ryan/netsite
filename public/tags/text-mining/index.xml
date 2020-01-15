@@ -35,21 +35,25 @@
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
 library(tidytext)
 library(stringr)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you want to follow along with this post, the dataset I am about to load is “dream_df.csv”, which can be found on my github page: &lt;a href=&#34;https://github.com/Christian-Ryan/netsite/tree/master/public/post&#34; class=&#34;uri&#34;&gt;https://github.com/Christian-Ryan/netsite/tree/master/public/post&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- read_csv(&amp;quot;dreams_df.csv&amp;quot;)
+df &amp;lt;- df[,2:3]
+df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;After sampling the four dream sets, using the techniques described in the last post, we now have a dataframe called df with two variables - &lt;em&gt;sample&lt;/em&gt; and &lt;em&gt;dream&lt;/em&gt;. We will use our custom_view() function we created last time to display snippets of dreams neatly formatted. We can also use the &lt;em&gt;some()&lt;/em&gt; function from the car package to take a quick look at a selection of dreams across the dataframe. The &lt;em&gt;some()&lt;/em&gt; function is very like &lt;em&gt;head()&lt;/em&gt; and &lt;em&gt;tail()&lt;/em&gt;, but has the advantage of returning a selection across the dataset, which allows us to see examples from each of the samples simultaneously.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;custom_view &amp;lt;- function(x) data.frame(lapply(x, substr, 1, 56))
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I was at a factory working. I saw a college girl-friend 
-## 2  college_women It was raining in my dream and I was coming out of the h
-## 3  college_women I dreamed about a young married couple whom I have known
-## 4  college_women An old friend of mine who is 1 1/2 yrs. younger than I c
-## 5      hall_male This took place in the South Pacific aboard a destroyer.
-## 6      hall_male In this dream my wife and I were living in a house on to
-## 7      hall_male I was flying a small single-motored airplane called a pi
-## 8      hall_male I was lying in bed. My uncle came into the room. He said
-## 9      hall_male The setting of this dream was in a woods on a late summe
-## 10   hall_female I was at a summer resort. As I was going down the stairs&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women As I first remember the dream I was upstairs in a room w
+## 2    vietnam_vet I&amp;#39;m in a small field. It&amp;#39;s spartan, bare bones in nature
+## 3    vietnam_vet Having spent a long day at college, I&amp;#39;m walking through 
+## 4      hall_male I was riding out a road in Bob&amp;#39;s car. The road ran besid
+## 5      hall_male In this dream my wife and I were driving along a country
+## 6    hall_female I dreamed that I was driving along the street and the tr
+## 7    hall_female I dreamt that I had become pregnant, although I wasn&amp;#39;t m
+## 8    hall_female I was driving home from the show alone, and I was at Ric
+## 9    hall_female After packing a suitcase to leave with my husband, we be
+## 10   hall_female I was in a downtown shopping district with two other gir&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%
