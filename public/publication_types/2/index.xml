@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2 on Christian Ryan</title>
@@ -7,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,8 +18,6 @@
       
       <guid>/publication/2018-01-01_forgetting_fam/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -28,8 +27,6 @@
       
       <guid>/publication/2018-01-01_a_review_of_we/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -39,8 +36,6 @@
       
       <guid>/publication/2018-01-01_whoever_shouts_the_l/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -50,8 +45,6 @@
       
       <guid>/publication/2017-01-01_single_session_psy/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -61,8 +54,6 @@
       
       <guid>/publication/2016-01-01_judgments_of_nonve/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -72,8 +63,6 @@
       
       <guid>/publication/2016-01-01_brief_report_s/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -83,8 +72,6 @@
       
       <guid>/publication/2010-01-01_teaching_emotion_r/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -94,8 +81,6 @@
       
       <guid>/publication/2007-01-01_british_outpatient_n/</guid>
       <description></description>
-      
-      
     </item>
     
     <item>
@@ -105,8 +90,6 @@
       
       <guid>/publication/2004-01-01_differences_in_the_a/</guid>
       <description></description>
-      
-      
     </item>
     
   </channel>

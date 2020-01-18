@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Text mining on Christian Ryan</title>
@@ -7,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 14 Jan 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/text-mining/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/text-mining/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -43,16 +44,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I was living with my family in a neighborhood of large, 
-## 2    vietnam_vet I&amp;#39;ve been traveling, and am now in Switzerland at a posh
-## 3    vietnam_vet A young black woman and I discuss how to organize a gras
-## 4    vietnam_vet I&amp;#39;m happy, walking down a residential street, similar to
-## 5      hall_male It seems that we were having a party at my house. Among 
-## 6      hall_male I was washing in a bathroom at what in the dream was the
-## 7      hall_male I was in a big building in which a lot of people lived. 
-## 8    hall_female I was the only person in the dream that I recognized. I 
-## 9    hall_female I dreamed that I was sitting in the back room of Moe&amp;#39;s, 
-## 10   hall_female The dream took place in a hotel where I was staying. The&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I was dreaming about taking some sort of trip. I arrange
+## 2    vietnam_vet I&amp;#39;m in Honduras at some kind of border crossing. A wide 
+## 3    vietnam_vet I&amp;#39;m staying in a cozy house with two young doctors, a ha
+## 4      hall_male My father, brother (17) and I were traveling to Toledo (
+## 5      hall_male I was a spy in a house in which there seemed to be a par
+## 6      hall_male I was driving my car along a dark road. All of a sudden 
+## 7      hall_male I was seated at a card table playing poker with three ot
+## 8    hall_female I dreamed of 2 girls (I know them personally and always 
+## 9    hall_female This dream concerns an artist friend of my husband&amp;#39;s. He
+## 10   hall_female I was in a strange house in the town we lived in about 1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%
@@ -296,12 +297,6 @@ plot(dream_lengths, xlab = &amp;quot;Dream Number&amp;quot;)&lt;/code&gt;&lt;/pr
 &lt;p&gt;We have explored how to tokenise texts, do some basic text cleaning and creating counts and proportions and finally graphed the simple word counts. In the next post in this series, I will explore the dream data using a clever technique from Julia Silge and David Robinson’s book that involves the &lt;em&gt;spread()&lt;/em&gt; and &lt;em&gt;gather()&lt;/em&gt; functions.&lt;/p&gt;
 &lt;/div&gt;
 </description>
-      
-            <category>Text mining</category>
-      
-      
-            <category>R coding</category>
-      
     </item>
     
   </channel>
