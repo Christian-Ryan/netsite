@@ -8,87 +8,87 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic 4.5.0">
 
+  
 
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
 
   <meta name="author" content="Christian Ryan">
 
-
-
-
-
-
+  
+  
+  
+    
+  
   <meta name="description" content="In the previous post on ‘pulling text data from the internet’, I experimented with pulling out the dream text from a sample of dreams from the website “DreamBank” at: http://www.dreambank.net/random_sample.cgi.
 In this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson’s book ‘Text Mining with R’ for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:">
 
-
+  
   <link rel="alternate" hreflang="en-us" href="../../post/manipulating-text-data-from-dreams/">
 
+  
 
 
-
-
-
-
+  
+  
+  
   <meta name="theme-color" content="#2962ff">
+  
 
-
-
-
-
-
-
+  
+  
+  
+  
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
 
-
-
-
-
-
-
-
-
-
+    
+    
+    
+      
+    
+    
+      
+      
+        
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
 
-
-
-
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
 
+    
 
+  
 
-
-
-
-
-
-
+  
+  
+  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
 
-
-
-
-
+  
+  
+  
   <link rel="stylesheet" href="../../css/academic.min.e8d4d5fd376e67b34452ebe1cae16341.css">
 
+  
 
-
-
+  
 
 
 
@@ -118,21 +118,21 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
     if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
       return;
     }
-    trackOutboundLink(event.target);
+    trackOutboundLink(event.target);  
   }
 
   gtag('js', new Date());
   gtag('config', 'UA-149160448-2', {});
 
-
+  
   document.addEventListener('click', onClickCallback, false);
 </script>
 
 
+  
 
 
-
-
+  
 
   <link rel="manifest" href="../../index.webmanifest">
   <link rel="icon" type="image/png" href="../../img/icon-32.png">
@@ -140,40 +140,40 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
 
   <link rel="canonical" href="../../post/manipulating-text-data-from-dreams/">
 
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+    
+    
+  
+  
   <meta property="twitter:card" content="summary">
-
+  
   <meta property="og:site_name" content="Christian Ryan">
   <meta property="og:url" content="/post/manipulating-text-data-from-dreams/">
   <meta property="og:title" content="Manipulating text data from dreams | Christian Ryan">
   <meta property="og:description" content="In the previous post on ‘pulling text data from the internet’, I experimented with pulling out the dream text from a sample of dreams from the website “DreamBank” at: http://www.dreambank.net/random_sample.cgi.
 In this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson’s book ‘Text Mining with R’ for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:"><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
-
-
+  
+    
       <meta property="article:published_time" content="2020-01-14T00:00:00&#43;00:00">
-
+    
     <meta property="article:modified_time" content="2020-01-14T10:12:17&#43;00:00">
+  
+
+  
+
+
+    
 
 
 
 
 
 
-
-
-
-
-
-
-
+  
 
 
 
@@ -189,15 +189,15 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
     "@id": "/post/manipulating-text-data-from-dreams/"
   },
   "headline": "Manipulating text data from dreams",
-
+  
   "datePublished": "2020-01-14T00:00:00Z",
   "dateModified": "2020-01-14T10:12:17Z",
-
+  
   "author": {
     "@type": "Person",
     "name": "Christian Ryan"
   },
-
+  
   "publisher": {
     "@type": "Organization",
     "name": "Christian Ryan",
@@ -210,15 +210,15 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
 }
 </script>
 
+  
+
+  
 
 
+  
 
 
-
-
-
-
-
+  
 
 
 
@@ -244,17 +244,17 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
       </div>
 
       <div id="search-box">
-
+        
         <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
         autocomplete="off" autocorrect="off" spellcheck="false" type="search">
-
+        
       </div>
 
     </section>
     <section class="section-search-results">
 
       <div id="search-hits">
-
+        
       </div>
 
     </section>
@@ -262,134 +262,134 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
 </aside>
 
 
-
+  
 <nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
   <div class="container">
 
-
+    
       <a class="navbar-brand" href="../../">Christian Ryan</a>
-
+      
       <button type="button" class="navbar-toggler" data-toggle="collapse"
               data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span><i class="fas fa-bars"></i></span>
       </button>
+      
 
-
-
+    
     <div class="collapse navbar-collapse" id="navbar">
 
-
-
+      
+      
       <ul class="navbar-nav mr-auto">
+        
 
+        
 
+        
+        
+        
+          
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
 
         <li class="nav-item">
           <a class="nav-link " href="../../#posts"><span>Posts</span></a>
         </li>
 
+        
+        
 
+        
 
+        
+        
+        
+          
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
 
         <li class="nav-item">
           <a class="nav-link " href="../../#featured"><span>Publications</span></a>
         </li>
 
+        
+        
 
+        
 
+        
+        
+        
+          
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
 
         <li class="nav-item">
           <a class="nav-link " href="../../#contact"><span>Contact</span></a>
         </li>
 
+        
+        
 
-
-
-
+      
       </ul>
       <ul class="navbar-nav ml-auto">
+      
 
+        
 
-
-
-
+        
         <li class="nav-item">
           <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
         </li>
+        
 
+        
 
-
-
-
+        
         <li class="nav-item">
           <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
         </li>
-
+        
 
       </ul>
 
@@ -400,6 +400,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
 
   <article class="article">
 
+  
 
 
 
@@ -412,60 +413,60 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
 
 
 
+  
 
-
-
-
-
-
+  
+  
+  
 <div class="article-container pt-3">
   <h1>Manipulating text data from dreams</h1>
 
+  
 
-
-
-
+  
+    
 
 
 <div class="article-metadata">
 
+  
+  
 
-
-
-
+  
   <span class="article-date">
-
-
-
+    
+    
+      
           Last updated on
-
-
+      
+    
     Jan 14, 2020
   </span>
+  
 
+  
 
-
-
-
+  
   <span class="middot-divider"></span>
   <span class="article-reading-time">
     18 min read
   </span>
+  
 
+  
+  
+  
 
-
-
-
-
-
-
+  
+  
   <span class="middot-divider"></span>
   <span class="article-categories">
     <i class="fas fa-folder mr-1"></i><a href="../../categories/r-coding/">R coding</a></span>
-
+  
 
 </div>
 
+    
 
 
 
@@ -480,8 +481,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
 
 
 
-
-
+  
 </div>
 
 
@@ -489,7 +489,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
   <div class="article-container">
 
     <div class="article-style">
-
+      
 
 
 <p>In the previous post on ‘pulling text data from the internet’, I experimented with pulling out the dream text from a sample of dreams from the website “DreamBank” at: <a href="http://www.dreambank.net/random_sample.cgi" class="uri">http://www.dreambank.net/random_sample.cgi</a>.</p>
@@ -516,16 +516,16 @@ df$sample &lt;- as.factor(df$sample)</code></pre>
 car::some(df) %&gt;%
   custom_view()</code></pre>
 <pre><code>##           sample                                                    dream
-## 1  college_women I dreamed that the Society for the Blind had given my gr
-## 2  college_women I dreamt that we bought a drug store on the west side. N
-## 3  college_women I dreamed that my whole family was killed in a train acc
-## 4    vietnam_vet It&#39;s windy. I&#39;m climbing in an open pit mine of gray whi
-## 5    vietnam_vet I&#39;m in an enormous building, a sort of jail, with walls
-## 6    vietnam_vet I&#39;m sitting in a booth at a well lit uncrowded diner. Tw
-## 7      hall_male The dream took place in my own home. It seemed that a st
-## 8      hall_male Again, this is a dream occurring just before waking in t
-## 9    hall_female I was riding a bicycle with a boy who is a student here
-## 10   hall_female This is one of the dreams I had last night. I found myse</code></pre>
+## 1  college_women I was standing with my family (mother &amp; father, ages 45 
+## 2  college_women This is only a snatch of a dream. I was walking down S--
+## 3  college_women I was in a brightly lighted room in the dormitory with a
+## 4  college_women I dreamed that I was in a doctor&#39;s office supposedly rec
+## 5    vietnam_vet I&#39;m in a large basement cafeteria. It&#39;s spartan, abysmal
+## 6    vietnam_vet At my old high school, I walk past a thin ornery student
+## 7    vietnam_vet I&#39;m in Rowley, where Hilary Clinton went to college; I k
+## 8    vietnam_vet Eerily, none of the lights in my bedroom at Highland Pla
+## 9      hall_male I was with two other friends both male and we were all c
+## 10   hall_female There was much more to the dream than this, but I can&#39;t</code></pre>
 <p>Julia Silge and David Robinson’s book <strong>Text Mining with R - A tidy approach</strong> sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.</p>
 <p>At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.</p>
 <pre class="r"><code>df &lt;-  df %&gt;%
@@ -535,13 +535,13 @@ car::some(df) %&gt;%
   unnest_tokens(word, dream)
 head(df_word)</code></pre>
 <pre><code>## # A tibble: 6 x 3
-##   sample        dream_number word
-##   &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;
-## 1 college_women            1 i
+##   sample        dream_number word   
+##   &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;  
+## 1 college_women            1 i      
 ## 2 college_women            1 dreamed
-## 3 college_women            1 that
-## 4 college_women            1 i
-## 5 college_women            1 was
+## 3 college_women            1 that   
+## 4 college_women            1 i      
+## 5 college_women            1 was    
 ## 6 college_women            1 in</code></pre>
 <p>See that the <em>word</em> variable has replaced our <em>dream</em> variable and now each word is on a separate row - this is the tidytext format. <em>unnest_tokens()</em> has kept the variables <em>sample</em> and <em>dream_number</em> - it only transforms the input variable (dream) into the output variable (word). Notice also that the function has transformed into lower-case all the words in the <em>word</em> variable.</p>
 <div id="tokenisation-and-n-grams" class="section level1">
@@ -553,13 +553,13 @@ head(df_word)</code></pre>
   unnest_tokens(trigrams, dream, token = &quot;ngrams&quot;, n = 3)
 head(df_trigrams)</code></pre>
 <pre><code>## # A tibble: 6 x 3
-##   sample        dream_number trigrams
-##   &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;
+##   sample        dream_number trigrams      
+##   &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;         
 ## 1 college_women            1 i dreamed that
 ## 2 college_women            1 dreamed that i
-## 3 college_women            1 that i was
-## 4 college_women            1 i was in
-## 5 college_women            1 was in the
+## 3 college_women            1 that i was    
+## 4 college_women            1 i was in      
+## 5 college_women            1 was in the    
 ## 6 college_women            1 in the office</code></pre>
 <p>So here we have set our output variable to ‘trigrams’ and specified the token argument to be equal to ‘ngrams’, and we have saved this as a new dataframe called ‘df_trigrams’. That gives us a better sense of the nature of the text. We can also run a count on this after grouping by sample.</p>
 <pre class="r"><code>df_trigrams %&gt;%
@@ -632,65 +632,65 @@ underscores[1]</code></pre>
 <h1>Create pattern to remove numbers and underscores</h1>
 <p>We can use the function str_subset() to identify the elements of the <em>word</em> variable that we wish to remove. Let’s create a pattern that deals initially with the underscores and try <em>str_subset()</em> with it. The ‘+’ is not strictly necessary here, but it illustrates that we can identify at least one underscore by this combination.</p>
 <pre class="r"><code>str_subset(df_word$word, pattern = &#39;_+&#39;)</code></pre>
-<pre><code>##  [1] &quot;n__&quot;    &quot;y__&quot;    &quot;c___&quot;   &quot;___&quot;    &quot;d___&quot;   &quot;h___&quot;   &quot;a___&quot;   &quot;a___&quot;
+<pre><code>##  [1] &quot;n__&quot;    &quot;y__&quot;    &quot;c___&quot;   &quot;___&quot;    &quot;d___&quot;   &quot;h___&quot;   &quot;a___&quot;   &quot;a___&quot;  
 ##  [9] &quot;h__&quot;    &quot;______&quot;</code></pre>
 <p>This has found ten instances of the underscore in the word variable. Now we want to find all the digits. We could use the regex shorthand <em>[\d]</em> or <em>[:digit:]</em>. Let’s use the latter first with <em>str_subset</em> to check it works.</p>
 <pre class="r"><code>str_subset(df_word$word, pattern = &#39;[:digit:]&#39;)</code></pre>
-<pre><code>##   [1] &quot;169&quot;    &quot;80&quot;     &quot;90&quot;     &quot;30&quot;     &quot;60&quot;     &quot;40&quot;     &quot;45&quot;     &quot;4&quot;
-##   [9] &quot;20&quot;     &quot;4&quot;      &quot;5&quot;      &quot;2&quot;      &quot;34&quot;     &quot;34&quot;     &quot;309&quot;    &quot;219&quot;
-##  [17] &quot;6&quot;      &quot;5.00&quot;   &quot;8&quot;      &quot;5&quot;      &quot;45&quot;     &quot;20&quot;     &quot;45&quot;     &quot;22&quot;
-##  [25] &quot;50&quot;     &quot;23&quot;     &quot;45&quot;     &quot;22&quot;     &quot;30&quot;     &quot;45&quot;     &quot;22&quot;     &quot;11&quot;
-##  [33] &quot;8&quot;      &quot;8&quot;      &quot;12&quot;     &quot;3rd&quot;    &quot;26&quot;     &quot;20&quot;     &quot;20&quot;     &quot;22&quot;
-##  [41] &quot;60&quot;     &quot;70&quot;     &quot;20&quot;     &quot;25&quot;     &quot;20&quot;     &quot;27&quot;     &quot;23&quot;     &quot;52&quot;
-##  [49] &quot;23&quot;     &quot;7&quot;      &quot;30&quot;     &quot;2nd&quot;    &quot;2nd&quot;    &quot;7&quot;      &quot;10&quot;     &quot;10&quot;
-##  [57] &quot;2&quot;      &quot;1&quot;      &quot;1&quot;      &quot;2&quot;      &quot;999&quot;    &quot;e1&quot;     &quot;10&quot;     &quot;2&quot;
-##  [65] &quot;4&quot;      &quot;2&quot;      &quot;2&quot;      &quot;2&quot;      &quot;25&quot;     &quot;20&quot;     &quot;5&quot;      &quot;22&quot;
-##  [73] &quot;20&quot;     &quot;8&quot;      &quot;30&quot;     &quot;6&quot;      &quot;8&quot;      &quot;30&quot;     &quot;8&quot;      &quot;30&quot;
-##  [81] &quot;50&quot;     &quot;4&quot;      &quot;35&quot;     &quot;4&quot;      &quot;00&quot;     &quot;40&quot;     &quot;20&quot;     &quot;5&quot;
-##  [89] &quot;10&quot;     &quot;2&quot;      &quot;80&quot;     &quot;45&quot;     &quot;48&quot;     &quot;55&quot;     &quot;22&quot;     &quot;40&quot;
-##  [97] &quot;1992&quot;   &quot;200&quot;    &quot;300&quot;    &quot;100&quot;    &quot;20s&quot;    &quot;30s&quot;    &quot;1950s&quot;  &quot;2001&quot;
-## [105] &quot;2012&quot;   &quot;10&quot;     &quot;12&quot;     &quot;1990s&quot;  &quot;50s&quot;    &quot;1972&quot;   &quot;1950s&quot;  &quot;800&quot;
-## [113] &quot;45&quot;     &quot;60s&quot;    &quot;1970&quot;   &quot;45&quot;     &quot;1960s&quot;  &quot;105&quot;    &quot;1st&quot;    &quot;109&quot;
-## [121] &quot;110&quot;    &quot;116&quot;    &quot;121&quot;    &quot;122&quot;    &quot;2001&quot;   &quot;2012&quot;   &quot;138&quot;    &quot;139&quot;
-## [129] &quot;152&quot;    &quot;m16&quot;    &quot;m60&quot;    &quot;59&quot;     &quot;2001&quot;   &quot;2012&quot;   &quot;39&quot;     &quot;244&quot;
-## [137] &quot;1200&quot;   &quot;207&quot;    &quot;208&quot;    &quot;209&quot;    &quot;211&quot;    &quot;214&quot;    &quot;215&quot;    &quot;216&quot;
-## [145] &quot;800&quot;    &quot;411&quot;    &quot;42nd&quot;   &quot;217&quot;    &quot;218&quot;    &quot;219&quot;    &quot;2am&quot;    &quot;123&quot;
-## [153] &quot;220&quot;    &quot;1950s&quot;  &quot;2&quot;      &quot;20&quot;     &quot;20&quot;     &quot;19&quot;     &quot;20&quot;     &quot;22&quot;
-## [161] &quot;8&quot;      &quot;27&quot;     &quot;3&quot;      &quot;1,500&quot;  &quot;50&quot;     &quot;17&quot;     &quot;26&quot;     &quot;30&quot;
-## [169] &quot;10&quot;     &quot;70&quot;     &quot;6&quot;      &quot;3&quot;      &quot;4&quot;      &quot;30&quot;     &quot;33&quot;     &quot;45&quot;
-## [177] &quot;4&quot;      &quot;12&quot;     &quot;12&quot;     &quot;160&quot;    &quot;10&quot;     &quot;11&quot;     &quot;85&quot;     &quot;22&quot;
-## [185] &quot;11&quot;     &quot;10&quot;     &quot;50&quot;     &quot;300&quot;    &quot;30&quot;     &quot;10&quot;     &quot;20&quot;     &quot;440&quot;
-## [193] &quot;880&quot;    &quot;10&quot;     &quot;20&quot;     &quot;30&quot;     &quot;3000&quot;   &quot;3&quot;      &quot;3&quot;      &quot;3&quot;
-## [201] &quot;11&quot;     &quot;12&quot;     &quot;12&quot;     &quot;2&quot;      &quot;13&quot;     &quot;26&quot;     &quot;8&quot;      &quot;30&quot;
-## [209] &quot;11&quot;     &quot;30&quot;     &quot;19&quot;     &quot;7&quot;      &quot;30&quot;     &quot;8&quot;      &quot;30&quot;     &quot;28&quot;
-## [217] &quot;50&quot;     &quot;30&quot;     &quot;18&quot;     &quot;18&quot;     &quot;15&quot;     &quot;20&quot;     &quot;21&quot;     &quot;20&quot;
-## [225] &quot;6&quot;      &quot;30&quot;     &quot;19&quot;     &quot;16&quot;     &quot;2&quot;      &quot;23&quot;     &quot;25&quot;     &quot;35&quot;
-## [233] &quot;40&quot;     &quot;25&quot;     &quot;5&quot;      &quot;3&quot;      &quot;2&quot;      &quot;23&quot;     &quot;50&quot;     &quot;3&quot;
-## [241] &quot;3&quot;      &quot;1&quot;      &quot;2&quot;      &quot;2&quot;      &quot;23&quot;     &quot;40&quot;     &quot;35&quot;     &quot;8&quot;
-## [249] &quot;8&quot;      &quot;2&quot;      &quot;107th&quot;  &quot;16&quot;     &quot;27&quot;     &quot;10&quot;     &quot;8&quot;      &quot;60&quot;
-## [257] &quot;21&quot;     &quot;20&quot;     &quot;50&quot;     &quot;2&quot;      &quot;11&quot;     &quot;15&quot;     &quot;11&quot;     &quot;17&quot;
-## [265] &quot;17&quot;     &quot;2&quot;      &quot;34&quot;     &quot;45&quot;     &quot;49&quot;     &quot;52&quot;     &quot;55&quot;     &quot;3&quot;
-## [273] &quot;5&quot;      &quot;20&quot;     &quot;26&quot;     &quot;75.00&quot;  &quot;2&quot;      &quot;6&quot;      &quot;27&quot;     &quot;3&quot;
-## [281] &quot;4&quot;      &quot;00&quot;     &quot;1st&quot;    &quot;2nd&quot;    &quot;3rd&quot;    &quot;10&quot;     &quot;20&quot;     &quot;10&quot;
-## [289] &quot;30&quot;     &quot;50&quot;     &quot;50&quot;     &quot;11,000&quot; &quot;1&quot;      &quot;48th&quot;   &quot;4&quot;      &quot;6&quot;
+<pre><code>##   [1] &quot;169&quot;    &quot;80&quot;     &quot;90&quot;     &quot;30&quot;     &quot;60&quot;     &quot;40&quot;     &quot;45&quot;     &quot;4&quot;     
+##   [9] &quot;20&quot;     &quot;4&quot;      &quot;5&quot;      &quot;2&quot;      &quot;34&quot;     &quot;34&quot;     &quot;309&quot;    &quot;219&quot;   
+##  [17] &quot;6&quot;      &quot;5.00&quot;   &quot;8&quot;      &quot;5&quot;      &quot;45&quot;     &quot;20&quot;     &quot;45&quot;     &quot;22&quot;    
+##  [25] &quot;50&quot;     &quot;23&quot;     &quot;45&quot;     &quot;22&quot;     &quot;30&quot;     &quot;45&quot;     &quot;22&quot;     &quot;11&quot;    
+##  [33] &quot;8&quot;      &quot;8&quot;      &quot;12&quot;     &quot;3rd&quot;    &quot;26&quot;     &quot;20&quot;     &quot;20&quot;     &quot;22&quot;    
+##  [41] &quot;60&quot;     &quot;70&quot;     &quot;20&quot;     &quot;25&quot;     &quot;20&quot;     &quot;27&quot;     &quot;23&quot;     &quot;52&quot;    
+##  [49] &quot;23&quot;     &quot;7&quot;      &quot;30&quot;     &quot;2nd&quot;    &quot;2nd&quot;    &quot;7&quot;      &quot;10&quot;     &quot;10&quot;    
+##  [57] &quot;2&quot;      &quot;1&quot;      &quot;1&quot;      &quot;2&quot;      &quot;999&quot;    &quot;e1&quot;     &quot;10&quot;     &quot;2&quot;     
+##  [65] &quot;4&quot;      &quot;2&quot;      &quot;2&quot;      &quot;2&quot;      &quot;25&quot;     &quot;20&quot;     &quot;5&quot;      &quot;22&quot;    
+##  [73] &quot;20&quot;     &quot;8&quot;      &quot;30&quot;     &quot;6&quot;      &quot;8&quot;      &quot;30&quot;     &quot;8&quot;      &quot;30&quot;    
+##  [81] &quot;50&quot;     &quot;4&quot;      &quot;35&quot;     &quot;4&quot;      &quot;00&quot;     &quot;40&quot;     &quot;20&quot;     &quot;5&quot;     
+##  [89] &quot;10&quot;     &quot;2&quot;      &quot;80&quot;     &quot;45&quot;     &quot;48&quot;     &quot;55&quot;     &quot;22&quot;     &quot;40&quot;    
+##  [97] &quot;1992&quot;   &quot;200&quot;    &quot;300&quot;    &quot;100&quot;    &quot;20s&quot;    &quot;30s&quot;    &quot;1950s&quot;  &quot;2001&quot;  
+## [105] &quot;2012&quot;   &quot;10&quot;     &quot;12&quot;     &quot;1990s&quot;  &quot;50s&quot;    &quot;1972&quot;   &quot;1950s&quot;  &quot;800&quot;   
+## [113] &quot;45&quot;     &quot;60s&quot;    &quot;1970&quot;   &quot;45&quot;     &quot;1960s&quot;  &quot;105&quot;    &quot;1st&quot;    &quot;109&quot;   
+## [121] &quot;110&quot;    &quot;116&quot;    &quot;121&quot;    &quot;122&quot;    &quot;2001&quot;   &quot;2012&quot;   &quot;138&quot;    &quot;139&quot;   
+## [129] &quot;152&quot;    &quot;m16&quot;    &quot;m60&quot;    &quot;59&quot;     &quot;2001&quot;   &quot;2012&quot;   &quot;39&quot;     &quot;244&quot;   
+## [137] &quot;1200&quot;   &quot;207&quot;    &quot;208&quot;    &quot;209&quot;    &quot;211&quot;    &quot;214&quot;    &quot;215&quot;    &quot;216&quot;   
+## [145] &quot;800&quot;    &quot;411&quot;    &quot;42nd&quot;   &quot;217&quot;    &quot;218&quot;    &quot;219&quot;    &quot;2am&quot;    &quot;123&quot;   
+## [153] &quot;220&quot;    &quot;1950s&quot;  &quot;2&quot;      &quot;20&quot;     &quot;20&quot;     &quot;19&quot;     &quot;20&quot;     &quot;22&quot;    
+## [161] &quot;8&quot;      &quot;27&quot;     &quot;3&quot;      &quot;1,500&quot;  &quot;50&quot;     &quot;17&quot;     &quot;26&quot;     &quot;30&quot;    
+## [169] &quot;10&quot;     &quot;70&quot;     &quot;6&quot;      &quot;3&quot;      &quot;4&quot;      &quot;30&quot;     &quot;33&quot;     &quot;45&quot;    
+## [177] &quot;4&quot;      &quot;12&quot;     &quot;12&quot;     &quot;160&quot;    &quot;10&quot;     &quot;11&quot;     &quot;85&quot;     &quot;22&quot;    
+## [185] &quot;11&quot;     &quot;10&quot;     &quot;50&quot;     &quot;300&quot;    &quot;30&quot;     &quot;10&quot;     &quot;20&quot;     &quot;440&quot;   
+## [193] &quot;880&quot;    &quot;10&quot;     &quot;20&quot;     &quot;30&quot;     &quot;3000&quot;   &quot;3&quot;      &quot;3&quot;      &quot;3&quot;     
+## [201] &quot;11&quot;     &quot;12&quot;     &quot;12&quot;     &quot;2&quot;      &quot;13&quot;     &quot;26&quot;     &quot;8&quot;      &quot;30&quot;    
+## [209] &quot;11&quot;     &quot;30&quot;     &quot;19&quot;     &quot;7&quot;      &quot;30&quot;     &quot;8&quot;      &quot;30&quot;     &quot;28&quot;    
+## [217] &quot;50&quot;     &quot;30&quot;     &quot;18&quot;     &quot;18&quot;     &quot;15&quot;     &quot;20&quot;     &quot;21&quot;     &quot;20&quot;    
+## [225] &quot;6&quot;      &quot;30&quot;     &quot;19&quot;     &quot;16&quot;     &quot;2&quot;      &quot;23&quot;     &quot;25&quot;     &quot;35&quot;    
+## [233] &quot;40&quot;     &quot;25&quot;     &quot;5&quot;      &quot;3&quot;      &quot;2&quot;      &quot;23&quot;     &quot;50&quot;     &quot;3&quot;     
+## [241] &quot;3&quot;      &quot;1&quot;      &quot;2&quot;      &quot;2&quot;      &quot;23&quot;     &quot;40&quot;     &quot;35&quot;     &quot;8&quot;     
+## [249] &quot;8&quot;      &quot;2&quot;      &quot;107th&quot;  &quot;16&quot;     &quot;27&quot;     &quot;10&quot;     &quot;8&quot;      &quot;60&quot;    
+## [257] &quot;21&quot;     &quot;20&quot;     &quot;50&quot;     &quot;2&quot;      &quot;11&quot;     &quot;15&quot;     &quot;11&quot;     &quot;17&quot;    
+## [265] &quot;17&quot;     &quot;2&quot;      &quot;34&quot;     &quot;45&quot;     &quot;49&quot;     &quot;52&quot;     &quot;55&quot;     &quot;3&quot;     
+## [273] &quot;5&quot;      &quot;20&quot;     &quot;26&quot;     &quot;75.00&quot;  &quot;2&quot;      &quot;6&quot;      &quot;27&quot;     &quot;3&quot;     
+## [281] &quot;4&quot;      &quot;00&quot;     &quot;1st&quot;    &quot;2nd&quot;    &quot;3rd&quot;    &quot;10&quot;     &quot;20&quot;     &quot;10&quot;    
+## [289] &quot;30&quot;     &quot;50&quot;     &quot;50&quot;     &quot;11,000&quot; &quot;1&quot;      &quot;48th&quot;   &quot;4&quot;      &quot;6&quot;     
 ## [297] &quot;25th&quot;   &quot;100&quot;    &quot;100&quot;</code></pre>
 <p>This works very nicely as well. However, to use these patterns with the tidyverse pipe, it is easier to use the <em>fitler()</em> function rather than <em>str_subset()</em>, and since it is convenient to chain steps in the pipe, we can use two calls to <em>filter()</em>, first by underscores and secondly by digits. And as we don’t want either of these in our dataset, we will set the “negate” argument to TRUE in both cases. An alternative method to delete the digits would be to use the capital “D” in the regex, but this way keeps our filters more uniform, both with a “negate = TRUE” argument.</p>
 <pre class="r"><code>df_word %&gt;%
   filter(str_detect(word, pattern = &quot;_&quot;, negate = TRUE)) %&gt;%
   filter(str_detect(word, pattern = &#39;[\\d]&#39;, negate = TRUE))</code></pre>
 <pre><code>## # A tibble: 17,953 x 3
-##    sample        dream_number word
-##    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;
-##  1 college_women            1 dreamed
-##  2 college_women            1 office
+##    sample        dream_number word      
+##    &lt;fct&gt;                &lt;int&gt; &lt;chr&gt;     
+##  1 college_women            1 dreamed   
+##  2 college_women            1 office    
 ##  3 college_women            1 directress
-##  4 college_women            1 nurses
-##  5 college_women            1 nursing
-##  6 college_women            1 school
-##  7 college_women            1 forty
-##  8 college_women            1 told
-##  9 college_women            1 results
-## 10 college_women            1 i.q
+##  4 college_women            1 nurses    
+##  5 college_women            1 nursing   
+##  6 college_women            1 school    
+##  7 college_women            1 forty     
+##  8 college_women            1 told      
+##  9 college_women            1 results   
+## 10 college_women            1 i.q       
 ## # … with 17,943 more rows</code></pre>
 </div>
 <div id="plot-word-frequencies" class="section level1">
@@ -730,7 +730,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
 ##    dream_number word         n percent
 ##           &lt;int&gt; &lt;chr&gt;    &lt;int&gt;   &lt;dbl&gt;
 ##  1            6 remember     3    21.4
-##  2          358 office       5    20
+##  2          358 office       5    20  
 ##  3          355 dog          7    19.4
 ##  4          381 bus          6    18.2
 ##  5            2 hair         3    16.7
@@ -755,7 +755,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
 ##  2 hall_male     dream       57    1.31
 ##  3 hall_male     car         51    1.17
 ##  4 hall_male     house       49    1.13
-##  5 vietnam_vet   woman       64    1
+##  5 vietnam_vet   woman       64    1   
 ##  6 hall_female   remember    40    0.96
 ##  7 college_women car         32    0.95
 ##  8 college_women dream       32    0.95
@@ -771,101 +771,101 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
 
     </div>
 
-
+    
 
 
 
 
 
 <div class="article-tags">
-
+  
   <a class="badge badge-light" href="../../tags/text-mining/">Text mining</a>
-
+  
 </div>
 
 
 
 <div class="share-box" aria-hidden="true">
   <ul class="share">
-
-
-
-
-
-
-
-
+    
+      
+      
+      
+        
+      
+      
+      
       <li>
         <a href="https://twitter.com/intent/tweet?url=/post/manipulating-text-data-from-dreams/&amp;text=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
-
-
-
-
-
-
-
-
+    
+      
+      
+      
+        
+      
+      
+      
       <li>
         <a href="https://www.facebook.com/sharer.php?u=/post/manipulating-text-data-from-dreams/&amp;t=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
-
-
-
-
-
-
-
-
+    
+      
+      
+      
+        
+      
+      
+      
       <li>
         <a href="mailto:?subject=Manipulating%20text%20data%20from%20dreams&amp;body=/post/manipulating-text-data-from-dreams/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
-
-
-
-
-
-
-
-
+    
+      
+      
+      
+        
+      
+      
+      
       <li>
         <a href="https://www.linkedin.com/shareArticle?url=/post/manipulating-text-data-from-dreams/&amp;title=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
-
-
-
-
-
-
-
-
+    
+      
+      
+      
+        
+      
+      
+      
       <li>
         <a href="https://web.whatsapp.com/send?text=Manipulating%20text%20data%20from%20dreams%20/post/manipulating-text-data-from-dreams/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
-
-
-
-
-
-
-
-
+    
+      
+      
+      
+        
+      
+      
+      
       <li>
         <a href="https://service.weibo.com/share/share.php?url=/post/manipulating-text-data-from-dreams/&amp;title=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
-
+    
   </ul>
 </div>
 
@@ -880,97 +880,97 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
 
 
 
+  
 
 
 
 
 
 
-
-
-
-
-
-
-
+  
+  
+  
+    
+  
+  
   <div class="media author-card content-widget-hr">
-
-
+    
+      
       <img class="portrait mr-3" src="../../authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
-
+    
 
     <div class="media-body">
       <h5 class="card-title"><a href="../../">Christian Ryan</a></h5>
       <h6 class="card-subtitle">Senior Lecturer in Clinical Psychology</h6>
       <p class="card-text">My research interests include autism spectrum disorder, eating disorders, obsessive compulsive disorder and some other stuff&hellip;</p>
       <ul class="network-icon" aria-hidden="true">
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
     <li>
       <a href="../../#contact" >
         <i class="fas fa-envelope"></i>
       </a>
     </li>
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
     <li>
       <a href="https://twitter.com/Christi57478778" target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
       </a>
     </li>
-
-
-
-
-
-
-
-
-
-
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
     <li>
       <a href="https://scholar.google.com/citations?user=TC3KPGIAAAAJ&amp;hl=en" target="_blank" rel="noopener">
         <i class="ai ai-google-scholar"></i>
       </a>
     </li>
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
     <li>
       <a href="https://github.com/Christian-Ryan" target="_blank" rel="noopener">
         <i class="fab fa-github"></i>
       </a>
     </li>
-
+  
 </ul>
 
     </div>
@@ -984,57 +984,57 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
 
 
 
-
-
+  
+  
 
 
 
   </div>
 </article>
 
+      
 
+    
+    
 
-
-
-
-
-
-
+    
+    
+    
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
 
+      
 
-
-
-
+      
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
-
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/r.min.js"></script>
+        
+      
 
+      
+      
+    
 
-
-
-
-
-
-
-
+    
+    
       <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
 
-
-
-
+    
+    
     <script>hljs.initHighlightingOnLoad();</script>
+    
 
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
     <script>
       const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
       const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
@@ -1045,13 +1045,13 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
         'talk' : "Talks"
         };
     </script>
+    
 
+    
+    
 
-
-
-
-
-
+    
+    
     <script id="search-hit-fuse-template" type="text/x-template">
       <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
@@ -1063,67 +1063,67 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       </div>
       </div>
     </script>
+    
 
-
-
-
+    
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
 
+    
+    
 
+    
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
     <script src="../../js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
 
+    
 
 
 
 
 
 
-
-
-
+  
+  
   <div class="container">
     <footer class="site-footer">
-
+  
   <p class="powered-by">
-
+    
       <a href="../../privacy/">Privacy Policy</a>
-
-
-       &middot;
+    
+    
+       &middot; 
       <a href="../../terms/">Terms</a>
-
+    
   </p>
-
+  
 
   <p class="powered-by">
-
+    
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
     <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
 
-
+    
     <span class="float-right" aria-hidden="true">
       <a href="#" class="back-to-top">
         <span class="button_icon">
@@ -1131,14 +1131,14 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
         </span>
       </a>
     </span>
-
+    
   </p>
 </footer>
 
   </div>
+  
 
-
-
+  
 <div id="modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
