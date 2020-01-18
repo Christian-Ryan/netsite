@@ -136,6 +136,12 @@ df$dream &amp;lt;- substr(df$dream, 0, start-2) &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is just what we wanted - this is line 9 and 10 of the full dream we examined up above - finishing just before the interpretation starts.&lt;/p&gt;
 &lt;p&gt;In the next post, I will pull in the dreams from three other samples and start to look at the sentiment analysis of the dream content.&lt;/p&gt;
 </description>
+      
+            <category>R</category>
+      
+      
+            <category>R coding</category>
+      
     </item>
     
     <item>
@@ -193,6 +199,12 @@ hist(df$total[df$gender==1], add = TRUE, col = &amp;#39;royalblue&amp;#39;, dens
 ##  27.30897  25.74368&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Yes they do! With men having a significantly higher mean score on self-esteem (though the absolute difference is quite small.)&lt;/p&gt;
 </description>
+      
+            <category>R</category>
+      
+      
+            <category>R coding</category>
+      
     </item>
     
   </channel>

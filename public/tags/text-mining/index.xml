@@ -43,16 +43,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women As a project in one of my classes I had to make some can
-## 2    vietnam_vet I&amp;#39;m working in an office and meet a mature girl at a nea
-## 3    vietnam_vet On a sunny day in a well lit college classroom a female 
-## 4      hall_male I was on a beach, and a storm was coming up. There were 
-## 5      hall_male I was in a gym, running around and jumping. Suddenly I r
-## 6      hall_male I looked into a tavern and saw a neighborhood girl whom 
-## 7      hall_male I dreamt that I was walking along a street when I sudden
-## 8    hall_female I dreamt that a friend of mine who graduated last year c
-## 9    hall_female It seems I was in some small office. I know I was workin
-## 10   hall_female I am walking along a river which is more likely to be a&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I was in a large ballroom with many couples. We were all
+## 2    vietnam_vet It&amp;#39;s night. I&amp;#39;m with a platoon of American soldiers in V
+## 3    vietnam_vet Having spent a long day at college, I&amp;#39;m walking through 
+## 4    vietnam_vet I&amp;#39;m happy, walking down a residential street, similar to
+## 5      hall_male This dream is very vague in my mind. As I remember it, t
+## 6      hall_male This took place in the South Pacific aboard a destroyer.
+## 7    hall_female I was part of a nationality parade in downtown Cleveland
+## 8    hall_female I was in a living room which was decorated in a very old
+## 9    hall_female I was driving home from the show alone, and I was at Ric
+## 10   hall_female I dreamt that I had to take a psychology test. If I miss&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%
@@ -296,6 +296,12 @@ plot(dream_lengths, xlab = &amp;quot;Dream Number&amp;quot;)&lt;/code&gt;&lt;/pr
 &lt;p&gt;We have explored how to tokenise texts, do some basic text cleaning and creating counts and proportions and finally graphed the simple word counts. In the next post in this series, I will explore the dream data using a clever technique from Julia Silge and David Robinson’s book that involves the &lt;em&gt;spread()&lt;/em&gt; and &lt;em&gt;gather()&lt;/em&gt; functions.&lt;/p&gt;
 &lt;/div&gt;
 </description>
+      
+            <category>Text mining</category>
+      
+      
+            <category>R coding</category>
+      
     </item>
     
   </channel>
