@@ -44,16 +44,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I was dreaming about taking some sort of trip. I arrange
-## 2    vietnam_vet I&amp;#39;m in Honduras at some kind of border crossing. A wide 
-## 3    vietnam_vet I&amp;#39;m staying in a cozy house with two young doctors, a ha
-## 4      hall_male My father, brother (17) and I were traveling to Toledo (
-## 5      hall_male I was a spy in a house in which there seemed to be a par
-## 6      hall_male I was driving my car along a dark road. All of a sudden 
-## 7      hall_male I was seated at a card table playing poker with three ot
-## 8    hall_female I dreamed of 2 girls (I know them personally and always 
-## 9    hall_female This dream concerns an artist friend of my husband&amp;#39;s. He
-## 10   hall_female I was in a strange house in the town we lived in about 1&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women Apparently J----, a very good friend of mine had just be
+## 2    vietnam_vet A young black woman and I discuss how to organize a gras
+## 3      hall_male I was standing in a railroad station. The location of th
+## 4      hall_male I could hardly forget this dream as it involved the youn
+## 5      hall_male At the start of the dream I was sitting at a table with 
+## 6      hall_male I was washing in a bathroom at what in the dream was the
+## 7      hall_male I found myself in the Adelbert Gym practicing golf. I wa
+## 8      hall_male I appear to have been in the National Guard of Ohio. I w
+## 9    hall_female I was playing ping pong at a church I remembered as bein
+## 10   hall_female I was swimming at a lake with some boy around 27 years o&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%
