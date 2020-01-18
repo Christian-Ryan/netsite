@@ -1,21 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags | Christian Ryan</title>
+    <title>Tags on Christian Ryan</title>
     <link>/tags/</link>
-      <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 14 Jan 2020 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>/img/icon-192.png</url>
-      <title>Tags</title>
-      <link>/tags/</link>
-    </image>
+    <description>Recent content in Tags on Christian Ryan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Text mining</title>
       <link>/tags/text-mining/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
+      
       <guid>/tags/text-mining/</guid>
       <description></description>
     </item>
@@ -24,6 +23,7 @@
       <title>R</title>
       <link>/tags/r/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
+      
       <guid>/tags/r/</guid>
       <description></description>
     </item>
@@ -32,6 +32,7 @@
       <title>Deep Learning</title>
       <link>/tags/deep-learning/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
       <guid>/tags/deep-learning/</guid>
       <description></description>
     </item>
@@ -40,6 +41,7 @@
       <title>Demo</title>
       <link>/tags/demo/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
       <guid>/tags/demo/</guid>
       <description></description>
     </item>

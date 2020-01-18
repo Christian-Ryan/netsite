@@ -1,21 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Elizabeth Quinlan | Christian Ryan</title>
+    <title>Elizabeth Quinlan on Christian Ryan</title>
     <link>/authors/elizabeth-quinlan/</link>
-      <atom:link href="/authors/elizabeth-quinlan/index.xml" rel="self" type="application/rss+xml" />
-    <description>Elizabeth Quinlan</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>/img/icon-192.png</url>
-      <title>Elizabeth Quinlan</title>
-      <link>/authors/elizabeth-quinlan/</link>
-    </image>
+    <description>Recent content in Elizabeth Quinlan on Christian Ryan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/authors/elizabeth-quinlan/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Whoever Shouts the Loudest: Listening to Parents of Children with Disabilities</title>
       <link>/publication/2018-01-01_whoever_shouts_the_l/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      
       <guid>/publication/2018-01-01_whoever_shouts_the_l/</guid>
       <description></description>
     </item>

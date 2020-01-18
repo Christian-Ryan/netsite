@@ -44,16 +44,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I was standing with my family (mother &amp;amp; father, ages 45 
-## 2  college_women This is only a snatch of a dream. I was walking down S--
-## 3  college_women I was in a brightly lighted room in the dormitory with a
-## 4  college_women I dreamed that I was in a doctor&amp;#39;s office supposedly rec
-## 5    vietnam_vet I&amp;#39;m in a large basement cafeteria. It&amp;#39;s spartan, abysmal
-## 6    vietnam_vet At my old high school, I walk past a thin ornery student
-## 7    vietnam_vet I&amp;#39;m in Rowley, where Hilary Clinton went to college; I k
-## 8    vietnam_vet Eerily, none of the lights in my bedroom at Highland Pla
-## 9      hall_male I was with two other friends both male and we were all c
-## 10   hall_female There was much more to the dream than this, but I can&amp;#39;t&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I was in a car with my father and mother (both 45 years 
+## 2  college_women I dreamt that I was attending a class meeting of the sen
+## 3    vietnam_vet Attempting to stage an accident, with two young thieves,
+## 4    vietnam_vet In a crowded white room many people rise from sleep. We&amp;#39;
+## 5    vietnam_vet In Switzerland, I&amp;#39;ve found my fifth-grade teacher at my 
+## 6    vietnam_vet In a foreign country, possibly Mexico, I meet an older w
+## 7      hall_male As the scene opens I seem to be balancing a while sittin
+## 8    hall_female I am walking along a river which is more likely to be a 
+## 9    hall_female I dreamt that I had become pregnant, although I wasn&amp;#39;t m
+## 10   hall_female I was writing out invitations to a wedding when suddenly&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%

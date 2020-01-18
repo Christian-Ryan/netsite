@@ -1,21 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shona O&#39;Connor | Christian Ryan</title>
+    <title>Shona O&#39;Connor on Christian Ryan</title>
     <link>/authors/shona-oconnor/</link>
-      <atom:link href="/authors/shona-oconnor/index.xml" rel="self" type="application/rss+xml" />
-    <description>Shona O&#39;Connor</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>/img/icon-192.png</url>
-      <title>Shona O&#39;Connor</title>
-      <link>/authors/shona-oconnor/</link>
-    </image>
+    <description>Recent content in Shona O&#39;Connor on Christian Ryan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/authors/shona-oconnor/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Single Session Psychology Clinic for Parents of Children with Autism Spectrum Disorder: A Feasibility Study</title>
       <link>/publication/2017-01-01_single_session_psy/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
       <guid>/publication/2017-01-01_single_session_psy/</guid>
       <description></description>
     </item>
