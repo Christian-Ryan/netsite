@@ -44,16 +44,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I had a job in some sort of plant (factory) and I worked
-## 2  college_women My mother and I were walking on E1-- St. between E-- and
-## 3  college_women I was in a shoe store. There were some empty seats, but 
-## 4    vietnam_vet It&amp;#39;s night. I&amp;#39;m with a platoon of American soldiers in V
-## 5    vietnam_vet Walking about a country fair with friends, we meet a han
-## 6      hall_male I was walking across the street and a car hit me althoug
-## 7    hall_female I dreamed that I and my family were Puritans. We were li
-## 8    hall_female I dreamed that my 2 girl cousins, ages 11 and 15, who li
-## 9    hall_female I dreamt I was supposed to go fishing on a fairly big bo
-## 10   hall_female The B-W bus was on its way to our back to the B-W on Par&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I dreamed that I was in one of my classes and we had jus
+## 2  college_women I was standing in a room, and appeared to be very thin. 
+## 3  college_women I dreamed I was with a crowd of school girls getting in 
+## 4  college_women I had a job in some sort of plant (factory) and I worked
+## 5  college_women I dreamed that I was in a country store in a town I had 
+## 6      hall_male I was with a girl who may have been my wife. We were wan
+## 7      hall_male I was on a Mayfield streetcar, going to school. It was m
+## 8      hall_male I dreamt that I met a girl that I had known about seven 
+## 9    hall_female I dreamed that I was in a classroom about to take an exa
+## 10   hall_female I dreamt that I had become pregnant, although I wasn&amp;#39;t m&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%
