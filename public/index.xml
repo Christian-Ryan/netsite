@@ -6,10 +6,170 @@
     <description>Recent content on Christian Ryan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using tidytext to compare samples of dreams</title>
+      <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-tidytext-to-compare-samples-of-dreams/</guid>
+      <description>
+
+
+&lt;p&gt;This is the third post in the series exploring text analytics with data from the dreambank.com. In the first post ‘Pulling text data from the internet’, I demonstrated how to use the &lt;strong&gt;rvest&lt;/strong&gt; package to pull text data from the dreambank website. In the second post ‘Manipulating text data from dreams’ we saw how to turn the dream texts into a tidy format by unnesting the word tokens in each dream and running counts on the word frequencies. In this third post of the series, I am going to demonstrate some ways of comparing texts from Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; using the dream data set to illustrate the ideas, while also unpacking some of the steps a little further than in their book.&lt;/p&gt;
+&lt;p&gt;We will load our packages again and pull in the same data we analysed last time (see the previous post for details).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(tidytext)
+library(stringr)
+library(car)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The processing steps we used last time on the data was to add a dream number, unnest the tokens, remove stopwords, and then filter out underscores and digits.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_word &amp;lt;- df %&amp;gt;%
+  mutate(dream_number = row_number()) %&amp;gt;%
+  unnest_tokens(word, dream) %&amp;gt;%
+  anti_join(stop_words) %&amp;gt;%
+  filter(str_detect(word, pattern = &amp;quot;_&amp;quot;, negate = TRUE)) %&amp;gt;%
+  filter(str_detect(word, pattern = &amp;#39;[\\d]&amp;#39;, negate = TRUE))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, we calculated word frequencies as proportions. This time we will store this as a new dataframe called df_proportion. Notice we have to remove the temporary ‘n’ variable. I am not sure why this is, but if you don’t deselect it, it seems to mess with the spread() function, creating multiple rows for the same word.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_proportion &amp;lt;- df_word %&amp;gt;%
+  group_by(sample, word) %&amp;gt;%
+  summarise(n = n()) %&amp;gt;%
+  mutate(percent = (n / sum(n))*100) %&amp;gt;%
+  mutate(percent = round(percent, 2)) %&amp;gt;%
+  select(-n) %&amp;gt;%
+  arrange(desc(percent)) %&amp;gt;%
+  ungroup()&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;comparing-word-frequencies-across-samples&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Comparing word frequencies across samples&lt;/h1&gt;
+&lt;p&gt;We might want to compare the frequencies across samples. We can use a technique that Juile Silge and David Robinson used to compare word frequencies across authors. This is a clever trick in which they use the &lt;em&gt;spread()&lt;/em&gt; and &lt;em&gt;gather()&lt;/em&gt; functions. Spread gives each sample their own column and makes the value proportion. Rather than do the spread and gather in one code chuck as in the book, I will do them as two separate stages to illustrate the process in more detail.&lt;/p&gt;
+&lt;p&gt;So let’s spread the data first. Think of this as taking the column of percentages/proportions and moving it into four separate columns: one for each sample. We are passing two arguments to the &lt;em&gt;spread()&lt;/em&gt; function, the key (which contains the names of the items to form new columns) which is our ‘sample’ variable, and the value (what will the cells in each of these columns be filled with), which is the variable ‘percent’.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_spread &amp;lt;- df_proportion %&amp;gt;%
+  spread(sample, percent)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We could look at this new dataframe directly by clicking on the icon in the Global Environment, but you will notice lots of NA values. This is because each dream sample contains words that are unique to that sample and in a way these are the least informative - we can only make a binary comparison if one sample contains the word and the other does not. So we really want to see the variance in proportions for words that occur in more than one sample. To take a better look at these examples we can run our new dataframe called df_spread through a !is.na (is not NA) filter and then call the &lt;em&gt;some()&lt;/em&gt; function from the &lt;strong&gt;car&lt;/strong&gt; package. This is simply filtering out the rows in which the NA value occurs for the proportion of a word in any of our four samples.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_spread %&amp;gt;%
+  filter(!is.na(college_women) &amp;amp; !is.na(hall_female) &amp;amp; !is.na(hall_male) &amp;amp; !is.na(vietnam_vet)) %&amp;gt;%
+  some()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
+##    word    college_women hall_female hall_male vietnam_vet
+##    &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+##  1 brother          0.12        0.1       0.49        0.41
+##  2 calling          0.06        0.02      0.05        0.03
+##  3 catch            0.03        0.07      0.07        0.03
+##  4 closed           0.09        0.02      0.05        0.03
+##  5 dog              0.03        0.17      0.16        0.28
+##  6 entered          0.03        0.1       0.16        0.02
+##  7 front            0.46        0.42      0.4         0.13
+##  8 green            0.12        0.15      0.05        0.16
+##  9 stand            0.03        0.02      0.02        0.14
+## 10 store            0.67        0.15      0.12        0.06&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
+  gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can take a quick look at the structure of the output, but we will filter out the NA values first, as we did for the df_spread dataset, as many are created for words that appear in one sample of dreams but not the other. Notice we do the same not-NA process (!is.na) on both the college_women data and the “proportion” variable. Remember that the college_women are our reference sample, so the ‘sample’ in this case tells us who provide the data in the proportion column.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather %&amp;gt;%
+  filter(!is.na(college_women) &amp;amp; !is.na(proportion))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1,950 x 4
+##    word     college_women sample      proportion
+##    &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;
+##  1 accident          0.03 hall_female       0.02
+##  2 act               0.06 hall_female       0.05
+##  3 afraid            0.24 hall_female       0.1 
+##  4 age               0.61 hall_female       0.27
+##  5 aged              0.09 hall_female       0.02
+##  6 ages              0.03 hall_female       0.05
+##  7 ago               0.12 hall_female       0.15
+##  8 ahead             0.06 hall_female       0.02
+##  9 air               0.15 hall_female       0.02
+## 10 alarm             0.09 hall_female       0.02
+## # … with 1,940 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next we can graph this data to inspect it more effectively. We use the df_gather as our data and set the aesthetics for x and y to proportion (which are our three samples) and college_women - which is our reference sample. As the college_women data will be used in all three graphs, it makes sense to assign it to the y axis, so we can scan down all three graphs vertically to make comparisons. There is another clever trick here with the colour variable. We will set it to the absolute value - &lt;em&gt;abs()&lt;/em&gt; - of the difference between the college_women value and the other sample (proportion) value. This means that the darker the colour of the dot, the stronger the difference between the two proportion values. This allows us to use both shade (dark to light) and position away from the diagonal line as a measure of difference between samples. The paler the text the more similar the proportion use of the word in both samples.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(scales)
+
+ggplot(df_gather, aes(x = proportion, y = college_women,
+                 colour = abs(college_women - proportion)))+
+  geom_abline(colour = &amp;quot;gray40&amp;quot;, lty = 2)+
+  geom_jitter(alpha = 0.2, size = 2, width = 0.3, height = 0.3) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 2)+
+  scale_x_log10(labels = percent_format())+
+  scale_y_log10(labels = percent_format())+
+  scale_color_gradient(limits = c(0, 0.22),
+                       low = &amp;quot;grey&amp;quot;, high = &amp;quot;black&amp;quot;)+
+  facet_wrap(~sample, ncol = 1)+
+  theme(legend.position = &amp;quot;none&amp;quot;)+
+  labs(y = &amp;quot;college_women&amp;quot;, x = NULL)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;./post/2020-01-27-using-tidytext-to-compare-samples-of-dreams_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The words on or close to the line represent words that occurred at similar frequencies in both samples. As an example, we can see the word ‘remember’ occurred at high frequency in the first graph, in both the college_women and hall_female samples, as it is both high up and far to the right on the graph - but we can also observe that the closeness to the line suggests a similar frequency between the samples. In contrast, we can see on the same graph that the word “aunt” is quite far to the left of the line, indicating that it occurs more frequently in the college_women than the hall_women. This is also the case in the graph of college_women against hall_men, whereas this is not obvious in the final graph. It is possible that the word doesn’t occur at all in the vietnam_vet dream - therefore it would have been removed by graph function call. We can check the values for ‘aunt’ with a quick call of the df_spread data.frame (this is why it can be useful to keep both versions, rather than overwriting the data when we used the gather function).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_spread %&amp;gt;%
+  filter(word == &amp;quot;aunt&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 x 5
+##   word  college_women hall_female hall_male vietnam_vet
+##   &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+## 1 aunt           0.43        0.02      0.02          NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As we predicted, the lack of ‘aunt’ in the final graph was not due to a similar frequency between the samples, but rather the complete absence of the word in the vietnam_vet dreams. We can also see the size of difference between the frequency of the word in the college_women’s dreams and the other three samples is very large. Graphing the words in this way can give you a strong sense of these differences between the texts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;correlation-coefficient&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Correlation coefficient&lt;/h1&gt;
+&lt;p&gt;We can use the base R function cor.test() to measure the degree of similarity between the propotions of words used in each sample. One approach is to prepare a new dataframe to carry out this test. Here we create a dataframe called df_cwhf(college_women and hall_female) and filter for just those rows that represent data for college women and hall_females. We can then run the &lt;em&gt;cor.test()&lt;/em&gt; on this dataframe, by passing the variables ‘college_women’ and ‘proportion’ - the latter being just the proportion for the hall_female (because of the filter we applied).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_cwhf &amp;lt;- df_gather %&amp;gt;%
+  filter(sample == &amp;quot;hall_female&amp;quot;)
+cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  Pearson&amp;#39;s product-moment correlation
+## 
+## data:  df_cwhf$college_women and df_cwhf$proportion
+## t = 34.676, df = 643, p-value &amp;lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7785169 0.8325231
+## sample estimates:
+##       cor 
+## 0.8072027&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Alternatively, we could use the syntax in &lt;strong&gt;Text mining with R&lt;/strong&gt;, which subsets the data on the fly. We explicitly give a data argument, which is the df_gather dataframe, subsetted with &lt;em&gt;samples == “hall_female”&lt;/em&gt;. We add a comma after this in the square brackets &lt;strong&gt;[ ]&lt;/strong&gt;, with no other argument, as we want to retain all the columns. Finally we provide our x and y values to be correlated in the formula format &lt;strong&gt;~ x + y&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor.test(data = df_gather[df_gather$sample == &amp;quot;hall_female&amp;quot;, ], ~ proportion + college_women)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  Pearson&amp;#39;s product-moment correlation
+## 
+## data:  proportion and college_women
+## t = 34.676, df = 643, p-value &amp;lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7785169 0.8325231
+## sample estimates:
+##       cor 
+## 0.8072027&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s use this one-line technique to run the other two comparisons.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor.test(data = df_gather[df_gather$sample == &amp;quot;hall_male&amp;quot;, ], ~ proportion + college_women)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  Pearson&amp;#39;s product-moment correlation
+## 
+## data:  proportion and college_women
+## t = 28.24, df = 648, p-value &amp;lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7062132 0.7753868
+## sample estimates:
+##       cor 
+## 0.7427756&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor.test(data = df_gather[df_gather$sample == &amp;quot;vietnam_vet&amp;quot;, ], ~ proportion + college_women)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  Pearson&amp;#39;s product-moment correlation
+## 
+## data:  proportion and college_women
+## t = 12.03, df = 653, p-value &amp;lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.3610922 0.4866471
+## sample estimates:
+##      cor 
+## 0.425918&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This reveals that all three samples correlate highly with the college_women, but the vietnam_vet dreams had a much lower correlation (.43) than the hall_female (.81) or the hall_male (.74). We could go on to use term frequency–inverse document frequency (tf-idf) to make a more complex comparison between the samples. In the next post, we will apply some of the sentiment analysis ideas from the book to the dream data. Let’s save our dataset df_word for next time.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;save(df_word, file = &amp;quot;df_word.Rdata&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Manipulating text data from dreams</title>
@@ -44,16 +204,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women There were two girls and myself sitting around a table i
-## 2  college_women All I remember is a fragment - I was looking on at mysel
-## 3    vietnam_vet I&amp;#39;m with several people walking to a car in a shopping m
-## 4    vietnam_vet I&amp;#39;m in a large hotel room. At night, after meeting the t
-## 5      hall_male I could hardly forget this dream as it involved the youn
-## 6    hall_female Our family doctor (a good friend of ours), his wife, and
-## 7    hall_female I dreamt I was in an 8 o&amp;#39;clock class with a girl who eat
-## 8    hall_female I was to leave for California the next afternoon early. 
-## 9    hall_female I had gone down to the Schofield Bldg. Used to work ther
-## 10   hall_female I was in a downtown shopping district with two other gir&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I dreamed that the Society for the Blind had given my gr
+## 2  college_women In my dream I pestered my mother until she allowed me to
+## 3    vietnam_vet At my old high school, I walk past a thin ornery student
+## 4      hall_male I was on a Mayfield streetcar, going to school. It was m
+## 5      hall_male My baby cousin Betsie, an Army associate of mine, and I 
+## 6    hall_female All I remember of this dream is that my brother (16) re-
+## 7    hall_female It seems I was in some small office. I know I was workin
+## 8    hall_female I had gone down to the Schofield Bldg. Used to work ther
+## 9    hall_female I dreamt that I was sitting in Kulas with my father. The
+## 10   hall_female I was coming home from college. I was rather peeved beca&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%
