@@ -53,18 +53,18 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
   filter(!is.na(college_women) &amp;amp; !is.na(hall_female) &amp;amp; !is.na(hall_male) &amp;amp; !is.na(vietnam_vet)) %&amp;gt;%
   some()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
-##    word     college_women hall_female hall_male vietnam_vet
-##    &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 college           0.12       0.07       0.07        0.16
-##  2 drive             0.18       0.05       0.05        0.08
-##  3 happy             0.06       0.290      0.14        0.13
-##  4 height            0.03       0.02       0.05        0.03
-##  5 miss              0.03       0.02       0.02        0.05
-##  6 reached           0.03       0.02       0.14        0.03
-##  7 street            0.27       0.34       0.51        0.28
-##  8 surprise          0.06       0.02       0.02        0.02
-##  9 time              0.73       0.59       0.56        0.36
-## 10 vacant            0.03       0.02       0.02        0.02&lt;/code&gt;&lt;/pre&gt;
+##    word    college_women hall_female hall_male vietnam_vet
+##    &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+##  1 afraid           0.24        0.1       0.09        0.09
+##  2 bicycle          0.03        0.05      0.09        0.03
+##  3 couple           0.12        0.02      0.07        0.09
+##  4 dressed          0.09        0.2       0.05        0.17
+##  5 late             0.21        0.05      0.05        0.03
+##  6 male             0.12        0.05      0.09        0.06
+##  7 police           0.03        0.07      0.23        0.11
+##  8 sun              0.03        0.05      0.02        0.02
+##  9 thin             0.09        0.02      0.02        0.16
+## 10 water            0.18        0.44      0.33        0.22&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
@@ -203,17 +203,17 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;custom_view &amp;lt;- function(x) data.frame(lapply(x, substr, 1, 56))
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I was standing with my family (mother &amp;amp; father, ages 45 
-## 2  college_women This dream was a very disconnected one. It began when I 
-## 3    vietnam_vet I&amp;#39;m in my old house on Highland Place. Outside, it&amp;#39;s rai
-## 4    vietnam_vet I&amp;#39;m an instructor at a civilian flight school, observing
-## 5    vietnam_vet In the country on a sunny day, I decide to walk down a s
-## 6    vietnam_vet I&amp;#39;m in an enormous building, a sort of jail, with walls 
-## 7    vietnam_vet Having spent a long day at college, I&amp;#39;m walking through 
-## 8    vietnam_vet I&amp;#39;m in a small living room crowded with men who have gat
-## 9      hall_male We were walking down a path in a big forest when all of 
-## 10   hall_female I dreamed that Dean Dolan was explaining the constructio&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##         sample                                                    dream
+## 1  vietnam_vet I&amp;#39;m sitting in an English garden with Donald Trump and h
+## 2  vietnam_vet At a summer day camp, I share a bunk with my brother&amp;#39;s c
+## 3    hall_male I was being chased for what seemed a long time. At times
+## 4    hall_male I was having intercourse with my mother. She was relucta
+## 5    hall_male I dreamt that I was taking some kind of a test and there
+## 6    hall_male My baby cousin Betsie, an Army associate of mine, and I 
+## 7    hall_male I was lying in bed. My uncle came into the room. He said
+## 8    hall_male In this dream I was going to the cobbler to pick up some
+## 9  hall_female I dreamed that I was in a classroom about to take an exa
+## 10 hall_female I dreamt that I had become pregnant, although I wasn&amp;#39;t m&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;tidytext.png&#34; width=&#34;25%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
