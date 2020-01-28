@@ -15,13 +15,9 @@
   
   
   
-    
-    
-    
-  
   
 
-  <meta name="author" content="Christian Ryan">
+  
 
   
   
@@ -548,16 +544,16 @@ df$sample &lt;- as.factor(df$sample)</code></pre>
 car::some(df) %&gt;%
   custom_view()</code></pre>
 <pre><code>##           sample                                                    dream
-## 1  college_women I was dreaming about taking some sort of trip. I arrange
-## 2  college_women J--- (engaged to M 22) and I were on our way E--- Beach 
-## 3  college_women I dreamt that I was to attend a Spanish class at 7:30 at
-## 4    vietnam_vet Attempting to stage an accident, with two young thieves,
-## 5    vietnam_vet In the Canadian wilderness, I&#39;m with two women in a larg
-## 6    vietnam_vet At my old high school, I walk past a thin ornery student
-## 7    vietnam_vet I&#39;m staying in a cozy house with two young doctors, a ha
-## 8    vietnam_vet Late at night, with the wife of a friend, we return to a
-## 9    vietnam_vet In a dark walled corridor similar to My old high school,
-## 10     hall_male I was staring at a football when for some reason it turn</code></pre>
+## 1  college_women I dreamed that I was in one of my classes and we had jus
+## 2  college_women I was the only girl in a room full of men, none of whom 
+## 3  college_women In my dream I pestered my mother until she allowed me to
+## 4    vietnam_vet I&#39;m sitting in a booth at a well lit uncrowded diner. Tw
+## 5    vietnam_vet With two homeless women I share a below street level spa
+## 6      hall_male As the dream began I found myself walking down a street 
+## 7    hall_female In my dream I was in bed aware of the fact that I was ab
+## 8    hall_female All I remember of this dream is that my brother (16) re-
+## 9    hall_female There was much more to the dream than this, but I can&#39;t 
+## 10   hall_female I dreamed that my sister, Martha, my mother and a friend</code></pre>
 <p>Julia Silge and David Robinson’s book <strong>Text Mining with R - A tidy approach</strong> sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.</p>
 <p>At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.</p>
 <pre class="r"><code>df &lt;-  df %&gt;%
@@ -913,100 +909,13 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
 
 
   
+  
+  
 
 
 
 
 
-
-  
-  
-  
-    
-  
-  
-  <div class="media author-card content-widget-hr">
-    
-      
-      <img class="portrait mr-3" src="../../authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
-    
-
-    <div class="media-body">
-      <h5 class="card-title"><a href="../../">Christian Ryan</a></h5>
-      <h6 class="card-subtitle">Senior Lecturer in Clinical Psychology</h6>
-      <p class="card-text">My research interests include autism spectrum disorder, eating disorders, obsessive compulsive disorder and some other stuff&hellip;</p>
-      <ul class="network-icon" aria-hidden="true">
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="../../#contact" >
-        <i class="fas fa-envelope"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="https://twitter.com/Christi57478778" target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="https://scholar.google.com/citations?user=TC3KPGIAAAAJ&amp;hl=en" target="_blank" rel="noopener">
-        <i class="ai ai-google-scholar"></i>
-      </a>
-    </li>
-  
-    
-    
-    
-      
-    
-    
-    
-    
-    
-      
-    
-    <li>
-      <a href="https://github.com/Christian-Ryan" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-      </a>
-    </li>
-  
-</ul>
-
-    </div>
-  </div>
 
 
 
