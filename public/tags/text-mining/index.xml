@@ -204,16 +204,17 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I dreamed that I was in the office of the directress or 
-## 2  college_women This is only a snatch of a dream. I was walking down S--
-## 3  college_women My mother and I were walking on E1-- St. between E-- and
-## 4    vietnam_vet I&amp;#39;m in a small field. It&amp;#39;s spartan, bare bones in nature
-## 5    vietnam_vet On a desolate farm, in a dirt lot, a very dark young Ind
-## 6      hall_male I went to my dentist&amp;#39;s office to get my teeth checked. H
-## 7      hall_male A group of fellows and I were on our way to a baseball g
-## 8      hall_male This dream began in the university parking lot. On my wa
-## 9    hall_female I was to leave for California the next afternoon early. 
-## 10   hall_female I dreamt that I was invited to a large party held by a g&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I was standing with my family (mother &amp;amp; father, ages 45 
+## 2  college_women This dream was a very disconnected one. It began when I 
+## 3    vietnam_vet I&amp;#39;m in my old house on Highland Place. Outside, it&amp;#39;s rai
+## 4    vietnam_vet I&amp;#39;m an instructor at a civilian flight school, observing
+## 5    vietnam_vet In the country on a sunny day, I decide to walk down a s
+## 6    vietnam_vet I&amp;#39;m in an enormous building, a sort of jail, with walls 
+## 7    vietnam_vet Having spent a long day at college, I&amp;#39;m walking through 
+## 8    vietnam_vet I&amp;#39;m in a small living room crowded with men who have gat
+## 9      hall_male We were walking down a path in a big forest when all of 
+## 10   hall_female I dreamed that Dean Dolan was explaining the constructio&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;tidytext.png&#34; width=&#34;25%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%
@@ -391,11 +392,11 @@ underscores[1]&lt;/code&gt;&lt;/pre&gt;
   ggplot(aes(x = word, y = n)) +
   geom_col()+
   coord_flip()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This gives us an overview of the most commonly used words in dreams recalled by all four samples. But it would be more interesting to see how the word use differs between the samples. However, we should be prepared for the possibility that the length of dreams may vary between samples. To control for this, we might want to convert our raw counts of words to proportions from the dream text. Let’s check for the variety of dream lengths by using str_count() function on our original dataset df - hence before we removed our stopwords. We will count the words in each dream and store the result in a vector called dream_lengths. The default for &lt;em&gt;str_count&lt;/em&gt; is for the function to count characters if no pattern is given to match. However, if we pass it a second argument, specifying the regex for all sequences of non-space characters, it will count words instead. The regex includes the code for any non-white space character ‘\S’, with the addition of ‘+’ sign to indicate one or more non-white space characters, and the initial escape character ‘\’ as ‘\S’ is not recognised as an escape character without it.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dream_lengths &amp;lt;- str_count(df$dream, &amp;quot;\\S+&amp;quot;)
 plot(dream_lengths, xlab = &amp;quot;Dream Number&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;../../post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This is a good example of the use of the plot() function with a single vector in R. The default behaviour is to plot the values of the vector against the y-axis - dream_lengths in this case, and then use the index number (ie. the order in which each value occurs in the vector) as the x value. So our x-axis simple represents the order of the dreams, or as we have named this, the dream number. We can see here the range of dream lengths with the minimum being about 35 words and the maximum around 290 words. We could take the min, max, mean and SD if we wanted to be more specific.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;min(dream_lengths); max(dream_lengths); mean(dream_lengths); sd(dream_lengths)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 38&lt;/code&gt;&lt;/pre&gt;
