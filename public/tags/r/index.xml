@@ -53,18 +53,18 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
   filter(!is.na(college_women) &amp;amp; !is.na(hall_female) &amp;amp; !is.na(hall_male) &amp;amp; !is.na(vietnam_vet)) %&amp;gt;%
   some()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
-##    word       college_women hall_female hall_male vietnam_vet
-##    &amp;lt;chr&amp;gt;              &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 blond              0.03         0.02      0.07        0.03
-##  2 completely         0.06         0.12      0.09        0.02
-##  3 modern             0.03         0.02      0.05        0.02
-##  4 reached            0.03         0.02      0.14        0.03
-##  5 sitting            0.580        0.47      0.35        0.14
-##  6 sleeping           0.06         0.02      0.02        0.03
-##  7 talk               0.21         0.07      0.07        0.33
-##  8 town               0.21         0.07      0.16        0.06
-##  9 walk               0.12         0.1       0.12        0.71
-## 10 wall               0.06         0.25      0.14        0.16&lt;/code&gt;&lt;/pre&gt;
+##    word     college_women hall_female hall_male vietnam_vet
+##    &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+##  1 corner            0.18        0.1       0.14        0.05
+##  2 country           0.15        0.02      0.09        0.16
+##  3 friend            0.85        0.52      0.65        0.38
+##  4 heard             0.21        0.32      0.07        0.02
+##  5 hill              0.09        0.07      0.19        0.11
+##  6 hundreds          0.06        0.05      0.02        0.06
+##  7 mine              0.52        0.37      0.47        0.09
+##  8 putting           0.09        0.05      0.02        0.02
+##  9 ran               0.34        0.39      0.33        0.02
+## 10 returned          0.06        0.1       0.09        0.03&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
@@ -180,9 +180,10 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
       <description>
 
 
-&lt;p&gt;I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over what data I might use, I stumbled upon a line in &lt;strong&gt;“You are a thing and I love you”&lt;/strong&gt; - the wonderful new book on AI by Janelle Shane.&lt;/p&gt;
+&lt;p&gt;I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over which data I might use, I stumbled upon a line in &lt;strong&gt;“You are a thing and I love you”&lt;/strong&gt; - the wonderful new book on AI by Janelle Shane.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;you_look.png&#34; width=&#34;30%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&#34; class=&#34;uri&#34;&gt;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;She mentions training an AI on a dream dataset available at dreamreasearch.net. The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: &lt;a href=&#34;http://www.dreambank.net/random_sample.cgi&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net/random_sample.cgi&lt;/a&gt; one can select a dream source.&lt;/p&gt;
+&lt;p&gt;She mentions training an AI on a dream dataset available at &lt;a href=&#34;http://www.dreambank.net&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net&lt;/a&gt; The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: &lt;a href=&#34;http://www.dreambank.net/random_sample.cgi&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net/random_sample.cgi&lt;/a&gt; one can select a dream source.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;dreamselect.png&#34; /&gt;
 
