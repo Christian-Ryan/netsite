@@ -15,9 +15,13 @@
   
   
   
+    
+    
+    
+  
   
 
-  
+  <meta name="author" content="Christian Ryan">
 
   
   
@@ -551,18 +555,18 @@ library(car)</code></pre>
   filter(!is.na(college_women) &amp; !is.na(hall_female) &amp; !is.na(hall_male) &amp; !is.na(vietnam_vet)) %&gt;%
   some()</code></pre>
 <pre><code>## # A tibble: 10 x 5
-##    word     college_women hall_female hall_male vietnam_vet
-##    &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-##  1 chair             0.09        0.1       0.07        0.05
-##  2 climbing          0.06        0.02      0.12        0.02
-##  3 close             0.18        0.05      0.09        0.13
-##  4 hat               0.09        0.02      0.02        0.02
-##  5 hearing           0.06        0.02      0.02        0.05
-##  6 money             0.15        0.1       0.37        0.02
-##  7 pick              0.09        0.05      0.07        0.02
-##  8 returned          0.06        0.1       0.09        0.03
-##  9 scene             0.31        0.1       0.28        0.44
-## 10 wearing           0.06        0.1       0.07        0.32</code></pre>
+##    word    college_women hall_female hall_male vietnam_vet
+##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+##  1 caught           0.03        0.07      0.09        0.09
+##  2 cover            0.03        0.05      0.02        0.03
+##  3 drive            0.18        0.05      0.05        0.08
+##  4 driver           0.03        0.05      0.05        0.13
+##  5 flying           0.03        0.02      0.07        0.09
+##  6 hall             0.18        0.27      0.12        0.03
+##  7 putting          0.09        0.05      0.02        0.02
+##  8 reached          0.03        0.02      0.14        0.03
+##  9 staying          0.06        0.1       0.02        0.05
+## 10 teacher          0.27        0.15      0.12        0.13</code></pre>
 <p>Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we <em>gather()</em>, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.</p>
 <pre class="r"><code>df_gather &lt;- df_spread %&gt;%
   gather(sample, proportion, hall_female:vietnam_vet)</code></pre>
@@ -781,13 +785,100 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
 
 
   
+
+
+
+
+
+
   
   
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="../../authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
 
+    <div class="media-body">
+      <h5 class="card-title"><a href="../../">Christian Ryan</a></h5>
+      <h6 class="card-subtitle">Senior Lecturer in Clinical Psychology</h6>
+      <p class="card-text">My research interests include autism spectrum disorder, eating disorders, obsessive compulsive disorder and some other stuff&hellip;</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="../../#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/Christi57478778" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=TC3KPGIAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Christian-Ryan" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
 
-
-
-
+    </div>
+  </div>
 
 
 
