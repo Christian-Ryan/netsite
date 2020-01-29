@@ -32,7 +32,7 @@
 In this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson’s book ‘Text Mining with R’ for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://drchristianryan.com/post/manipulating-text-data-from-dreams/">
+  <link rel="alternate" hreflang="en-us" href="../../post/manipulating-text-data-from-dreams/">
 
   
 
@@ -138,7 +138,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
   <link rel="icon" type="image/png" href="../../img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
 
-  <link rel="canonical" href="https://drchristianryan.com/post/manipulating-text-data-from-dreams/">
+  <link rel="canonical" href="../../post/manipulating-text-data-from-dreams/">
 
   
   
@@ -151,11 +151,11 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Christian Ryan">
-  <meta property="og:url" content="https://drchristianryan.com/post/manipulating-text-data-from-dreams/">
+  <meta property="og:url" content="/post/manipulating-text-data-from-dreams/">
   <meta property="og:title" content="Manipulating text data from dreams | Christian Ryan">
   <meta property="og:description" content="In the previous post on ‘pulling text data from the internet’, I experimented with pulling out the dream text from a sample of dreams from the website “DreamBank” at: http://www.dreambank.net/random_sample.cgi.
-In this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson’s book ‘Text Mining with R’ for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:"><meta property="og:image" content="https://drchristianryan.com/img/icon-192.png">
-  <meta property="twitter:image" content="https://drchristianryan.com/img/icon-192.png"><meta property="og:locale" content="en-us">
+In this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson’s book ‘Text Mining with R’ for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2020-01-14T00:00:00&#43;00:00">
@@ -186,7 +186,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://drchristianryan.com/post/manipulating-text-data-from-dreams/"
+    "@id": "/post/manipulating-text-data-from-dreams/"
   },
   "headline": "Manipulating text data from dreams",
   
@@ -203,7 +203,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
     "name": "Christian Ryan",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://drchristianryan.com/img/icon-512.png"
+      "url": "/img/icon-512.png"
     }
   },
   "description": "In the previous post on ‘pulling text data from the internet’, I experimented with pulling out the dream text from a sample of dreams from the website “DreamBank” at: http://www.dreambank.net/random_sample.cgi.\nIn this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson’s book ‘Text Mining with R’ for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:"
@@ -548,16 +548,16 @@ df$sample &lt;- as.factor(df$sample)</code></pre>
 car::some(df) %&gt;%
   custom_view()</code></pre>
 <pre><code>##           sample                                                    dream
-## 1  college_women I was at a factory working. I saw a college girl-friend 
-## 2  college_women A friend of mine (male) came over and came into the bedr
-## 3  college_women I was walking up my street when I heard the wild barking
-## 4    vietnam_vet I&#39;m with my old platoon on a firebase in Vietnam. An FNG
-## 5      hall_male This took place in the South Pacific aboard a destroyer.
-## 6      hall_male This dream has been recurrent at the rate of twice a wee
-## 7    hall_female I dreamt that a friend of mine who graduated last year c
-## 8    hall_female All I remember of this dream is that my brother (16) re-
-## 9    hall_female I dreamed that I was sitting in the back room of Moe&#39;s, 
-## 10   hall_female My father and mother had become parents of a baby boy. I</code></pre>
+## 1  college_women I was the only girl in a room full of men, none of whom 
+## 2  college_women This dream was a very disconnected one. It began when I 
+## 3    vietnam_vet I&#39;m an instructor at a civilian flight school, observing
+## 4    vietnam_vet I&#39;m one of several passengers in a small plane flying hi
+## 5    vietnam_vet I&#39;m a medic in a war zone hospital, where a team of war 
+## 6    vietnam_vet I&#39;m sitting in a booth at a well lit uncrowded diner. Tw
+## 7    vietnam_vet In Vietnam, I&#39;m with my brother, high up in the dark sky
+## 8      hall_male I was lying on my stomach in a high sand dune in a vast 
+## 9    hall_female I dreamed that my 2 girl cousins, ages 11 and 15, who li
+## 10   hall_female This dream took place entirely in one room and instead o</code></pre>
 <p><img src="../../img/tidytext.png" width="25%" /></p>
 <p>Julia Silge and David Robinson’s book <strong>Text Mining with R - A tidy approach</strong> sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.</p>
 <p>At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.</p>
@@ -829,7 +829,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://drchristianryan.com/post/manipulating-text-data-from-dreams/&amp;text=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/post/manipulating-text-data-from-dreams/&amp;text=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -842,7 +842,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://drchristianryan.com/post/manipulating-text-data-from-dreams/&amp;t=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/post/manipulating-text-data-from-dreams/&amp;t=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -855,7 +855,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       
       
       <li>
-        <a href="mailto:?subject=Manipulating%20text%20data%20from%20dreams&amp;body=https://drchristianryan.com/post/manipulating-text-data-from-dreams/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Manipulating%20text%20data%20from%20dreams&amp;body=/post/manipulating-text-data-from-dreams/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -868,7 +868,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://drchristianryan.com/post/manipulating-text-data-from-dreams/&amp;title=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/post/manipulating-text-data-from-dreams/&amp;title=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -881,7 +881,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Manipulating%20text%20data%20from%20dreams%20https://drchristianryan.com/post/manipulating-text-data-from-dreams/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Manipulating%20text%20data%20from%20dreams%20/post/manipulating-text-data-from-dreams/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -894,7 +894,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://drchristianryan.com/post/manipulating-text-data-from-dreams/&amp;title=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/post/manipulating-text-data-from-dreams/&amp;title=Manipulating%20text%20data%20from%20dreams" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -933,7 +933,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
     
 
     <div class="media-body">
-      <h5 class="card-title"><a href="https://drchristianryan.com">Christian Ryan</a></h5>
+      <h5 class="card-title"><a href="../../">Christian Ryan</a></h5>
       <h6 class="card-subtitle">Senior Lecturer in Clinical Psychology</h6>
       <p class="card-text">My research interests include autism spectrum disorder, eating disorders, obsessive compulsive disorder and some other stuff&hellip;</p>
       <ul class="network-icon" aria-hidden="true">
@@ -1146,6 +1146,14 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
   
   <div class="container">
     <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+    
+      
+      <a href="../../terms/">Terms</a>
+    
+  </p>
   
 
   <p class="powered-by">

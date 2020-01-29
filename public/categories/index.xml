@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Christian Ryan</title>
-    <link>https://drchristianryan.com/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Christian Ryan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://drchristianryan.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R coding</title>
-      <link>https://drchristianryan.com/categories/r-coding/</link>
+      <link>/categories/r-coding/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://drchristianryan.com/categories/r-coding/</guid>
+      <guid>/categories/r-coding/</guid>
       <description></description>
     </item>
     

@@ -3,192 +3,197 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://drchristianryan.com/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2020-01-27T16:24:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/</loc>
+    <loc>/</loc>
     <lastmod>2020-01-27T16:24:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2020-01-27T16:24:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/tags/r/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2020-01-27T16:24:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/categories/r-coding/</loc>
+    <loc>/categories/r-coding/</loc>
     <lastmod>2020-01-27T16:24:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2020-01-27T16:24:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/tags/text-mining/</loc>
+    <loc>/tags/text-mining/</loc>
     <lastmod>2020-01-27T16:24:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/</loc>
+    <loc>/post/using-tidytext-to-compare-samples-of-dreams/</loc>
     <lastmod>2020-01-27T16:24:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/post/manipulating-text-data-from-dreams/</loc>
+    <loc>/post/manipulating-text-data-from-dreams/</loc>
     <lastmod>2020-01-14T10:12:17+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/post/pulling-text-data-from-the-internet/</loc>
+    <loc>/post/pulling-text-data-from-the-internet/</loc>
     <lastmod>2019-11-30T09:38:55+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/post/plotting-multiple-histograms-on-the-same-graph/</loc>
+    <loc>/post/plotting-multiple-histograms-on-the-same-graph/</loc>
     <lastmod>2019-10-12T09:49:42+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2018-01-01_forgetting_fam/</loc>
+    <loc>/terms/</loc>
+    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/2018-01-01_forgetting_fam/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication_types/2/</loc>
+    <loc>/publication_types/2/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2018-01-01_a_review_of_we/</loc>
+    <loc>/publication/2018-01-01_a_review_of_we/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/</loc>
+    <loc>/authors/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/brendan-oflynn/</loc>
+    <loc>/authors/brendan-oflynn/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/christian-ryan/</loc>
+    <loc>/authors/christian-ryan/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/elizabeth-quinlan/</loc>
+    <loc>/authors/elizabeth-quinlan/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/emma-hickey/</loc>
+    <loc>/authors/emma-hickey/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/mohammed-taj-eldin/</loc>
+    <loc>/authors/mohammed-taj-eldin/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/paul-galvin/</loc>
+    <loc>/authors/paul-galvin/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication_types/</loc>
+    <loc>/publication_types/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/</loc>
+    <loc>/publication/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/rosemary-machale/</loc>
+    <loc>/authors/rosemary-machale/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2018-01-01_whoever_shouts_the_l/</loc>
+    <loc>/publication/2018-01-01_whoever_shouts_the_l/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/shona-oconnor/</loc>
+    <loc>/authors/shona-oconnor/</loc>
     <lastmod>2017-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2017-01-01_single_session_psy/</loc>
+    <loc>/publication/2017-01-01_single_session_psy/</loc>
     <lastmod>2017-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2016-01-01_judgments_of_nonve/</loc>
+    <loc>/publication/2016-01-01_judgments_of_nonve/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/kathleen-mulhall/</loc>
+    <loc>/authors/kathleen-mulhall/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/martina-stafford/</loc>
+    <loc>/authors/martina-stafford/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/philip-furley/</loc>
+    <loc>/authors/philip-furley/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/robert-james-king/</loc>
+    <loc>/authors/robert-james-king/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2016-01-01_brief_report_s/</loc>
+    <loc>/publication/2016-01-01_brief_report_s/</loc>
     <lastmod>2016-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/caitriona-ni-charragain/</loc>
+    <loc>/authors/caitriona-ni-charragain/</loc>
     <lastmod>2010-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2010-01-01_teaching_emotion_r/</loc>
+    <loc>/publication/2010-01-01_teaching_emotion_r/</loc>
     <lastmod>2010-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2007-01-01_british_outpatient_n/</loc>
+    <loc>/publication/2007-01-01_british_outpatient_n/</loc>
     <lastmod>2007-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/publication/2004-01-01_differences_in_the_a/</loc>
+    <loc>/publication/2004-01-01_differences_in_the_a/</loc>
     <lastmod>2004-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://drchristianryan.com/authors/admin/</loc>
+    <loc>/authors/admin/</loc>
   </url>
   
 </urlset>
