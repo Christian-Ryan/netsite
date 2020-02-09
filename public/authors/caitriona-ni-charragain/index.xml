@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Caitriona Ni Charragain on Christian Ryan</title>
@@ -11,7 +10,7 @@
 	<atom:link href="/authors/caitriona-ni-charragain/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
+    <item> 
       <title>Teaching Emotion Recognition Skills to Children with Autism</title>
       <link>/publication/2010-01-01_teaching_emotion_r/</link>
       <pubDate>Fri, 01 Jan 2010 00:00:00 +0000</pubDate>

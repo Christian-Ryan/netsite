@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Christian Ryan</title>
@@ -11,7 +10,7 @@
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
+    <item> 
       <title>Using tidytext to compare samples of dreams</title>
       <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
@@ -53,18 +52,18 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
   filter(!is.na(college_women) &amp;amp; !is.na(hall_female) &amp;amp; !is.na(hall_male) &amp;amp; !is.na(vietnam_vet)) %&amp;gt;%
   some()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
-##    word    college_women hall_female hall_male vietnam_vet
-##    &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 change           0.09        0.05      0.05        0.06
-##  2 desk             0.03        0.07      0.07        0.06
-##  3 head             0.09        0.1       0.33        0.24
-##  4 minutes          0.06        0.1       0.02        0.06
-##  5 miss             0.03        0.02      0.02        0.05
-##  6 pick             0.09        0.05      0.07        0.02
-##  7 pretty           0.03        0.05      0.02        0.05
-##  8 stay             0.03        0.1       0.07        0.08
-##  9 walk             0.12        0.1       0.12        0.71
-## 10 water            0.18        0.44      0.33        0.22&lt;/code&gt;&lt;/pre&gt;
+##    word      college_women hall_female hall_male vietnam_vet
+##    &amp;lt;chr&amp;gt;             &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+##  1 attending          0.03        0.02      0.02       0.06 
+##  2 bare               0.06        0.05      0.05       0.06 
+##  3 dropped            0.03        0.07      0.02       0.02 
+##  4 people             0.76        0.61      0.56       0.570
+##  5 playing            0.15        0.27      0.16       0.03 
+##  6 pretty             0.03        0.05      0.02       0.05 
+##  7 putting            0.09        0.05      0.02       0.02 
+##  8 question           0.03        0.02      0.09       0.13 
+##  9 raining            0.03        0.05      0.05       0.08 
+## 10 watch              0.06        0.02      0.02       0.11&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
@@ -171,7 +170,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
-    <item>
+    <item> 
       <title>Pulling text data from the internet</title>
       <link>/post/pulling-text-data-from-the-internet/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
@@ -300,7 +299,7 @@ df$dream &amp;lt;- substr(df$dream, 0, start-2) &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
-    <item>
+    <item> 
       <title>Plotting multiple histograms on the same graph</title>
       <link>/post/plotting-multiple-histograms-on-the-same-graph/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
