@@ -1,20 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on Christian Ryan</title>
+    <title>R | Christian Ryan</title>
     <link>/tags/r/</link>
-    <description>Recent content in R on Christian Ryan</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
+      <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <description>R</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>R</title>
+      <link>/tags/r/</link>
+    </image>
     
-	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item> 
+    <item>
       <title>Using tidytext to compare samples of dreams</title>
       <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      
       <guid>/post/using-tidytext-to-compare-samples-of-dreams/</guid>
       <description>
 
@@ -170,11 +171,10 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
-    <item> 
+    <item>
       <title>Pulling text data from the internet</title>
       <link>/post/pulling-text-data-from-the-internet/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/pulling-text-data-from-the-internet/</guid>
       <description>
 
@@ -299,11 +299,10 @@ df$dream &amp;lt;- substr(df$dream, 0, start-2) &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
-    <item> 
+    <item>
       <title>Plotting multiple histograms on the same graph</title>
       <link>/post/plotting-multiple-histograms-on-the-same-graph/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      
       <guid>/post/plotting-multiple-histograms-on-the-same-graph/</guid>
       <description>
 
