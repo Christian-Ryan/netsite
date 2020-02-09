@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Text mining on Christian Ryan</title>
@@ -11,7 +10,7 @@
 	<atom:link href="/tags/text-mining/feed.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
+    <item> 
       <title>Using tidytext to compare samples of dreams</title>
       <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
@@ -171,7 +170,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
-    <item>
+    <item> 
       <title>Manipulating text data from dreams</title>
       <link>/post/manipulating-text-data-from-dreams/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
