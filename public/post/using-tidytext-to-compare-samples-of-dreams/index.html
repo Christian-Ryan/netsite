@@ -31,7 +31,7 @@
   <meta name="description" content="This is the third post in the series exploring text analytics with data from the dreambank.com. In the first post ‘Pulling text data from the internet’, I demonstrated how to use the rvest package to pull text data from the dreambank website. In the second post ‘Manipulating text data from dreams’ we saw how to turn the dream texts into a tidy format by unnesting the word tokens in each dream and running counts on the word frequencies.">
 
   
-  <link rel="alternate" hreflang="en-us" href="../../post/using-tidytext-to-compare-samples-of-dreams/">
+  <link rel="alternate" hreflang="en-us" href="/post/using-tidytext-to-compare-samples-of-dreams/">
 
   
 
@@ -83,7 +83,7 @@
   
   
   
-  <link rel="stylesheet" href="../../css/academic.min.e8d4d5fd376e67b34452ebe1cae16341.css">
+  <link rel="stylesheet" href="/css/academic.min.71e2b6a21d750b37706cf3fc4e1f4666.css">
 
   
 
@@ -133,11 +133,11 @@
 
   
 
-  <link rel="manifest" href="../../index.webmanifest">
-  <link rel="icon" type="image/png" href="../../img/icon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="../../post/using-tidytext-to-compare-samples-of-dreams/">
+  <link rel="canonical" href="/post/using-tidytext-to-compare-samples-of-dreams/">
 
   
   
@@ -265,7 +265,7 @@
   <div class="container">
 
     
-      <a class="navbar-brand" href="../../">Christian Ryan</a>
+      <a class="navbar-brand" href="/">Christian Ryan</a>
       
       <button type="button" class="navbar-toggler" data-toggle="collapse"
               data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -304,7 +304,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#posts"><span>Posts</span></a>
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
         </li>
 
         
@@ -333,7 +333,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#publications"><span>Publications</span></a>
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
         </li>
 
         
@@ -362,7 +362,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#contact"><span>Contact</span></a>
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
         </li>
 
         
@@ -391,7 +391,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#links"><span>Links</span></a>
+          <a class="nav-link " href="/#links"><span>Links</span></a>
         </li>
 
         
@@ -484,14 +484,14 @@
   
   
   <span class="middot-divider"></span>
-  <a href="../../post/using-tidytext-to-compare-samples-of-dreams/#disqus_thread"></a>
+  <a href="/post/using-tidytext-to-compare-samples-of-dreams/#disqus_thread"></a>
   
 
   
   
   <span class="middot-divider"></span>
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="../../categories/r-coding/">R coding</a></span>
+    <i class="fas fa-folder mr-1"></i><a href="/categories/r-coding/">R coding</a></span>
   
 
 </div>
@@ -557,16 +557,16 @@ library(car)</code></pre>
 <pre><code>## # A tibble: 10 x 5
 ##    word     college_women hall_female hall_male vietnam_vet
 ##    &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-##  1 answer            0.12        0.07      0.12       0.05 
-##  2 forest            0.12        0.02      0.09       0.05 
-##  3 grade             0.15        0.07      0.02       0.02 
-##  4 ice               0.03        0.05      0.07       0.05 
-##  5 machine           0.09        0.02      0.14       0.06 
-##  6 people            0.76        0.61      0.56       0.570
-##  7 putting           0.09        0.05      0.02       0.02 
-##  8 summer            0.12        0.07      0.05       0.05 
-##  9 surprise          0.06        0.02      0.02       0.02 
-## 10 teacher           0.27        0.15      0.12       0.13</code></pre>
+##  1 arm               0.03        0.07      0.07        0.03
+##  2 bedroom           0.12        0.12      0.09        0.13
+##  3 boys              0.15        0.22      0.09        0.08
+##  4 calling           0.06        0.02      0.05        0.03
+##  5 collar            0.06        0.02      0.02        0.02
+##  6 fire              0.06        0.05      0.02        0.08
+##  7 law               0.09        0.02      0.07        0.06
+##  8 single            0.03        0.02      0.05        0.03
+##  9 surprise          0.06        0.02      0.02        0.02
+## 10 white             0.15        0.25      0.14        0.43</code></pre>
 <p>Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we <em>gather()</em>, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.</p>
 <pre class="r"><code>df_gather &lt;- df_spread %&gt;%
   gather(sample, proportion, hall_female:vietnam_vet)</code></pre>
@@ -602,7 +602,7 @@ ggplot(df_gather, aes(x = proportion, y = college_women,
   facet_wrap(~sample, ncol = 1)+
   theme(legend.position = &quot;none&quot;)+
   labs(y = &quot;college_women&quot;, x = NULL)</code></pre>
-<p><img src="../../post/2020-01-27-using-tidytext-to-compare-samples-of-dreams_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="/post/2020-01-27-using-tidytext-to-compare-samples-of-dreams_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>The words on or close to the line represent words that occurred at similar frequencies in both samples. As an example, we can see the word ‘remember’ occurred at high frequency in the first graph, in both the college_women and hall_female samples, as it is both high up and far to the right on the graph - but we can also observe that the closeness to the line suggests a similar frequency between the samples. In contrast, we can see on the same graph that the word “aunt” is quite far to the left of the line, indicating that it occurs more frequently in the college_women than the hall_women. This is also the case in the graph of college_women against hall_men, whereas this is not obvious in the final graph. It is possible that the word doesn’t occur at all in the vietnam_vet dream - therefore it would have been removed by graph function call. We can check the values for ‘aunt’ with a quick call of the df_spread data.frame (this is why it can be useful to keep both versions, rather than overwriting the data when we used the gather function).</p>
 <pre class="r"><code>df_spread %&gt;%
   filter(word == &quot;aunt&quot;)</code></pre>
@@ -681,9 +681,9 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="../../tags/r/">R</a>
+  <a class="badge badge-light" href="/tags/r/">R</a>
   
-  <a class="badge badge-light" href="../../tags/text-mining/">Text mining</a>
+  <a class="badge badge-light" href="/tags/text-mining/">Text mining</a>
   
 </div>
 
@@ -800,11 +800,11 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="../../authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
     
 
     <div class="media-body">
-      <h5 class="card-title"><a href="../../">Christian Ryan</a></h5>
+      <h5 class="card-title"><a href="/">Christian Ryan</a></h5>
       <h6 class="card-subtitle">Senior Lecturer in Clinical Psychology</h6>
       <p class="card-text">My research interests include autism spectrum disorder, eating disorders, obsessive compulsive disorder and some other stuff&hellip;</p>
       <ul class="network-icon" aria-hidden="true">
@@ -821,7 +821,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
       
     
     <li>
-      <a href="../../#contact" >
+      <a href="/#contact" >
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -901,11 +901,11 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
     <h3>Related</h3>
     <ul>
       
-      <li><a href="../../post/manipulating-text-data-from-dreams/">Manipulating text data from dreams</a></li>
+      <li><a href="/post/manipulating-text-data-from-dreams/">Manipulating text data from dreams</a></li>
       
-      <li><a href="../../post/pulling-text-data-from-the-internet/">Pulling text data from the internet</a></li>
+      <li><a href="/post/pulling-text-data-from-the-internet/">Pulling text data from the internet</a></li>
       
-      <li><a href="../../post/plotting-multiple-histograms-on-the-same-graph/">Plotting multiple histograms on the same graph</a></li>
+      <li><a href="/post/plotting-multiple-histograms-on-the-same-graph/">Plotting multiple histograms on the same graph</a></li>
       
     </ul>
   </div>
@@ -1017,7 +1017,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
     
     
     
-    <script src="../../js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
 
     
 
@@ -1035,7 +1035,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
     
     
       
-      <a href="../../terms/">Terms</a>
+      <a href="/terms/">Terms</a>
     
   </p>
   

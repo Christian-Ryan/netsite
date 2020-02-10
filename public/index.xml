@@ -14,9 +14,9 @@
     
     <item>
       <title>Using tidytext to compare samples of dreams</title>
-      <link>/2020/01/27/using-tidytext-to-compare-samples-of-dreams/</link>
+      <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/2020/01/27/using-tidytext-to-compare-samples-of-dreams/</guid>
+      <guid>/post/using-tidytext-to-compare-samples-of-dreams/</guid>
       <description>
 
 
@@ -55,16 +55,16 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
 ##    word     college_women hall_female hall_male vietnam_vet
 ##    &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 ahead             0.06        0.02      0.05        0.03
-##  2 coats             0.06        0.02      0.02        0.02
-##  3 cold              0.03        0.12      0.02        0.03
-##  4 country           0.15        0.02      0.09        0.16
-##  5 distance          0.03        0.1       0.09        0.14
-##  6 move              0.03        0.07      0.09        0.11
-##  7 neck              0.03        0.05      0.09        0.08
-##  8 raining           0.03        0.05      0.05        0.08
-##  9 sat               0.15        0.17      0.26        0.02
-## 10 stop              0.18        0.15      0.12        0.16&lt;/code&gt;&lt;/pre&gt;
+##  1 arm               0.03        0.07      0.07        0.03
+##  2 bedroom           0.12        0.12      0.09        0.13
+##  3 boys              0.15        0.22      0.09        0.08
+##  4 calling           0.06        0.02      0.05        0.03
+##  5 collar            0.06        0.02      0.02        0.02
+##  6 fire              0.06        0.05      0.02        0.08
+##  7 law               0.09        0.02      0.07        0.06
+##  8 single            0.03        0.02      0.05        0.03
+##  9 surprise          0.06        0.02      0.02        0.02
+## 10 white             0.15        0.25      0.14        0.43&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
@@ -100,7 +100,7 @@ ggplot(df_gather, aes(x = proportion, y = college_women,
   facet_wrap(~sample, ncol = 1)+
   theme(legend.position = &amp;quot;none&amp;quot;)+
   labs(y = &amp;quot;college_women&amp;quot;, x = NULL)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/2020-01-27-using-tidytext-to-compare-samples-of-dreams_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-27-using-tidytext-to-compare-samples-of-dreams_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The words on or close to the line represent words that occurred at similar frequencies in both samples. As an example, we can see the word ‘remember’ occurred at high frequency in the first graph, in both the college_women and hall_female samples, as it is both high up and far to the right on the graph - but we can also observe that the closeness to the line suggests a similar frequency between the samples. In contrast, we can see on the same graph that the word “aunt” is quite far to the left of the line, indicating that it occurs more frequently in the college_women than the hall_women. This is also the case in the graph of college_women against hall_men, whereas this is not obvious in the final graph. It is possible that the word doesn’t occur at all in the vietnam_vet dream - therefore it would have been removed by graph function call. We can check the values for ‘aunt’ with a quick call of the df_spread data.frame (this is why it can be useful to keep both versions, rather than overwriting the data when we used the gather function).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_spread %&amp;gt;%
   filter(word == &amp;quot;aunt&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -173,9 +173,9 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Manipulating text data from dreams</title>
-      <link>/2020/01/14/manipulating-text-data-from-dreams/</link>
+      <link>/post/manipulating-text-data-from-dreams/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/2020/01/14/manipulating-text-data-from-dreams/</guid>
+      <guid>/post/manipulating-text-data-from-dreams/</guid>
       <description>
 
 
@@ -203,17 +203,17 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I dreamt I was sitting in my living-room when a married 
-## 2  college_women I remember walking out of a house and continuing my walk
-## 3    vietnam_vet I&amp;#39;m with several criminals walking up a steep road in a 
-## 4    vietnam_vet I&amp;#39;m a 1st class passenger on a train, lying down, readin
-## 5    vietnam_vet I&amp;#39;m young, attending a party. An attractive woman is sta
-## 6    vietnam_vet I&amp;#39;m with several people walking to a car in a shopping m
-## 7    vietnam_vet It&amp;#39;s night. I&amp;#39;m in an Asian or Central American country 
-## 8    vietnam_vet Eerily, none of the lights in my bedroom at Highland Pla
-## 9    hall_female I dreamt that I was in a large auditorium where a large 
-## 10   hall_female I was in the dormitory I lived in as a freshman in colle&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./img/tidytext.png&#34; width=&#34;25%&#34; /&gt;&lt;/p&gt;
+## 1  college_women I was at a house party. An old boyfriend of mine was the
+## 2  college_women I was the only girl in a room full of men, none of whom 
+## 3    vietnam_vet After work, a man who is my father gives me a lift home.
+## 4      hall_male My father, brother (17) and I were traveling to Toledo (
+## 5      hall_male I have a date with a girl. She is the ticket taker at a 
+## 6    hall_female My kid sister (15) and I were getting ready for bed in t
+## 7    hall_female I dreamt I was in an 8 o&amp;#39;clock class with a girl who eat
+## 8    hall_female I dreamt that I was in a large auditorium where a large 
+## 9    hall_female The dream took place in a hotel where I was staying. The
+## 10   hall_female My parents took in a male boarder, and we were attracted&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/img/tidytext.png&#34; width=&#34;25%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;-  df %&amp;gt;%
@@ -391,11 +391,11 @@ underscores[1]&lt;/code&gt;&lt;/pre&gt;
   ggplot(aes(x = word, y = n)) +
   geom_col()+
   coord_flip()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This gives us an overview of the most commonly used words in dreams recalled by all four samples. But it would be more interesting to see how the word use differs between the samples. However, we should be prepared for the possibility that the length of dreams may vary between samples. To control for this, we might want to convert our raw counts of words to proportions from the dream text. Let’s check for the variety of dream lengths by using str_count() function on our original dataset df - hence before we removed our stopwords. We will count the words in each dream and store the result in a vector called dream_lengths. The default for &lt;em&gt;str_count&lt;/em&gt; is for the function to count characters if no pattern is given to match. However, if we pass it a second argument, specifying the regex for all sequences of non-space characters, it will count words instead. The regex includes the code for any non-white space character ‘\S’, with the addition of ‘+’ sign to indicate one or more non-white space characters, and the initial escape character ‘\’ as ‘\S’ is not recognised as an escape character without it.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dream_lengths &amp;lt;- str_count(df$dream, &amp;quot;\\S+&amp;quot;)
 plot(dream_lengths, xlab = &amp;quot;Dream Number&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This is a good example of the use of the plot() function with a single vector in R. The default behaviour is to plot the values of the vector against the y-axis - dream_lengths in this case, and then use the index number (ie. the order in which each value occurs in the vector) as the x value. So our x-axis simple represents the order of the dreams, or as we have named this, the dream number. We can see here the range of dream lengths with the minimum being about 35 words and the maximum around 290 words. We could take the min, max, mean and SD if we wanted to be more specific.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;min(dream_lengths); max(dream_lengths); mean(dream_lengths); sd(dream_lengths)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 38&lt;/code&gt;&lt;/pre&gt;
@@ -461,9 +461,9 @@ plot(dream_lengths, xlab = &amp;quot;Dream Number&amp;quot;)&lt;/code&gt;&lt;/pr
     
     <item>
       <title>Pulling text data from the internet</title>
-      <link>/2019/11/30/pulling-text-data-from-the-internet/</link>
+      <link>/post/pulling-text-data-from-the-internet/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/2019/11/30/pulling-text-data-from-the-internet/</guid>
+      <guid>/post/pulling-text-data-from-the-internet/</guid>
       <description>
 
 
@@ -589,9 +589,9 @@ df$dream &amp;lt;- substr(df$dream, 0, start-2) &lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Plotting multiple histograms on the same graph</title>
-      <link>/2019/10/12/plotting-multiple-histograms-on-the-same-graph/</link>
+      <link>/post/plotting-multiple-histograms-on-the-same-graph/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/2019/10/12/plotting-multiple-histograms-on-the-same-graph/</guid>
+      <guid>/post/plotting-multiple-histograms-on-the-same-graph/</guid>
       <description>
 
 
@@ -615,17 +615,17 @@ women &amp;lt;- df %&amp;gt;%
   filter(gender == 2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;So let’s plot the total self-esteem scores for the women in the sample as a simple histogram.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(women$total)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt; We can see a fairly normal distribution of scores. We can check the mean, but we might predict it is around 25.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt; We can see a fairly normal distribution of scores. We can check the mean, but we might predict it is around 25.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(women$total)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 25.74368&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Next we can add the men’s scores to the same plot. Here we simply create the first plot, then make a second plot with the argument &lt;strong&gt;add&lt;/strong&gt; set to TRUE. We will set the density to 35 so we can see throught the bars on the histogram.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(women$total, col = &amp;#39;red&amp;#39;, main = &amp;quot;Histogram of Total scores on Rosenberg Self-Esteem Scale&amp;quot;, xlab = &amp;quot;Total score&amp;quot;)
 hist(men$total, add = TRUE, col = &amp;#39;blue&amp;#39;, density = 35)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;I have used the pipe to separate my data into individual gender dataframes, but this is only one way to do it, and I do find this code very easy to read. However, we could have done the same thing using a traditional R approach of indexing instead.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(df$total[df$gender== 2], col = &amp;#39;orchid&amp;#39;, main = &amp;quot;Histogram of Total scores on Rosenberg Self-Esteem Scale&amp;quot;, xlab = &amp;quot;Total score&amp;quot;)
 hist(df$total[df$gender==1], add = TRUE, col = &amp;#39;royalblue&amp;#39;, density = 40)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now we have seen the distributions, we might wonder if the sexes differ on the measure of self-esteem. Let’s run a quick t-test to see.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;t.test(men$total, women$total)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
