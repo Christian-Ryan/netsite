@@ -53,18 +53,18 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
   filter(!is.na(college_women) &amp;amp; !is.na(hall_female) &amp;amp; !is.na(hall_male) &amp;amp; !is.na(vietnam_vet)) %&amp;gt;%
   some()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
-##    word     college_women hall_female hall_male vietnam_vet
-##    &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 call              0.09        0.07      0.14        0.28
-##  2 colored           0.09        0.07      0.02        0.08
-##  3 dream             0.98        0.93      1.33        0.08
-##  4 expected          0.03        0.02      0.02        0.03
-##  5 neck              0.03        0.05      0.09        0.08
-##  6 parents           0.12        0.27      0.16        0.02
-##  7 party             0.15        0.1       0.09        0.03
-##  8 reason            0.18        0.15      0.23        0.03
-##  9 taking            0.09        0.05      0.09        0.09
-## 10 write             0.03        0.02      0.02        0.02&lt;/code&gt;&lt;/pre&gt;
+##    word    college_women hall_female hall_male vietnam_vet
+##    &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+##  1 answer           0.12        0.07      0.12        0.05
+##  2 bare             0.06        0.05      0.05        0.06
+##  3 caught           0.03        0.07      0.09        0.09
+##  4 crowd            0.06        0.1       0.09        0.03
+##  5 dance            0.09        0.12      0.05        0.03
+##  6 hair             0.49        0.2       0.05        0.38
+##  7 kitchen          0.03        0.07      0.05        0.02
+##  8 lawn             0.06        0.02      0.02        0.05
+##  9 strange          0.03        0.02      0.12        0.02
+## 10 woman            0.27        0.32      0.16        1.01&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
