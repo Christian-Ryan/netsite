@@ -179,6 +179,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;../../img/you_look.png&#34; width=&#34;30%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&#34; class=&#34;uri&#34;&gt;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;She mentions training an AI on a dream dataset available at &lt;a href=&#34;http://www.dreambank.net&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net&lt;/a&gt; The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: &lt;a href=&#34;http://www.dreambank.net/random_sample.cgi&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net/random_sample.cgi&lt;/a&gt; one can select a dream source.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/dreamselect.png&#34; width=&#34;50%&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;dreamselect.png&#34; /&gt;
 
