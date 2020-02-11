@@ -100,7 +100,7 @@ ggplot(df_gather, aes(x = proportion, y = college_women,
   facet_wrap(~sample, ncol = 1)+
   theme(legend.position = &amp;quot;none&amp;quot;)+
   labs(y = &amp;quot;college_women&amp;quot;, x = NULL)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2020-01-27-using-tidytext-to-compare-samples-of-dreams_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2020-01-27-using-tidytext-to-compare-samples-of-dreams_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The words on or close to the line represent words that occurred at similar frequencies in both samples. As an example, we can see the word ‘remember’ occurred at high frequency in the first graph, in both the college_women and hall_female samples, as it is both high up and far to the right on the graph - but we can also observe that the closeness to the line suggests a similar frequency between the samples. In contrast, we can see on the same graph that the word “aunt” is quite far to the left of the line, indicating that it occurs more frequently in the college_women than the hall_women. This is also the case in the graph of college_women against hall_men, whereas this is not obvious in the final graph. It is possible that the word doesn’t occur at all in the vietnam_vet dream - therefore it would have been removed by graph function call. We can check the values for ‘aunt’ with a quick call of the df_spread data.frame (this is why it can be useful to keep both versions, rather than overwriting the data when we used the gather function).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_spread %&amp;gt;%
   filter(word == &amp;quot;aunt&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -180,10 +180,10 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
 
 
 &lt;p&gt;I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over which data I might use, I stumbled upon a line in &lt;strong&gt;“You are a thing and I love you”&lt;/strong&gt; - the wonderful new book on AI by Janelle Shane.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/you_look.png&#34; width=&#34;30%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/you_look.png&#34; width=&#34;30%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&#34; class=&#34;uri&#34;&gt;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;She mentions training an AI on a dream dataset available at &lt;a href=&#34;http://www.dreambank.net&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net&lt;/a&gt; The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: &lt;a href=&#34;http://www.dreambank.net/random_sample.cgi&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net/random_sample.cgi&lt;/a&gt; one can select a dream source.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/img/dreamselect.png&#34; width=&#34;100%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/dreamselect.png&#34; width=&#34;100%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We will need a few packages for this process - &lt;strong&gt;rvest&lt;/strong&gt; is useful for pulling data from online sources. The two text packages &lt;strong&gt;stringr&lt;/strong&gt; and &lt;strong&gt;stringi&lt;/strong&gt; offer a range of tools for managing text data. The &lt;strong&gt;tidyverse&lt;/strong&gt; will simplify the management of the dataset and &lt;strong&gt;knitr&lt;/strong&gt; is useful for managing the display of text in Rmarkdown documents.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rvest)
 library(stringr)
@@ -324,17 +324,17 @@ women &amp;lt;- df %&amp;gt;%
   filter(gender == 2)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;So let’s plot the total self-esteem scores for the women in the sample as a simple histogram.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(women$total)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt; We can see a fairly normal distribution of scores. We can check the mean, but we might predict it is around 25.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt; We can see a fairly normal distribution of scores. We can check the mean, but we might predict it is around 25.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(women$total)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 25.74368&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Next we can add the men’s scores to the same plot. Here we simply create the first plot, then make a second plot with the argument &lt;strong&gt;add&lt;/strong&gt; set to TRUE. We will set the density to 35 so we can see throught the bars on the histogram.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(women$total, col = &amp;#39;red&amp;#39;, main = &amp;quot;Histogram of Total scores on Rosenberg Self-Esteem Scale&amp;quot;, xlab = &amp;quot;Total score&amp;quot;)
 hist(men$total, add = TRUE, col = &amp;#39;blue&amp;#39;, density = 35)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;I have used the pipe to separate my data into individual gender dataframes, but this is only one way to do it, and I do find this code very easy to read. However, we could have done the same thing using a traditional R approach of indexing instead.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(df$total[df$gender== 2], col = &amp;#39;orchid&amp;#39;, main = &amp;quot;Histogram of Total scores on Rosenberg Self-Esteem Scale&amp;quot;, xlab = &amp;quot;Total score&amp;quot;)
 hist(df$total[df$gender==1], add = TRUE, col = &amp;#39;royalblue&amp;#39;, density = 40)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now we have seen the distributions, we might wonder if the sexes differ on the measure of self-esteem. Let’s run a quick t-test to see.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;t.test(men$total, women$total)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
