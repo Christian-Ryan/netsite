@@ -14,9 +14,9 @@
     
     <item>
       <title>Using tidytext to compare samples of dreams</title>
-      <link>/2020/01/27/using-tidytext-to-compare-samples-of-dreams/</link>
+      <link>/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/2020/01/27/using-tidytext-to-compare-samples-of-dreams/</guid>
+      <guid>/using-tidytext-to-compare-samples-of-dreams/</guid>
       <description>
 
 
@@ -173,9 +173,9 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Pulling text data from the internet</title>
-      <link>/2019/11/30/pulling-text-data-from-the-internet/</link>
+      <link>/pulling-text-data-from-the-internet/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/2019/11/30/pulling-text-data-from-the-internet/</guid>
+      <guid>/pulling-text-data-from-the-internet/</guid>
       <description>
 
 
@@ -298,9 +298,9 @@ df$dream &amp;lt;- substr(df$dream, 0, start-2) &lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Plotting multiple histograms on the same graph</title>
-      <link>/2019/10/12/plotting-multiple-histograms-on-the-same-graph/</link>
+      <link>/plotting-multiple-histograms-on-the-same-graph/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/2019/10/12/plotting-multiple-histograms-on-the-same-graph/</guid>
+      <guid>/plotting-multiple-histograms-on-the-same-graph/</guid>
       <description>
 
 
