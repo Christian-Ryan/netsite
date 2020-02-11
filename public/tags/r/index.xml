@@ -49,18 +49,18 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
   filter(!is.na(college_women) &amp;amp; !is.na(hall_female) &amp;amp; !is.na(hall_male) &amp;amp; !is.na(vietnam_vet)) %&amp;gt;%
   some()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
-##    word    college_women hall_female hall_male vietnam_vet
-##    &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 alarm            0.09        0.02      0.02        0.02
-##  2 blue             0.24        0.25      0.05        0.21
-##  3 charge           0.03        0.05      0.02        0.05
-##  4 entered          0.03        0.1       0.16        0.02
-##  5 night            0.12        0.27      0.16        0.19
-##  6 quickly          0.12        0.05      0.05        0.05
-##  7 running          0.12        0.02      0.3         0.06
-##  8 steps            0.03        0.07      0.02        0.09
-##  9 thin             0.09        0.02      0.02        0.16
-## 10 women            0.15        0.05      0.02        0.11&lt;/code&gt;&lt;/pre&gt;
+##    word        college_women hall_female hall_male vietnam_vet
+##    &amp;lt;chr&amp;gt;               &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+##  1 bicycle              0.03        0.05      0.09        0.03
+##  2 cards                0.03        0.02      0.16        0.02
+##  3 cold                 0.03        0.12      0.02        0.03
+##  4 doctor               0.12        0.1       0.02        0.19
+##  5 dropped              0.03        0.07      0.02        0.02
+##  6 entered              0.03        0.1       0.16        0.02
+##  7 hit                  0.12        0.07      0.21        0.03
+##  8 immediately          0.06        0.07      0.12        0.08
+##  9 man&amp;#39;s                0.03        0.02      0.02        0.06
+## 10 past                 0.03        0.05      0.19        0.21&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
@@ -180,10 +180,6 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&#34; class=&#34;uri&#34;&gt;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;She mentions training an AI on a dream dataset available at &lt;a href=&#34;http://www.dreambank.net&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net&lt;/a&gt; The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: &lt;a href=&#34;http://www.dreambank.net/random_sample.cgi&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net/random_sample.cgi&lt;/a&gt; one can select a dream source.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;../../img/dreamselect.png&#34; width=&#34;50%&#34; /&gt;&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;dreamselect.png&#34; /&gt;
-
-&lt;/div&gt;
 &lt;p&gt;We will need a few packages for this process - &lt;strong&gt;rvest&lt;/strong&gt; is useful for pulling data from online sources. The two text packages &lt;strong&gt;stringr&lt;/strong&gt; and &lt;strong&gt;stringi&lt;/strong&gt; offer a range of tools for managing text data. The &lt;strong&gt;tidyverse&lt;/strong&gt; will simplify the management of the dataset and &lt;strong&gt;knitr&lt;/strong&gt; is useful for managing the display of text in Rmarkdown documents.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rvest)
 library(stringr)
