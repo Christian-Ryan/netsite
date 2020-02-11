@@ -551,18 +551,18 @@ library(car)</code></pre>
   filter(!is.na(college_women) &amp; !is.na(hall_female) &amp; !is.na(hall_male) &amp; !is.na(vietnam_vet)) %&gt;%
   some()</code></pre>
 <pre><code>## # A tibble: 10 x 5
-##    word      college_women hall_female hall_male vietnam_vet
-##    &lt;chr&gt;             &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-##  1 beautiful          0.12       0.290      0.02        0.14
-##  2 cross              0.06       0.02       0.02        0.03
-##  3 hurry              0.03       0.07       0.02        0.02
-##  4 narrow             0.09       0.02       0.02        0.14
-##  5 quickly            0.12       0.05       0.05        0.05
-##  6 riding             0.34       0.12       0.05        0.03
-##  7 service            0.03       0.02       0.09        0.05
-##  8 story              0.03       0.05       0.02        0.05
-##  9 true               0.06       0.02       0.02        0.02
-## 10 vacant             0.03       0.02       0.02        0.02</code></pre>
+##    word    college_women hall_female hall_male vietnam_vet
+##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+##  1 alarm            0.09        0.02      0.02        0.02
+##  2 blue             0.24        0.25      0.05        0.21
+##  3 charge           0.03        0.05      0.02        0.05
+##  4 entered          0.03        0.1       0.16        0.02
+##  5 night            0.12        0.27      0.16        0.19
+##  6 quickly          0.12        0.05      0.05        0.05
+##  7 running          0.12        0.02      0.3         0.06
+##  8 steps            0.03        0.07      0.02        0.09
+##  9 thin             0.09        0.02      0.02        0.16
+## 10 women            0.15        0.05      0.02        0.11</code></pre>
 <p>Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we <em>gather()</em>, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.</p>
 <pre class="r"><code>df_gather &lt;- df_spread %&gt;%
   gather(sample, proportion, hall_female:vietnam_vet)</code></pre>
