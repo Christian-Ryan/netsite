@@ -464,7 +464,7 @@ plot(dream_lengths, xlab = &amp;quot;Dream Number&amp;quot;)&lt;/code&gt;&lt;/pr
 
 
 &lt;p&gt;I have been working on the area of alexithymia for the last couple of years, a sub-clinical condition in which people find it difficult to identify and describe their emotions. I am currently analysing a dataset containing transcripts of interviews with people with and without alexithymia and I wanted to try out some R tools for text analysis. However, to do a blog post I needed some public data, and while mulling over which data I might use, I stumbled upon a line in &lt;strong&gt;“You are a thing and I love you”&lt;/strong&gt; - the wonderful new book on AI by Janelle Shane.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;you_look.png&#34; width=&#34;30%&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../img/you_look.png&#34; width=&#34;30%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&#34; class=&#34;uri&#34;&gt;https://www.amazon.com/You-Look-Like-Thing-Love/dp/0316525243&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;She mentions training an AI on a dream dataset available at &lt;a href=&#34;http://www.dreambank.net&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net&lt;/a&gt; The website has section called “DreamBank” that allows you to search or take random samples of dreams recorded from a variety of sources. Under the Random Sample link, at: &lt;a href=&#34;http://www.dreambank.net/random_sample.cgi&#34; class=&#34;uri&#34;&gt;http://www.dreambank.net/random_sample.cgi&lt;/a&gt; one can select a dream source.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
