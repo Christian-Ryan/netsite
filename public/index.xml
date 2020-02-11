@@ -2,15 +2,17 @@
   <channel>
     <title>Christian Ryan on Christian Ryan</title>
     <link>/</link>
-    <description>Christian Ryan</description>
+    <description>Recent content in Christian Ryan on Christian Ryan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="/" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Posts</title>
       <link>/post/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      
       <guid>/post/</guid>
       <description></description>
     </item>
@@ -19,6 +21,7 @@
       <title>Terms</title>
       <link>/terms/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
+      
       <guid>/terms/</guid>
       <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
 </description>
@@ -28,6 +31,7 @@
       <title>Publications</title>
       <link>/publication/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      
       <guid>/publication/</guid>
       <description></description>
     </item>
