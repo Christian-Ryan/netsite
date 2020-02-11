@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Text mining on Christian Ryan</title>
-    <link>/tags/text-mining/</link>
+    <link>https://drchristianryan.com/tags/text-mining/</link>
     <description>Text mining</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,9 +10,9 @@
     
     <item>
       <title>Using tidytext to compare samples of dreams</title>
-      <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
+      <link>https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/using-tidytext-to-compare-samples-of-dreams/</guid>
+      <guid>https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/</guid>
       <description>
 
 
@@ -49,18 +49,18 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
   filter(!is.na(college_women) &amp;amp; !is.na(hall_female) &amp;amp; !is.na(hall_male) &amp;amp; !is.na(vietnam_vet)) %&amp;gt;%
   some()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
-##    word      college_women hall_female hall_male vietnam_vet
-##    &amp;lt;chr&amp;gt;             &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 age                0.61        0.27      0.3         0.05
-##  2 door               0.18        0.52      0.23        0.35
-##  3 expected           0.03        0.02      0.02        0.03
-##  4 hard               0.09        0.05      0.09        0.08
-##  5 ice                0.03        0.05      0.07        0.05
-##  6 level              0.03        0.02      0.05        0.03
-##  7 recognize          0.09        0.07      0.07        0.03
-##  8 school             0.27        0.49      0.19        0.21
-##  9 sign               0.03        0.05      0.02        0.02
-## 10 strange            0.03        0.02      0.12        0.02&lt;/code&gt;&lt;/pre&gt;
+##    word         college_women hall_female hall_male vietnam_vet
+##    &amp;lt;chr&amp;gt;                &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
+##  1 afraid                0.24       0.1        0.09        0.09
+##  2 bad                   0.06       0.02       0.02        0.06
+##  3 beautiful             0.12       0.290      0.02        0.14
+##  4 day                   0.15       0.12       0.07        0.17
+##  5 dinner                0.06       0.17       0.05        0.05
+##  6 mine                  0.52       0.37       0.47        0.09
+##  7 neck                  0.03       0.05       0.09        0.08
+##  8 neighborhood          0.03       0.05       0.07        0.02
+##  9 person                0.18       0.25       0.09        0.21
+## 10 top                   0.06       0.2        0.23        0.13&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
@@ -169,9 +169,9 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Manipulating text data from dreams</title>
-      <link>/post/manipulating-text-data-from-dreams/</link>
+      <link>https://drchristianryan.com/post/manipulating-text-data-from-dreams/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/manipulating-text-data-from-dreams/</guid>
+      <guid>https://drchristianryan.com/post/manipulating-text-data-from-dreams/</guid>
       <description>
 
 
@@ -199,16 +199,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I was at a house party. An old boyfriend of mine was the
-## 2  college_women I was living with my family in a neighborhood of large, 
-## 3  college_women My mother and I were walking on E1-- St. between E-- and
-## 4    vietnam_vet With a group of military prisoners, I&amp;#39;m standing at para
-## 5    vietnam_vet I&amp;#39;ve met a woman. At the M&amp;#39;s house, after dinner we plan
-## 6      hall_male A rich ran came to me on the street and showed me a suit
-## 7      hall_male I own a new Chevrolet. I drove it around the corner and 
-## 8      hall_male I was washing in a bathroom at what in the dream was the
-## 9      hall_male It was the day of a major track meet. The coach had very
-## 10     hall_male I was lying in bed. My uncle came into the room. He said&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I was in a dark forest picking flowers but I soon was bo
+## 2    vietnam_vet On a bright sunny day, I walk with my dog along a wide, 
+## 3    vietnam_vet I&amp;#39;m a 1st class passenger on a train, lying down, readin
+## 4    vietnam_vet I&amp;#39;m in an enormous building, a sort of jail, with walls 
+## 5    vietnam_vet I&amp;#39;m on a city street corner, where the men I&amp;#39;m with sell
+## 6      hall_male My brother and I were in Canada fishing in our motorboat
+## 7      hall_male I dreamed that it was early in the morning just before m
+## 8    hall_female In this dream as in many I was at my home in West Va. I 
+## 9    hall_female The dream took place in a hotel where I was staying. The
+## 10   hall_female This dream occurred at my home where a deserter from the&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;../../img/tidytext.png&#34; width=&#34;25%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;

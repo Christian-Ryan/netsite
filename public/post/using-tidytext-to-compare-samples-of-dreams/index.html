@@ -31,7 +31,7 @@
   <meta name="description" content="This is the third post in the series exploring text analytics with data from the dreambank.com. In the first post ‘Pulling text data from the internet’, I demonstrated how to use the rvest package to pull text data from the dreambank website. In the second post ‘Manipulating text data from dreams’ we saw how to turn the dream texts into a tidy format by unnesting the word tokens in each dream and running counts on the word frequencies.">
 
   
-  <link rel="alternate" hreflang="en-us" href="../../post/using-tidytext-to-compare-samples-of-dreams/">
+  <link rel="alternate" hreflang="en-us" href="https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/">
 
   
 
@@ -137,7 +137,7 @@
   <link rel="icon" type="image/png" href="../../img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
 
-  <link rel="canonical" href="../../post/using-tidytext-to-compare-samples-of-dreams/">
+  <link rel="canonical" href="https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/">
 
   
   
@@ -150,10 +150,10 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Christian Ryan">
-  <meta property="og:url" content="/post/using-tidytext-to-compare-samples-of-dreams/">
+  <meta property="og:url" content="https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/">
   <meta property="og:title" content="Using tidytext to compare samples of dreams | Christian Ryan">
-  <meta property="og:description" content="This is the third post in the series exploring text analytics with data from the dreambank.com. In the first post ‘Pulling text data from the internet’, I demonstrated how to use the rvest package to pull text data from the dreambank website. In the second post ‘Manipulating text data from dreams’ we saw how to turn the dream texts into a tidy format by unnesting the word tokens in each dream and running counts on the word frequencies."><meta property="og:image" content="/img/icon-192.png">
-  <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="This is the third post in the series exploring text analytics with data from the dreambank.com. In the first post ‘Pulling text data from the internet’, I demonstrated how to use the rvest package to pull text data from the dreambank website. In the second post ‘Manipulating text data from dreams’ we saw how to turn the dream texts into a tidy format by unnesting the word tokens in each dream and running counts on the word frequencies."><meta property="og:image" content="https://drchristianryan.com/img/icon-192.png">
+  <meta property="twitter:image" content="https://drchristianryan.com/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2020-01-27T00:00:00&#43;00:00">
@@ -184,7 +184,7 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/post/using-tidytext-to-compare-samples-of-dreams/"
+    "@id": "https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/"
   },
   "headline": "Using tidytext to compare samples of dreams",
   
@@ -201,7 +201,7 @@
     "name": "Christian Ryan",
     "logo": {
       "@type": "ImageObject",
-      "url": "/img/icon-512.png"
+      "url": "https://drchristianryan.com/img/icon-512.png"
     }
   },
   "description": "This is the third post in the series exploring text analytics with data from the dreambank.com. In the first post ‘Pulling text data from the internet’, I demonstrated how to use the rvest package to pull text data from the dreambank website. In the second post ‘Manipulating text data from dreams’ we saw how to turn the dream texts into a tidy format by unnesting the word tokens in each dream and running counts on the word frequencies."
@@ -551,18 +551,18 @@ library(car)</code></pre>
   filter(!is.na(college_women) &amp; !is.na(hall_female) &amp; !is.na(hall_male) &amp; !is.na(vietnam_vet)) %&gt;%
   some()</code></pre>
 <pre><code>## # A tibble: 10 x 5
-##    word      college_women hall_female hall_male vietnam_vet
-##    &lt;chr&gt;             &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-##  1 age                0.61        0.27      0.3         0.05
-##  2 door               0.18        0.52      0.23        0.35
-##  3 expected           0.03        0.02      0.02        0.03
-##  4 hard               0.09        0.05      0.09        0.08
-##  5 ice                0.03        0.05      0.07        0.05
-##  6 level              0.03        0.02      0.05        0.03
-##  7 recognize          0.09        0.07      0.07        0.03
-##  8 school             0.27        0.49      0.19        0.21
-##  9 sign               0.03        0.05      0.02        0.02
-## 10 strange            0.03        0.02      0.12        0.02</code></pre>
+##    word         college_women hall_female hall_male vietnam_vet
+##    &lt;chr&gt;                &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+##  1 afraid                0.24       0.1        0.09        0.09
+##  2 bad                   0.06       0.02       0.02        0.06
+##  3 beautiful             0.12       0.290      0.02        0.14
+##  4 day                   0.15       0.12       0.07        0.17
+##  5 dinner                0.06       0.17       0.05        0.05
+##  6 mine                  0.52       0.37       0.47        0.09
+##  7 neck                  0.03       0.05       0.09        0.08
+##  8 neighborhood          0.03       0.05       0.07        0.02
+##  9 person                0.18       0.25       0.09        0.21
+## 10 top                   0.06       0.2        0.23        0.13</code></pre>
 <p>Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we <em>gather()</em>, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.</p>
 <pre class="r"><code>df_gather &lt;- df_spread %&gt;%
   gather(sample, proportion, hall_female:vietnam_vet)</code></pre>
@@ -696,7 +696,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/using-tidytext-to-compare-samples-of-dreams/&amp;text=Using%20tidytext%20to%20compare%20samples%20of%20dreams" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/&amp;text=Using%20tidytext%20to%20compare%20samples%20of%20dreams" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -709,7 +709,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/using-tidytext-to-compare-samples-of-dreams/&amp;t=Using%20tidytext%20to%20compare%20samples%20of%20dreams" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/&amp;t=Using%20tidytext%20to%20compare%20samples%20of%20dreams" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -722,7 +722,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
       
       
       <li>
-        <a href="mailto:?subject=Using%20tidytext%20to%20compare%20samples%20of%20dreams&amp;body=/post/using-tidytext-to-compare-samples-of-dreams/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Using%20tidytext%20to%20compare%20samples%20of%20dreams&amp;body=https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -735,7 +735,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/using-tidytext-to-compare-samples-of-dreams/&amp;title=Using%20tidytext%20to%20compare%20samples%20of%20dreams" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/&amp;title=Using%20tidytext%20to%20compare%20samples%20of%20dreams" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -748,7 +748,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Using%20tidytext%20to%20compare%20samples%20of%20dreams%20/post/using-tidytext-to-compare-samples-of-dreams/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Using%20tidytext%20to%20compare%20samples%20of%20dreams%20https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -761,7 +761,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/using-tidytext-to-compare-samples-of-dreams/&amp;title=Using%20tidytext%20to%20compare%20samples%20of%20dreams" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://drchristianryan.com/post/using-tidytext-to-compare-samples-of-dreams/&amp;title=Using%20tidytext%20to%20compare%20samples%20of%20dreams" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -800,7 +800,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
     
 
     <div class="media-body">
-      <h5 class="card-title"><a href="../../">Christian Ryan</a></h5>
+      <h5 class="card-title"><a href="https://drchristianryan.com/">Christian Ryan</a></h5>
       <h6 class="card-subtitle">Senior Lecturer in Clinical Psychology</h6>
       <p class="card-text">My research interests include autism spectrum disorder, eating disorders, obsessive compulsive disorder and some other stuff&hellip;</p>
       <ul class="network-icon" aria-hidden="true">
@@ -1026,14 +1026,6 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)</code></pre>
   
   <div class="container">
     <footer class="site-footer">
-  
-  <p class="powered-by">
-    
-    
-      
-      <a href="../../terms/">Terms</a>
-    
-  </p>
   
 
   <p class="powered-by">

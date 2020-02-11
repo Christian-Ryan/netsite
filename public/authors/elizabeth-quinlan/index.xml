@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Elizabeth Quinlan on Christian Ryan</title>
-    <link>/authors/elizabeth-quinlan/</link>
+    <link>https://drchristianryan.com/authors/elizabeth-quinlan/</link>
     <description>Elizabeth Quinlan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,9 +10,9 @@
     
     <item>
       <title>Whoever Shouts the Loudest: Listening to Parents of Children with Disabilities</title>
-      <link>/publication/2018-01-01_whoever_shouts_the_l/</link>
+      <link>https://drchristianryan.com/publication/2018-01-01_whoever_shouts_the_l/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/2018-01-01_whoever_shouts_the_l/</guid>
+      <guid>https://drchristianryan.com/publication/2018-01-01_whoever_shouts_the_l/</guid>
       <description></description>
     </item>
     

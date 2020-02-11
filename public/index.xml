@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Christian Ryan on Christian Ryan</title>
-    <link>/</link>
+    <link>https://drchristianryan.com/</link>
     <description>Christian Ryan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,26 +10,17 @@
     
     <item>
       <title>Posts</title>
-      <link>/post/</link>
+      <link>https://drchristianryan.com/post/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/</guid>
+      <guid>https://drchristianryan.com/post/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Terms</title>
-      <link>/terms/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      <guid>/terms/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Publications</title>
-      <link>/publication/</link>
+      <link>https://drchristianryan.com/publication/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/</guid>
+      <guid>https://drchristianryan.com/publication/</guid>
       <description></description>
     </item>
     
