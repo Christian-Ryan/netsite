@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Martina Stafford | Christian Ryan</title>
-    <link>https://drchristianryan.com</link>
-      <atom:link href="/authors/martina-stafford/index.xml" rel="self" type="application/rss+xml" />
+    <title>Martina Stafford on Christian Ryan</title>
+    <link>/authors/martina-stafford/</link>
     <description>Martina Stafford</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>https://sourcethemes.com/academic/img/logo_200px.png</url>
-      <title>Martina Stafford</title>
-      <link>/authors/martina-stafford/</link>
-    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0000</lastBuildDate><atom:link href="/authors/martina-stafford/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Seeing the Man in the Moon: Do Children with Autism Perceive Pareidolic Faces? A Pilot Study</title>

@@ -2,15 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Christian Ryan</title>
-    <link>https://drchristianryan.com</link>
-      <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+    <link>/authors/admin/</link>
     <description>Christian Ryan</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
-    <image>
-      <url>https://sourcethemes.com/academic/img/logo_200px.png</url>
-      <title>Christian Ryan</title>
-      <link>/authors/admin/</link>
-    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/authors/admin/" rel="self" type="application/rss+xml" />
     
   </channel>
 </rss>
