@@ -9,9 +9,9 @@
     
     <item>
       <title>Using tidytext to compare samples of dreams</title>
-      <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
+      <link>/2020/01/27/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/using-tidytext-to-compare-samples-of-dreams/</guid>
+      <guid>/2020/01/27/using-tidytext-to-compare-samples-of-dreams/</guid>
       <description>
 
 
@@ -168,9 +168,9 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Manipulating text data from dreams</title>
-      <link>/post/manipulating-text-data-from-dreams/</link>
+      <link>/2020/01/14/manipulating-text-data-from-dreams/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/post/manipulating-text-data-from-dreams/</guid>
+      <guid>/2020/01/14/manipulating-text-data-from-dreams/</guid>
       <description>
 
 
@@ -456,9 +456,9 @@ plot(dream_lengths, xlab = &amp;quot;Dream Number&amp;quot;)&lt;/code&gt;&lt;/pr
     
     <item>
       <title>Pulling text data from the internet</title>
-      <link>/post/pulling-text-data-from-the-internet/</link>
+      <link>/2019/11/30/pulling-text-data-from-the-internet/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/post/pulling-text-data-from-the-internet/</guid>
+      <guid>/2019/11/30/pulling-text-data-from-the-internet/</guid>
       <description>
 
 
@@ -581,9 +581,9 @@ df$dream &amp;lt;- substr(df$dream, 0, start-2) &lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Plotting multiple histograms on the same graph</title>
-      <link>/post/plotting-multiple-histograms-on-the-same-graph/</link>
+      <link>/2019/10/12/plotting-multiple-histograms-on-the-same-graph/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      <guid>/post/plotting-multiple-histograms-on-the-same-graph/</guid>
+      <guid>/2019/10/12/plotting-multiple-histograms-on-the-same-graph/</guid>
       <description>
 
 
