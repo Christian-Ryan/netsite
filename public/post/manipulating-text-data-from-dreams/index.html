@@ -564,16 +564,16 @@ df$sample &lt;- as.factor(df$sample)</code></pre>
 car::some(df) %&gt;%
   custom_view()</code></pre>
 <pre><code>##           sample                                                    dream
-## 1  college_women I was in a brightly lighted room in the dormitory with a
-## 2    vietnam_vet I enter the second floor of Dave B&#39;s apartment. Among th
-## 3    vietnam_vet In a foreign country, possibly Mexico, I meet an older w
-## 4    vietnam_vet On a desolate farm, in a dirt lot, a very dark young Ind
-## 5      hall_male I was with a girl who may have been my wife. We were wan
-## 6      hall_male I don&#39;t remember where I was, except that I must have be
-## 7      hall_male I had taken a friend of mine to see the secret passagewa
-## 8      hall_male I was sitting at my desk waiting for class to begin when
-## 9      hall_male I dreamt that I was out for a ride in my car. My girl an
-## 10   hall_female I dreamt that I had become pregnant, although I wasn&#39;t m</code></pre>
+## 1  college_women I cannot remember the details of the dream except that m
+## 2    vietnam_vet I&#39;m the teenage friend of a short scrawny black youth. W
+## 3    vietnam_vet It&#39;s night. I&#39;m in an Asian or Central American country 
+## 4      hall_male I was on a highway in a car and was being chased by some
+## 5      hall_male In this dream my wife and I were driving along a country
+## 6      hall_male A group of fellows and I were on our way to a baseball g
+## 7      hall_male I was playing catch with Al (my frat brother) on a paved
+## 8    hall_female I dreamed that I was sitting in the back room of Moe&#39;s, 
+## 9    hall_female I was in the basement of a house which was filled with w
+## 10   hall_female I was swimming at a lake with some boy around 27 years o</code></pre>
 <p><img src="../../img/tidytext.png" width="25%" /></p>
 <p>Julia Silge and David Robinson’s book <strong>Text Mining with R - A tidy approach</strong> sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.</p>
 <p>At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.</p>
