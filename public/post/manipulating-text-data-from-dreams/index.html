@@ -32,7 +32,7 @@
 In this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson’s book ‘Text Mining with R’ for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:">
 
   
-  <link rel="alternate" hreflang="en-us" href="../../post/manipulating-text-data-from-dreams/">
+  <link rel="alternate" hreflang="en-us" href="/post/manipulating-text-data-from-dreams/">
 
   
 
@@ -84,7 +84,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
   
   
   
-  <link rel="stylesheet" href="../../css/academic.min.71e2b6a21d750b37706cf3fc4e1f4666.css">
+  <link rel="stylesheet" href="/css/academic.min.71e2b6a21d750b37706cf3fc4e1f4666.css">
 
   
 
@@ -134,11 +134,11 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
 
   
 
-  <link rel="manifest" href="../../index.webmanifest">
-  <link rel="icon" type="image/png" href="../../img/icon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="../../post/manipulating-text-data-from-dreams/">
+  <link rel="canonical" href="/post/manipulating-text-data-from-dreams/">
 
   
   
@@ -267,7 +267,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
   <div class="container">
 
     
-      <a class="navbar-brand" href="../../">Christian Ryan</a>
+      <a class="navbar-brand" href="/">Christian Ryan</a>
       
       <button type="button" class="navbar-toggler" data-toggle="collapse"
               data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -288,25 +288,16 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
         
         
         
-          
-        
 
         
         
         
         
         
-        
-          
-          
-          
-            
-          
-          
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#posts"><span>Posts</span></a>
+          <a class="nav-link " href="/#"><span>Home</span></a>
         </li>
 
         
@@ -335,7 +326,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#publications"><span>Publications</span></a>
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
         </li>
 
         
@@ -364,7 +355,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#contact"><span>Contact</span></a>
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
         </li>
 
         
@@ -393,7 +384,36 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
         
 
         <li class="nav-item">
-          <a class="nav-link " href="../../#links"><span>Links</span></a>
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#links"><span>Links</span></a>
         </li>
 
         
@@ -486,7 +506,7 @@ In this follow-up post, I will demonstrate some of the methods presented in Juli
   
   
   <span class="middot-divider"></span>
-  <a href="../../post/manipulating-text-data-from-dreams/#disqus_thread"></a>
+  <a href="/post/manipulating-text-data-from-dreams/#disqus_thread"></a>
   
 
   
@@ -544,17 +564,17 @@ df$sample &lt;- as.factor(df$sample)</code></pre>
 car::some(df) %&gt;%
   custom_view()</code></pre>
 <pre><code>##           sample                                                    dream
-## 1  college_women I cannot remember the details of the dream except that m
-## 2  college_women I had been visiting my uncle&#39;s drug store and did not se
-## 3    vietnam_vet I&#39;m young. With my dog, I&#39;m part of a small group walkin
-## 4    vietnam_vet I&#39;m on an Army base with several enlisted men and office
-## 5    vietnam_vet I&#39;m in a small field. It&#39;s spartan, bare bones in nature
-## 6    vietnam_vet I&#39;m with my old platoon on a firebase in Vietnam. An FNG
-## 7      hall_male I could hardly forget this dream as it involved the youn
-## 8      hall_male I was on a bus going through New York City. As we approa
-## 9      hall_male In this dream I had murdered a girl I have known for som
-## 10   hall_female I was in our cellar at home with a former instructor. We</code></pre>
-<p><img src="../../img/tidytext.png" width="25%" /></p>
+## 1  college_women I saw H___ A___ run out of a department store in A___ wi
+## 2  college_women I was in New York sitting in on a radio broadcast with m
+## 3    vietnam_vet Late at night, with the wife of a friend, we return to a
+## 4    vietnam_vet In Vietnam, I&#39;m with my brother, high up in the dark sky
+## 5      hall_male I was with a girl who may have been my wife. We were wan
+## 6      hall_male It seems that we were having a party at my house. Among 
+## 7      hall_male In this dream I dreamt that I was walking along a path t
+## 8    hall_female I dreamed that Dean Dolan was explaining the constructio
+## 9    hall_female First I found myself sitting inside a movie theater dres
+## 10   hall_female I was coming home from college. I was rather peeved beca</code></pre>
+<p><img src="/img/tidytext.png" width="25%" /></p>
 <p>Julia Silge and David Robinson’s book <strong>Text Mining with R - A tidy approach</strong> sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.</p>
 <p>At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.</p>
 <pre class="r"><code>df &lt;-  df %&gt;%
@@ -732,11 +752,11 @@ underscores[1]</code></pre>
   ggplot(aes(x = word, y = n)) +
   geom_col()+
   coord_flip()</code></pre>
-<p><img src="../../post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="/post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>This gives us an overview of the most commonly used words in dreams recalled by all four samples. But it would be more interesting to see how the word use differs between the samples. However, we should be prepared for the possibility that the length of dreams may vary between samples. To control for this, we might want to convert our raw counts of words to proportions from the dream text. Let’s check for the variety of dream lengths by using str_count() function on our original dataset df - hence before we removed our stopwords. We will count the words in each dream and store the result in a vector called dream_lengths. The default for <em>str_count</em> is for the function to count characters if no pattern is given to match. However, if we pass it a second argument, specifying the regex for all sequences of non-space characters, it will count words instead. The regex includes the code for any non-white space character ‘\S’, with the addition of ‘+’ sign to indicate one or more non-white space characters, and the initial escape character ‘\’ as ‘\S’ is not recognised as an escape character without it.</p>
 <pre class="r"><code>dream_lengths &lt;- str_count(df$dream, &quot;\\S+&quot;)
 plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
-<p><img src="../../post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="/post/2020-01-14-manipulating-text-data-from-dreams_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>This is a good example of the use of the plot() function with a single vector in R. The default behaviour is to plot the values of the vector against the y-axis - dream_lengths in this case, and then use the index number (ie. the order in which each value occurs in the vector) as the x value. So our x-axis simple represents the order of the dreams, or as we have named this, the dream number. We can see here the range of dream lengths with the minimum being about 35 words and the maximum around 290 words. We could take the min, max, mean and SD if we wanted to be more specific.</p>
 <pre class="r"><code>min(dream_lengths); max(dream_lengths); mean(dream_lengths); sd(dream_lengths)</code></pre>
 <pre><code>## [1] 38</code></pre>
@@ -808,7 +828,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="../../tags/text-mining/">Text mining</a>
+  <a class="badge badge-light" href="/tags/text-mining/">Text mining</a>
   
 </div>
 
@@ -925,11 +945,11 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="../../authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
     
 
     <div class="media-body">
-      <h5 class="card-title"><a href="../../">Christian Ryan</a></h5>
+      <h5 class="card-title"><a href="/">Christian Ryan</a></h5>
       <h6 class="card-subtitle">Senior Lecturer in Clinical Psychology</h6>
       <p class="card-text">My research interests include autism spectrum disorder, eating disorders, obsessive compulsive disorder and some other stuff&hellip;</p>
       <ul class="network-icon" aria-hidden="true">
@@ -946,7 +966,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       
     
     <li>
-      <a href="../../#contact" >
+      <a href="/#contact" >
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -1129,7 +1149,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
     
     
     
-    <script src="../../js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
 
     
 
@@ -1147,7 +1167,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
     
     
       
-      <a href="../../terms/">Terms</a>
+      <a href="/terms/">Terms</a>
     
   </p>
   

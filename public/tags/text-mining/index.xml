@@ -13,19 +13,19 @@
     
     <item>
       <title>Using tidytext to compare samples of dreams</title>
-      <link>/2020/01/27/using-tidytext-to-compare-samples-of-dreams/</link>
+      <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/01/27/using-tidytext-to-compare-samples-of-dreams/</guid>
+      <guid>/post/using-tidytext-to-compare-samples-of-dreams/</guid>
       <description>This is the third post in the series exploring text analytics with data from the dreambank.com. In the first post ‘Pulling text data from the internet’, I demonstrated how to use the rvest package to pull text data from the dreambank website. In the second post ‘Manipulating text data from dreams’ we saw how to turn the dream texts into a tidy format by unnesting the word tokens in each dream and running counts on the word frequencies.</description>
     </item>
     
     <item>
       <title>Manipulating text data from dreams</title>
-      <link>/2020/01/14/manipulating-text-data-from-dreams/</link>
+      <link>/post/manipulating-text-data-from-dreams/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/01/14/manipulating-text-data-from-dreams/</guid>
+      <guid>/post/manipulating-text-data-from-dreams/</guid>
       <description>In the previous post on ‘pulling text data from the internet’, I experimented with pulling out the dream text from a sample of dreams from the website “DreamBank” at: http://www.dreambank.net/random_sample.cgi.
 In this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson’s book ‘Text Mining with R’ for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:</description>
     </item>
