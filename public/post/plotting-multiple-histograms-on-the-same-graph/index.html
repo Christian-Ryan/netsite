@@ -31,7 +31,7 @@
   <meta name="description" content="Recently, while trying to compare the distribution of two samples, I discovered that you can plot both on the same graph in base R, which is a nice feature if you just want to examine the data quickly. We can explore this with a psychological dataset from the Open Psychometrics site. This hosts a range of open psychometric tests and stores the data in an accessible form. Let’s pull out the data for the Rosenberg Self-Esteem Scale (note that there are two different scoring methods in common use on this scale - on the website they have used a 1 - 4 Likert scale for the data output as a csv, but it is not unusual to see the use of a 0 - 3 scale, (which is the method used to give participants on the website feedback) so we need to be cautious when comparing these total scores with published norms (see https://socy.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/plotting-multiple-histograms-on-the-same-graph/">
+  <link rel="alternate" hreflang="en-us" href="../../post/plotting-multiple-histograms-on-the-same-graph/">
 
   
 
@@ -83,7 +83,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.71e2b6a21d750b37706cf3fc4e1f4666.css">
+  <link rel="stylesheet" href="../../css/academic.min.71e2b6a21d750b37706cf3fc4e1f4666.css">
 
   
 
@@ -133,11 +133,11 @@
 
   
 
-  <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/img/icon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+  <link rel="manifest" href="../../index.webmanifest">
+  <link rel="icon" type="image/png" href="../../img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
 
-  <link rel="canonical" href="/post/plotting-multiple-histograms-on-the-same-graph/">
+  <link rel="canonical" href="../../post/plotting-multiple-histograms-on-the-same-graph/">
 
   
   
@@ -265,7 +265,7 @@
   <div class="container">
 
     
-      <a class="navbar-brand" href="/">Christian Ryan</a>
+      <a class="navbar-brand" href="../../">Christian Ryan</a>
       
       <button type="button" class="navbar-toggler" data-toggle="collapse"
               data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -304,7 +304,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          <a class="nav-link " href="../../#posts"><span>Posts</span></a>
         </li>
 
         
@@ -333,7 +333,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+          <a class="nav-link " href="../../#publications"><span>Publications</span></a>
         </li>
 
         
@@ -362,7 +362,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          <a class="nav-link " href="../../#contact"><span>Contact</span></a>
         </li>
 
         
@@ -391,7 +391,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#links"><span>Links</span></a>
+          <a class="nav-link " href="../../#links"><span>Links</span></a>
         </li>
 
         
@@ -484,14 +484,14 @@
   
   
   <span class="middot-divider"></span>
-  <a href="/post/plotting-multiple-histograms-on-the-same-graph/#disqus_thread"></a>
+  <a href="../../post/plotting-multiple-histograms-on-the-same-graph/#disqus_thread"></a>
   
 
   
   
   <span class="middot-divider"></span>
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/r-coding/">R coding</a></span>
+    <i class="fas fa-folder mr-1"></i><a href="../../categories/r-coding/">R coding</a></span>
   
 
 </div>
@@ -542,17 +542,17 @@ women &lt;- df %&gt;%
   filter(gender == 2)</code></pre>
 <p>So let’s plot the total self-esteem scores for the women in the sample as a simple histogram.</p>
 <pre class="r"><code>hist(women$total)</code></pre>
-<p><img src="/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-6-1.png" width="672" /> We can see a fairly normal distribution of scores. We can check the mean, but we might predict it is around 25.</p>
+<p><img src="../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-6-1.png" width="672" /> We can see a fairly normal distribution of scores. We can check the mean, but we might predict it is around 25.</p>
 <pre class="r"><code>mean(women$total)</code></pre>
 <pre><code>## [1] 25.74368</code></pre>
 <p>Next we can add the men’s scores to the same plot. Here we simply create the first plot, then make a second plot with the argument <strong>add</strong> set to TRUE. We will set the density to 35 so we can see throught the bars on the histogram.</p>
 <pre class="r"><code>hist(women$total, col = &#39;red&#39;, main = &quot;Histogram of Total scores on Rosenberg Self-Esteem Scale&quot;, xlab = &quot;Total score&quot;)
 hist(men$total, add = TRUE, col = &#39;blue&#39;, density = 35)</code></pre>
-<p><img src="/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>I have used the pipe to separate my data into individual gender dataframes, but this is only one way to do it, and I do find this code very easy to read. However, we could have done the same thing using a traditional R approach of indexing instead.</p>
 <pre class="r"><code>hist(df$total[df$gender== 2], col = &#39;orchid&#39;, main = &quot;Histogram of Total scores on Rosenberg Self-Esteem Scale&quot;, xlab = &quot;Total score&quot;)
 hist(df$total[df$gender==1], add = TRUE, col = &#39;royalblue&#39;, density = 40)</code></pre>
-<p><img src="/post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="../../post/2019-10-12-plotting-multiple-histograms-on-the-same-graph_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Now we have seen the distributions, we might wonder if the sexes differ on the measure of self-esteem. Let’s run a quick t-test to see.</p>
 <pre class="r"><code>t.test(men$total, women$total)</code></pre>
 <pre><code>## 
@@ -578,7 +578,7 @@ hist(df$total[df$gender==1], add = TRUE, col = &#39;royalblue&#39;, density = 40
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tags/r/">R</a>
+  <a class="badge badge-light" href="../../tags/r/">R</a>
   
 </div>
 
@@ -695,11 +695,11 @@ hist(df$total[df$gender==1], add = TRUE, col = &#39;royalblue&#39;, density = 40
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+      <img class="portrait mr-3" src="../../authors/admin/avatar_hu178224517b326c40da4b12810c856ac9_18170_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
     
 
     <div class="media-body">
-      <h5 class="card-title"><a href="/">Christian Ryan</a></h5>
+      <h5 class="card-title"><a href="../../">Christian Ryan</a></h5>
       <h6 class="card-subtitle">Senior Lecturer in Clinical Psychology</h6>
       <p class="card-text">My research interests include autism spectrum disorder, eating disorders, obsessive compulsive disorder and some other stuff&hellip;</p>
       <ul class="network-icon" aria-hidden="true">
@@ -716,7 +716,7 @@ hist(df$total[df$gender==1], add = TRUE, col = &#39;royalblue&#39;, density = 40
       
     
     <li>
-      <a href="/#contact" >
+      <a href="../../#contact" >
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -899,7 +899,7 @@ hist(df$total[df$gender==1], add = TRUE, col = &#39;royalblue&#39;, density = 40
     
     
     
-    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+    <script src="../../js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
 
     
 
@@ -917,7 +917,7 @@ hist(df$total[df$gender==1], add = TRUE, col = &#39;royalblue&#39;, density = 40
     
     
       
-      <a href="/terms/">Terms</a>
+      <a href="../../terms/">Terms</a>
     
   </p>
   
