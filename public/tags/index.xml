@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Christian Ryan</title>
-    <link>https://drchristianryan.com/tags/</link>
+    <link>/tags/</link>
     <description>Tags</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,17 +10,17 @@
     
     <item>
       <title>R</title>
-      <link>https://drchristianryan.com/tags/r/</link>
+      <link>/tags/r/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://drchristianryan.com/tags/r/</guid>
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Text mining</title>
-      <link>https://drchristianryan.com/tags/text-mining/</link>
+      <link>/tags/text-mining/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://drchristianryan.com/tags/text-mining/</guid>
+      <guid>/tags/text-mining/</guid>
       <description></description>
     </item>
     

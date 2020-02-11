@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rosemary MacHale on Christian Ryan</title>
-    <link>https://drchristianryan.com/authors/rosemary-machale/</link>
+    <link>/authors/rosemary-machale/</link>
     <description>Rosemary MacHale</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,9 +10,9 @@
     
     <item>
       <title>Forgetting Familiar Faces: Staff Perceptions of Dementia in People with Intellectual Disabilities</title>
-      <link>https://drchristianryan.com/publication/2018-01-01_forgetting_fam/</link>
+      <link>/publication/2018-01-01_forgetting_fam/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://drchristianryan.com/publication/2018-01-01_forgetting_fam/</guid>
+      <guid>/publication/2018-01-01_forgetting_fam/</guid>
       <description></description>
     </item>
     
