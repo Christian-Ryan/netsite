@@ -1,16 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Philip Furley on Christian Ryan</title>
     <link>/authors/philip-furley/</link>
-    <description>Philip Furley</description>
+    <description>Recent content in Philip Furley on Christian Ryan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0000</lastBuildDate><atom:link href="/authors/philip-furley/" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/authors/philip-furley/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Judgments of Nonverbal Behaviour by Children with High-Functioning Autism Spectrum Disorder: Can They Detect Signs of Winning and Losing from Brief Video Clips?</title>
       <link>/publication/2016-01-01_judgments_of_nonve/</link>
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      
       <guid>/publication/2016-01-01_judgments_of_nonve/</guid>
       <description></description>
     </item>
