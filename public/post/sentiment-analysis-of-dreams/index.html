@@ -151,7 +151,7 @@
   
   <meta property="og:site_name" content="Christian Ryan">
   <meta property="og:url" content="/post/sentiment-analysis-of-dreams/">
-  <meta property="og:title" content="Sentiment analysis of dreams | Christian Ryan">
+  <meta property="og:title" content="2.4 - Sentiment analysis of dreams | Christian Ryan">
   <meta property="og:description" content="In the last post we compared the dream sets by graphing the most frequently occurring words and calculating correlation coefficients. But in psychology, we are often interested in specific aspects of the text to analyse. From my own perspective, emotional language use is of particular interest. A further way in which we could compare the dreams is by carrying out a sentiment analysis. One could use bespoke software such as the LIWC programme (http://liwc."><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
@@ -186,7 +186,7 @@
     "@type": "WebPage",
     "@id": "/post/sentiment-analysis-of-dreams/"
   },
-  "headline": "Sentiment analysis of dreams",
+  "headline": "2.4 - Sentiment analysis of dreams",
   
   "datePublished": "2020-02-15T00:00:00Z",
   "dateModified": "2020-02-15T08:50:04Z",
@@ -222,7 +222,7 @@
 
 
 
-  <title>Sentiment analysis of dreams | Christian Ryan</title>
+  <title>2.4 - Sentiment analysis of dreams | Christian Ryan</title>
 
 </head>
 
@@ -466,7 +466,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Sentiment analysis of dreams</h1>
+  <h1>2.4 - Sentiment analysis of dreams</h1>
 
   
 
@@ -554,18 +554,18 @@ library(car)</code></pre>
 <p>We can have a quick view of the lexicon by using the <em>some()</em> function from the <strong>car</strong> package.</p>
 <pre class="r"><code>some(afinn)</code></pre>
 <pre><code>## # A tibble: 10 x 2
-##    word       value
-##    &lt;chr&gt;      &lt;dbl&gt;
-##  1 admiring       3
-##  2 alone         -2
-##  3 annoys        -2
-##  4 apathetic     -3
-##  5 elated         3
-##  6 fraudsters    -4
-##  7 lazy          -1
-##  8 sincerest      2
-##  9 thrilled       5
-## 10 unwanted      -2</code></pre>
+##    word         value
+##    &lt;chr&gt;        &lt;dbl&gt;
+##  1 astounds         3
+##  2 disputes        -2
+##  3 escapes         -1
+##  4 frustration     -2
+##  5 greenwashing    -3
+##  6 innovative       2
+##  7 redeemed         2
+##  8 stable           2
+##  9 tard            -2
+## 10 thrilled         5</code></pre>
 <p>Here we see the various ratings given for the valence of each word regarded as having sentiment. This is scored on a scale from -5 to +5.</p>
 <div id="merging-sentiment-with-dream-dataset-via-inner_join" class="section level2">
 <h2>Merging sentiment with dream dataset via inner_join()</h2>
@@ -1006,7 +1006,7 @@ ggplot(aes(y = abs(negative), x = sample))+
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/sentiment-analysis-of-dreams/&amp;text=Sentiment%20analysis%20of%20dreams" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/post/sentiment-analysis-of-dreams/&amp;text=2.4%20-%20Sentiment%20analysis%20of%20dreams" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1019,7 +1019,7 @@ ggplot(aes(y = abs(negative), x = sample))+
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/sentiment-analysis-of-dreams/&amp;t=Sentiment%20analysis%20of%20dreams" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/post/sentiment-analysis-of-dreams/&amp;t=2.4%20-%20Sentiment%20analysis%20of%20dreams" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1032,7 +1032,7 @@ ggplot(aes(y = abs(negative), x = sample))+
       
       
       <li>
-        <a href="mailto:?subject=Sentiment%20analysis%20of%20dreams&amp;body=/post/sentiment-analysis-of-dreams/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=2.4%20-%20Sentiment%20analysis%20of%20dreams&amp;body=/post/sentiment-analysis-of-dreams/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1045,7 +1045,7 @@ ggplot(aes(y = abs(negative), x = sample))+
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/sentiment-analysis-of-dreams/&amp;title=Sentiment%20analysis%20of%20dreams" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/post/sentiment-analysis-of-dreams/&amp;title=2.4%20-%20Sentiment%20analysis%20of%20dreams" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1058,7 +1058,7 @@ ggplot(aes(y = abs(negative), x = sample))+
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Sentiment%20analysis%20of%20dreams%20/post/sentiment-analysis-of-dreams/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=2.4%20-%20Sentiment%20analysis%20of%20dreams%20/post/sentiment-analysis-of-dreams/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1071,7 +1071,7 @@ ggplot(aes(y = abs(negative), x = sample))+
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/sentiment-analysis-of-dreams/&amp;title=Sentiment%20analysis%20of%20dreams" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/post/sentiment-analysis-of-dreams/&amp;title=2.4%20-%20Sentiment%20analysis%20of%20dreams" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

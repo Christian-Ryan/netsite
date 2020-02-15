@@ -13,7 +13,7 @@
     </image>
     
     <item>
-      <title>Sentiment analysis of dreams</title>
+      <title>2.4 - Sentiment analysis of dreams</title>
       <link>/post/sentiment-analysis-of-dreams/</link>
       <pubDate>Sat, 15 Feb 2020 00:00:00 +0000</pubDate>
       <guid>/post/sentiment-analysis-of-dreams/</guid>
@@ -36,18 +36,18 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can have a quick view of the lexicon by using the &lt;em&gt;some()&lt;/em&gt; function from the &lt;strong&gt;car&lt;/strong&gt; package.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;some(afinn)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 2
-##    word       value
-##    &amp;lt;chr&amp;gt;      &amp;lt;dbl&amp;gt;
-##  1 admiring       3
-##  2 alone         -2
-##  3 annoys        -2
-##  4 apathetic     -3
-##  5 elated         3
-##  6 fraudsters    -4
-##  7 lazy          -1
-##  8 sincerest      2
-##  9 thrilled       5
-## 10 unwanted      -2&lt;/code&gt;&lt;/pre&gt;
+##    word         value
+##    &amp;lt;chr&amp;gt;        &amp;lt;dbl&amp;gt;
+##  1 astounds         3
+##  2 disputes        -2
+##  3 escapes         -1
+##  4 frustration     -2
+##  5 greenwashing    -3
+##  6 innovative       2
+##  7 redeemed         2
+##  8 stable           2
+##  9 tard            -2
+## 10 thrilled         5&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here we see the various ratings given for the valence of each word regarded as having sentiment. This is scored on a scale from -5 to +5.&lt;/p&gt;
 &lt;div id=&#34;merging-sentiment-with-dream-dataset-via-inner_join&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Merging sentiment with dream dataset via inner_join()&lt;/h2&gt;
@@ -470,7 +470,7 @@ ggplot(aes(y = abs(negative), x = sample))+
     </item>
     
     <item>
-      <title>Using tidytext to compare samples of dreams</title>
+      <title>2.3 - Using tidytext to compare samples of dreams</title>
       <link>/post/using-tidytext-to-compare-samples-of-dreams/</link>
       <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/post/using-tidytext-to-compare-samples-of-dreams/</guid>
@@ -512,16 +512,16 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
 ##    word     college_women hall_female hall_male vietnam_vet
 ##    &amp;lt;chr&amp;gt;            &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 air               0.15        0.02      0.09        0.13
-##  2 baseball          0.03        0.07      0.09        0.03
-##  3 body              0.06        0.07      0.14        0.11
-##  4 dress             0.15        0.1       0.07        0.03
-##  5 hair              0.49        0.2       0.05        0.38
-##  6 reason            0.18        0.15      0.23        0.03
-##  7 store             0.67        0.15      0.12        0.06
-##  8 story             0.03        0.05      0.02        0.05
-##  9 talking           0.34        0.2       0.09        0.21
-## 10 teacher           0.27        0.15      0.12        0.13&lt;/code&gt;&lt;/pre&gt;
+##  1 charge            0.03        0.05      0.02        0.05
+##  2 glass             0.15        0.02      0.05        0.13
+##  3 hand              0.18        0.12      0.19        0.25
+##  4 hit               0.12        0.07      0.21        0.03
+##  5 money             0.15        0.1       0.37        0.02
+##  6 pictures          0.06        0.02      0.02        0.02
+##  7 ran               0.34        0.39      0.33        0.02
+##  8 teacher           0.27        0.15      0.12        0.13
+##  9 walking           0.49        0.2       0.37        0.27
+## 10 weeks             0.03        0.02      0.02        0.02&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
@@ -629,7 +629,7 @@ cor.test(df_cwhf$college_women, df_cwhf$proportion)&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Manipulating text data from dreams</title>
+      <title>2.2 - Manipulating text data from dreams</title>
       <link>/post/manipulating-text-data-from-dreams/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/post/manipulating-text-data-from-dreams/</guid>
@@ -660,16 +660,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I dreamed that I was in one of my classes and we had jus
-## 2  college_women An experiment of atomic energy was being made. My father
-## 3  college_women This is only a snatch of a dream. I was walking down S--
-## 4  college_women I had been visiting my uncle&amp;#39;s drug store and did not se
-## 5    vietnam_vet I&amp;#39;m with several people walking to a car in a shopping m
-## 6      hall_male I was sitting in a drug store eating a sundae with a bun
-## 7      hall_male My baby cousin Betsie, an Army associate of mine, and I 
-## 8    hall_female I was skating on the outdoor ice pond that used to be ac
-## 9    hall_female There was much more to the dream than this, but I can&amp;#39;t 
-## 10   hall_female I dreamed that my sister, Martha, my mother and a friend&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I was in charge of a floor in our hospital in M. One of 
+## 2    vietnam_vet Walking about a country fair with friends, we meet a han
+## 3    vietnam_vet With a half dozen other young people I&amp;#39;m in a barn-like 
+## 4      hall_male I was walking down Euclid Ave. There was a dog closely r
+## 5      hall_male I was walking along a deserted street in a small town. I
+## 6      hall_male I had taken a friend of mine to see the secret passagewa
+## 7      hall_male In this dream my wife and I were driving along a country
+## 8    hall_female I dreamt I was supposed to go fishing on a fairly big bo
+## 9    hall_female Several people were telling me of somebody&amp;#39;s death. Evid
+## 10   hall_female This is one of the dreams I had last night. I found myse&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;../img/tidytext.png&#34; width=&#34;25%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
@@ -917,7 +917,7 @@ plot(dream_lengths, xlab = &amp;quot;Dream Number&amp;quot;)&lt;/code&gt;&lt;/pr
     </item>
     
     <item>
-      <title>Pulling text data from the internet</title>
+      <title>2.1 - Pulling text data from the internet</title>
       <link>/post/pulling-text-data-from-the-internet/</link>
       <pubDate>Sat, 30 Nov 2019 00:00:00 +0000</pubDate>
       <guid>/post/pulling-text-data-from-the-internet/</guid>
@@ -1042,7 +1042,7 @@ df$dream &amp;lt;- substr(df$dream, 0, start-2) &lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Plotting multiple histograms on the same graph</title>
+      <title>1 - Plotting multiple histograms on the same graph</title>
       <link>/post/plotting-multiple-histograms-on-the-same-graph/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
       <guid>/post/plotting-multiple-histograms-on-the-same-graph/</guid>
