@@ -554,18 +554,18 @@ library(car)</code></pre>
 <p>We can have a quick view of the lexicon by using the <em>some()</em> function from the <strong>car</strong> package.</p>
 <pre class="r"><code>some(afinn)</code></pre>
 <pre><code>## # A tibble: 10 x 2
-##    word          value
-##    &lt;chr&gt;         &lt;dbl&gt;
-##  1 drags            -1
-##  2 frenzy           -3
-##  3 friendly          2
-##  4 idiot            -3
-##  5 misread          -1
-##  6 no               -1
-##  7 outmaneuvered    -2
-##  8 sceptical        -2
-##  9 slick             2
-## 10 struck           -1</code></pre>
+##    word           value
+##    &lt;chr&gt;          &lt;dbl&gt;
+##  1 convinces          1
+##  2 green washing     -3
+##  3 irritated         -3
+##  4 jubilant           3
+##  5 looses            -3
+##  6 pessimistic       -2
+##  7 phobic            -2
+##  8 sinful            -3
+##  9 son-of-a-bitch    -5
+## 10 stop              -1</code></pre>
 <p>Here we see the various ratings given for the valence of each word regarded as having sentiment. This is scored on a scale from -5 to +5.</p>
 <div id="merging-sentiment-with-dream-dataset-via-inner_join" class="section level2">
 <h2>Merging sentiment with dream dataset via inner_join()</h2>
@@ -993,6 +993,12 @@ ggplot(aes(y = abs(negative), x = sample))+
 
 
 
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="../../tags/r/">R</a>
+  
+</div>
+
 
 
 <div class="share-box" aria-hidden="true">
@@ -1202,6 +1208,21 @@ ggplot(aes(y = abs(negative), x = sample))+
 
 
   
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="../../post/using-tidytext-to-compare-samples-of-dreams/">2.3 - Using tidytext to compare samples of dreams</a></li>
+      
+      <li><a href="../../post/manipulating-text-data-from-dreams/">2.2 - Manipulating text data from dreams</a></li>
+      
+      <li><a href="../../post/pulling-text-data-from-the-internet/">2.1 - Pulling text data from the internet</a></li>
+      
+      <li><a href="../../post/plotting-multiple-histograms-on-the-same-graph/">1 - Plotting multiple histograms on the same graph</a></li>
+      
+    </ul>
+  </div>
   
 
 
