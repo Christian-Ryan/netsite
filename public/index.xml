@@ -38,16 +38,16 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 2
 ##    word        value
 ##    &amp;lt;chr&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 amuse           3
-##  2 bailout        -2
-##  3 captivated      3
-##  4 disturbing     -2
-##  5 intimidates    -2
-##  6 irritated      -3
-##  7 meaningless    -2
-##  8 mistaken       -2
-##  9 prospects       1
-## 10 touting        -2&lt;/code&gt;&lt;/pre&gt;
+##  1 apathetic      -3
+##  2 collapsing     -2
+##  3 confused       -2
+##  4 dejecting      -2
+##  5 delight         3
+##  6 fright         -2
+##  7 jewels          1
+##  8 shock          -2
+##  9 smiling         2
+## 10 undeserving    -2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Here we see the various ratings given for the valence of each word regarded as having sentiment. This is scored on a scale from -5 to +5.&lt;/p&gt;
 &lt;div id=&#34;merging-sentiment-with-dream-dataset-via-inner_join&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Merging sentiment with dream dataset via inner_join()&lt;/h2&gt;
@@ -512,16 +512,16 @@ library(car)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 10 x 5
 ##    word      college_women hall_female hall_male vietnam_vet
 ##    &amp;lt;chr&amp;gt;             &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;       &amp;lt;dbl&amp;gt;
-##  1 arm                0.03        0.07      0.07        0.03
-##  2 catch              0.03        0.07      0.07        0.03
-##  3 clothes            0.12        0.17      0.09        0.21
-##  4 feeling            0.31        0.17      0.33        0.05
-##  5 hurry              0.03        0.07      0.02        0.02
-##  6 ice                0.03        0.05      0.07        0.05
-##  7 line               0.21        0.02      0.05        0.03
-##  8 move               0.03        0.07      0.09        0.11
-##  9 recognize          0.09        0.07      0.07        0.03
-## 10 surprise           0.06        0.02      0.02        0.02&lt;/code&gt;&lt;/pre&gt;
+##  1 basement           0.06        0.07      0.05        0.09
+##  2 body               0.06        0.07      0.14        0.11
+##  3 charge             0.03        0.05      0.02        0.05
+##  4 ice                0.03        0.05      0.07        0.05
+##  5 level              0.03        0.02      0.05        0.03
+##  6 money              0.15        0.1       0.37        0.02
+##  7 night              0.12        0.27      0.16        0.19
+##  8 red                0.03        0.12      0.12        0.02
+##  9 short              0.09        0.05      0.19        0.17
+## 10 surprised          0.15        0.1       0.12        0.05&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we &lt;em&gt;gather()&lt;/em&gt;, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_gather &amp;lt;- df_spread %&amp;gt;%
   gather(sample, proportion, hall_female:vietnam_vet)&lt;/code&gt;&lt;/pre&gt;
@@ -660,16 +660,16 @@ df$sample &amp;lt;- as.factor(df$sample)&lt;/code&gt;&lt;/pre&gt;
 car::some(df) %&amp;gt;%
   custom_view()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           sample                                                    dream
-## 1  college_women I was standing in a room, and appeared to be very thin. 
-## 2  college_women I was living with my family in a neighborhood of large, 
-## 3  college_women I was in a brightly lighted room in the dormitory with a
-## 4    vietnam_vet I&amp;#39;m part of a bomber crew flying over a European or Balk
-## 5    vietnam_vet I&amp;#39;m a medic in a war zone hospital, where a team of war 
-## 6    vietnam_vet I&amp;#39;m on the second floor of a mail fulfillment center, wa
-## 7    vietnam_vet In Switzerland, I&amp;#39;ve found my fifth-grade teacher at my 
-## 8      hall_male A rich ran came to me on the street and showed me a suit
-## 9      hall_male I have a date with a girl. She is the ticket taker at a 
-## 10   hall_female I dreamed of 2 girls (I know them personally and always&lt;/code&gt;&lt;/pre&gt;
+## 1  college_women I was at a house party. An old boyfriend of mine was the
+## 2  college_women I dreamed about a young married couple whom I have known
+## 3  college_women We were still fighting the Germans and I was still livin
+## 4  college_women I dreamed I was walking in the country, over gently roll
+## 5  college_women I dreamt that we bought a drug store on the west side. N
+## 6    vietnam_vet In Switzerland, I&amp;#39;ve found my fifth-grade teacher at my 
+## 7      hall_male I was on a train in Hawaii, and as I remember, I was in 
+## 8      hall_male My brother and I were in Canada fishing in our motorboat
+## 9    hall_female I dreamed that I was a small child, staying at the home 
+## 10   hall_female Mother and I were driving along the street when I saw th&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;./img/tidytext.png&#34; width=&#34;25%&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Julia Silge and David Robinson’s book &lt;strong&gt;Text Mining with R - A tidy approach&lt;/strong&gt; sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.&lt;/p&gt;
 &lt;p&gt;At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.&lt;/p&gt;
