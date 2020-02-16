@@ -564,16 +564,16 @@ df$sample &lt;- as.factor(df$sample)</code></pre>
 car::some(df) %&gt;%
   custom_view()</code></pre>
 <pre><code>##           sample                                                    dream
-## 1  college_women As I first remember the dream I was upstairs in a room w
-## 2  college_women I dreamed I was walking in the country, over gently roll
-## 3    vietnam_vet I&#39;m sitting in an English garden with Donald Trump and h
-## 4    vietnam_vet In the country on a sunny day, I decide to walk down a s
-## 5    vietnam_vet At night, at a beach side motel, I&#39;m lying in bed, stayi
-## 6    vietnam_vet I&#39;m staying in a cozy house with two young doctors, a ha
-## 7    vietnam_vet I&#39;m in a small living room crowded with men who have gat
-## 8      hall_male I don&#39;t remember where I was, except that I must have be
-## 9    hall_female My kid sister (15) and I were getting ready for bed in t
-## 10   hall_female I was swimming at a lake with some boy around 27 years o</code></pre>
+## 1  college_women My friend (age 23-male), my mother (age 45), my sister (
+## 2  college_women I dreamed my dear friend R., age 22 (female) died. I was
+## 3    vietnam_vet I&#39;m with several criminals walking up a steep road in a 
+## 4    vietnam_vet I have a room in a college dorm. A long-haired man, hand
+## 5    vietnam_vet I&#39;m in a room filled with mostly men. On stage, my (drea
+## 6      hall_male I was riding out a road in Bob&#39;s car. The road ran besid
+## 7      hall_male This took place in the South Pacific aboard a destroyer.
+## 8      hall_male I was at a friend&#39;s house sitting in their dining room. 
+## 9      hall_male This dream was short, very vivid and made a deep impress
+## 10     hall_male I dreamt that I was out for a ride in my car. My girl an</code></pre>
 <p><img src="../../../../img/tidytext.png" width="25%" /></p>
 <p>Julia Silge and David Robinson’s book <strong>Text Mining with R - A tidy approach</strong> sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.</p>
 <p>At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let’s introduce a new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.</p>
@@ -1048,7 +1048,7 @@ plot(dream_lengths, xlab = &quot;Dream Number&quot;)</code></pre>
       
       <li><a href="../../../../2019/11/30/pulling-text-data-from-the-internet/">2.1 - Pulling text data from the internet</a></li>
       
-      <li><a href="../../../../ppost/">1 - Plotting multiple histograms on the same graph</a></li>
+      <li><a href="../../../../2019/10/12/plotting-multiple-histograms-on-the-same-graph/">1 - Plotting multiple histograms on the same graph</a></li>
       
     </ul>
   </div>
