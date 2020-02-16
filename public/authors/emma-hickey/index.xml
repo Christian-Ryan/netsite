@@ -1,24 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Emma Hickey | Christian Ryan</title>
+    <title></title>
     <link>/authors/emma-hickey/</link>
-      <atom:link href="/authors/emma-hickey/index.xml" rel="self" type="application/rss+xml" />
-    <description>Emma Hickey</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christian Ryan 2020</copyright>
-    <image>
-      <url>/img/icon-192.png</url>
-      <title>Emma Hickey</title>
-      <link>/authors/emma-hickey/</link>
-    </image>
+    <description>Recent blog posts by </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Christian Ryan 2020</copyright>
+    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-    <item>
-      <title>Forgetting Familiar Faces: Staff Perceptions of Dementia in People with Intellectual Disabilities</title>
-      <link>/publication/2018-01-01_forgetting_fam/</link>
-      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>/publication/2018-01-01_forgetting_fam/</guid>
-      <description></description>
-    </item>
+	<atom:link href="/authors/emma-hickey/index.xml" rel="self" type="application/rss+xml" />
+    
     
   </channel>
 </rss>

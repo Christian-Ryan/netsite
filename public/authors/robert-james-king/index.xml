@@ -1,24 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Robert James King | Christian Ryan</title>
+    <title></title>
     <link>/authors/robert-james-king/</link>
-      <atom:link href="/authors/robert-james-king/index.xml" rel="self" type="application/rss+xml" />
-    <description>Robert James King</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Christian Ryan 2020</copyright>
-    <image>
-      <url>/img/icon-192.png</url>
-      <title>Robert James King</title>
-      <link>/authors/robert-james-king/</link>
-    </image>
+    <description>Recent blog posts by </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Christian Ryan 2020</copyright>
+    <lastBuildDate>Fri, 01 Jan 2016 00:00:00 +0000</lastBuildDate>
     
-    <item>
-      <title>Seeing the Man in the Moon: Do Children with Autism Perceive Pareidolic Faces? A Pilot Study</title>
-      <link>/publication/2016-01-01_brief_report_s/</link>
-      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>/publication/2016-01-01_brief_report_s/</guid>
-      <description></description>
-    </item>
+	<atom:link href="/authors/robert-james-king/index.xml" rel="self" type="application/rss+xml" />
+    
     
   </channel>
 </rss>
