@@ -573,16 +573,16 @@ library(car)</code></pre>
 <pre><code>## # A tibble: 10 x 5
 ##    word    college_women hall_female hall_male vietnam_vet
 ##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-##  1 answer           0.12        0.07      0.12        0.05
-##  2 boy              0.4         0.61      0.19        0.08
-##  3 buy              0.21        0.07      0.02        0.08
-##  4 cut              0.09        0.02      0.02        0.06
-##  5 red              0.03        0.12      0.12        0.02
-##  6 ride             0.21        0.02      0.07        0.06
-##  7 run              0.15        0.02      0.28        0.11
-##  8 seat             0.09        0.2       0.07        0.09
-##  9 spanish          0.03        0.02      0.02        0.02
-## 10 times            0.09        0.07      0.19        0.17</code></pre>
+##  1 carried          0.09        0.05      0.02        0.02
+##  2 dead             0.18        0.25      0.12        0.16
+##  3 figure           0.03        0.02      0.05        0.02
+##  4 grass            0.06        0.07      0.02        0.03
+##  5 height           0.03        0.02      0.05        0.03
+##  6 job              0.03        0.1       0.02        0.05
+##  7 sort             0.15        0.17      0.12        0.11
+##  8 talk             0.21        0.07      0.07        0.33
+##  9 test             0.21        0.2       0.12        0.02
+## 10 water            0.18        0.44      0.33        0.22</code></pre>
 <p>Then the next step is to decide which sample is going to be our reference sample. This will have its column of frequencies replicated and stacked so that each of the other samples can be compared with it. When we <em>gather()</em>, we only include the samples to compare with the reference and not the reference itself. For simplicity, we can use the first column in our df (college_women) as our reference group and compare the other three samples to this. We might predict at this point that the hall_women will have the most similar dreams and then the hall_men, with the vietnam_vet being the most different. We can check this prediction later on when we run some correlation coefficients.</p>
 <pre class="r"><code>df_gather &lt;- df_spread %&gt;%
   gather(sample, proportion, hall_female:vietnam_vet)</code></pre>
