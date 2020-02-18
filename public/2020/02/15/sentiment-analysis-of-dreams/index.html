@@ -554,18 +554,18 @@ library(car)</code></pre>
 <p>We can have a quick view of the lexicon by using the <em>some()</em> function from the <strong>car</strong> package.</p>
 <pre class="r"><code>some(afinn)</code></pre>
 <pre><code>## # A tibble: 10 x 2
-##    word       value
-##    &lt;chr&gt;      &lt;dbl&gt;
-##  1 appalling     -2
-##  2 chagrin       -2
-##  3 charming       3
-##  4 commended      2
-##  5 cool           1
-##  6 craziest      -2
-##  7 empathetic     2
-##  8 euphoric       4
-##  9 glorious       2
-## 10 zealot        -2</code></pre>
+##    word        value
+##    &lt;chr&gt;       &lt;dbl&gt;
+##  1 acquitting      2
+##  2 bored          -2
+##  3 disappoints    -2
+##  4 discounted     -1
+##  5 foolish        -2
+##  6 gullible       -2
+##  7 haha            3
+##  8 rejoices        4
+##  9 silencing      -1
+## 10 worse          -3</code></pre>
 <p>Here we see the various ratings given for the valence of each word regarded as having sentiment. This is scored on a scale from -5 to +5.</p>
 <div id="merging-sentiment-with-dream-dataset-via-inner_join" class="section level2">
 <h2>Merging sentiment with dream dataset via inner_join()</h2>
