@@ -1,5 +1,5 @@
 ---
-title: 2.2 - Manipulating text data from dreams
+title: "2.2 - Manipulating text data from dreams"
 author: Christian Ryan
 date: '2020-01-14'
 slug: manipulating-text-data-from-dreams

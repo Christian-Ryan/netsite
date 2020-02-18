@@ -1,5 +1,5 @@
 ---
-title: 2.3 - Using tidytext to compare samples of dreams
+title: "2.3 - Using tidytext to compare samples of dreams"
 author: Christian Ryan
 date: '2020-01-27'
 slug: using-tidytext-to-compare-samples-of-dreams

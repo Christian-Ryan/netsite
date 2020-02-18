@@ -1,5 +1,5 @@
 ---
-title: 1 - Plotting multiple histograms on the same graph
+title: "1 - Plotting multiple histograms on the same graph"
 author: Christian Ryan
 date: '2019-10-12'
 slug: plotting-multiple-histograms-on-the-same-graph
