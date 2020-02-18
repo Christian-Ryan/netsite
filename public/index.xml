@@ -1,12 +1,11 @@
 
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Christian Ryan – Christian Ryan</title>
+    <title> – </title>
     <link>/</link>
     <description>Recent Hugo news from gohugo.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Christian Ryan 2020</copyright>
     <lastBuildDate>Sat, 15 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/hugo.png</url>

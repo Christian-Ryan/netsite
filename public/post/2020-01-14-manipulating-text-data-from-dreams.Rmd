@@ -1,0 +1,208 @@
+---
+title: 2.2 - Manipulating text data from dreams
+author: Christian Ryan
+date: '2020-01-14'
+slug: manipulating-text-data-from-dreams
+categories: []
+tags: ["R"]
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-01-14T10:12:17Z'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+```{r include=FALSE}
+library(png)
+library(knitr)
+```
+
+In the previous post on 'pulling text data from the internet', I experimented with pulling out the dream text from a sample of dreams from the website “DreamBank” at: http://www.dreambank.net/random_sample.cgi.
+
+In this follow-up post, I will demonstrate some of the methods presented in Julia Silge and David Robinson's book 'Text Mining with R' for processing text data, as applied to 400 dreams sampled from 4 collections in the dreambank. I used the methods described in the last post to pull out a random sample of 100 dreams from each of the following 4 groups:
+
+- college_women (this was the sample used last time)
+- hall_female
+- hall_male
+- vietnam_vet
+
+The first set of dreams were recorded by college women by Calvin Hall from undergraduates in a course on personality at Western Reserve University in 1947 and 1948.
+
+The second and third samples are also dreams collected by Calvin Hall and Robert L. Van de Castle, on which they based female and male norms in their book  *The Content Analysis of Dreams*.
+
+The sample listed as vietnam_vet are from the dreams of an American veteran of the Vietnam war, who suffered PTSD. The website has over 400 of his dreams which he donated from records he kept not long after returning from Vietnam.
+
+Let's begin by loading the three packages we are likely to use.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidytext)
+library(stringr)
+```
+
+
+If you want to follow along with this post, the dataset I am about to load is "dream_df.csv", which can be found on my github page: https://github.com/Christian-Ryan/netsite/tree/master/public/post
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+df <- read_csv("dreams_df.csv")
+df <- df[,2:3]
+df$sample <- as.factor(df$sample)
+```
+
+After sampling the four dream sets, using the techniques described in the last post, we now have a dataframe called df with two variables - *sample* and *dream*. We will use our custom_view() function we created last time to display snippets of dreams neatly formatted. We can also use the *some()* function from the car package to take a quick look at a selection of dreams across the dataframe. The *some()* function is very like *head()* and *tail()*, but has the advantage of returning a selection across the dataset, which allows us to see examples from each of the samples simultaneously.
+```{r}
+custom_view <- function(x) data.frame(lapply(x, substr, 1, 56))
+car::some(df) %>%
+  custom_view()
+```
+
+```{r echo=FALSE, out.width="25%"}
+knitr::include_graphics('/img/tidytext.png')
+```
+
+Julia Silge and David Robinson's book **Text Mining with R - A tidy approach** sets off at a cracking pace, at least for relatively newbies to R such as myself. They assumes a degree of familiarity with tidyverse concepts and when they introduce concepts such as tidytext format, they can sometimes address three or four steps in one example. I will unpack some of these as individual steps to illustrate what is going on, while using our dream data as the material for processing.
+
+At the moment our df only contains the sample name (a categorical variable with four values) and the text of the dream. It might be helpful to index the dreams before we tokenise the text in them. So let's introduce a  new variable that we will call dream_number. This will index each dream between 1 - 400 in the dataframe.
+
+```{r}
+df <-  df %>%
+  mutate(dream_number = row_number())
+```
+
+Now we have the dream_number variable added, we can unnest the tokens (split the text variable into individual words). The syntax for the unnest_tokens() function is to pipe in the dataframe (df), then supply the name of the variable to be created (word), followed by the variable containing the text we are going to tokenise - in this case "dream".
+```{r}
+df_word <- df %>%
+  unnest_tokens(word, dream)
+head(df_word)
+```
+
+See that the *word* variable has replaced our *dream* variable and now each word is on a separate row - this is the tidytext format. *unnest_tokens()* has kept the variables *sample* and *dream_number* - it only transforms the input variable (dream) into the output variable (word). Notice also that the function has transformed into lower-case all the words in the *word* variable.
+
+# Tokenisation and N-Grams
+######
+It should be noted that when we use unnest_tokens() we are using a range of default values. We could have specified something other than single words in our output. The default value of the token argument is 'word'. We can change this to 'ngram' and use an 'n=' to specify how many words should be kept as a group. Let us try a quick run with 3-word tokens instead of single words to demonstrate this behaviour.
+```{r}
+df_trigrams <- df %>%
+  unnest_tokens(trigrams, dream, token = "ngrams", n = 3)
+head(df_trigrams)
+```
+So here we have set our output variable to 'trigrams' and specified the token argument to be equal to 'ngrams', and we have saved this as a new dataframe called 'df_trigrams'. That gives us a better sense of the nature of the text. We can also run a count on this after grouping by sample.
+```{r}
+df_trigrams %>%
+  group_by(sample) %>%
+  count(trigrams, sort = TRUE) %>%
+  ungroup()
+```
+
+Here we can see that in the Vietnam veteran dream sample, the most common three word phrase was "I tell him", whereas for the Hall Female and College Women the most common phrase was "I was in". Using ngrams (units larger than one word), can be useful in exploring most frequently occurring phrases. It is notable that the phrase for the Vietnam vet was in the present tense, giving a sense of the immediacy and immersion of the dream experience, whereas those most frequent phrases of the other samples are in the past tense.
+
+# Single words (Bag of words approach)
+We have not removed stop-words yet as this would undermine our exploration of ngrams. But this is the next step for our df_word dataset. The *anti_join()* function, takes two dataframes and keeps only those words that don't occur in both dataframes. So this forms a convenient and easy way to filter out unwanted stopwords.
+```{r message=FALSE, warning=FALSE}
+df_word <- df_word %>%
+  anti_join(stop_words)
+```
+
+Then we can count the words and sort them into descending order.
+```{r}
+df_word %>%
+  count(word, sort = TRUE)
+```
+
+But before we create some plots of these words, we should check for any anomalies in the *word* variable of df_word. The sorted count is likely to give back expected results (high frequency genuine words). But there can be other text elements that we may want to filter out. This will become obvious if we count, but don't sort.
+```{r}
+df_word %>%
+  count(word)
+```
+
+The *word* variable contains some text elements that we would not regard as words. Let's check where the underscores came from. To do this we must go back to our original (untokenised) dataset *df*, as we want to see the underscores in the context of the dream. We can use the *str_which()* function to identify which dreams contain underscores, matched to the pattern `'___'`. Then we can use this as an index on the df$dream variable, so that it just returns the context of the dreams with underscores. As there are three dreams with underscores, we will store this sequence of dreams and then take a look at the first one.
+```{r}
+underscores <- df$dream[str_which(df$dream, pattern = "___")]
+underscores[1]
+```
+
+So the pattern here seems to be that underscores are used to disguise the identity of named people in the dreams. We can choose to filter these out as they are not relevant to our analysis. But before we do this filtering, let's also consider the numbers in the *word* variable column - again in a bag-of-words approach one could argue that these are not words and so are irrelevant. We want to create a pattern that identifies both digits and underscores, and then use a function to transform our *word* variable in the df_word dataframe.
+
+# Create pattern to remove numbers and underscores
+We can use the function str_subset() to identify the elements of the *word* variable that we wish to remove. Let's create a pattern that deals initially with the underscores and try *str_subset()* with it. The '+' is not strictly necessary here, but it illustrates that we can identify at least one underscore by this combination.
+```{r}
+str_subset(df_word$word, pattern = '_+')
+```
+
+This has found ten instances of the underscore in the word variable. Now we want to find all the digits. We could use the regex shorthand *[\\d]* or *[:digit:]*. Let's use the latter first with *str_subset* to check it works.
+
+```{r}
+str_subset(df_word$word, pattern = '[:digit:]')
+```
+This works very nicely as well. However, to use these patterns with the tidyverse pipe, it is easier to use the *fitler()* function rather than *str_subset()*, and since it is convenient to chain steps in the pipe, we can use two calls to *filter()*, first by underscores and secondly by digits. And as we don't want either of these in our dataset, we will set the "negate" argument to TRUE in both cases. An alternative method to delete the digits would be to use the capital "D" in the regex, but this way keeps our filters more uniform, both with a "negate = TRUE" argument.  
+
+```{r}
+df_word %>%
+  filter(str_detect(word, pattern = "_", negate = TRUE)) %>%
+  filter(str_detect(word, pattern = '[\\d]', negate = TRUE))
+```
+
+# Plot word frequencies
+Now we have done some tidying on the dataset, we can plot the word frequencies - a simple way is to pass them through a filter so we only retain those words with a frequency greater than say n = 60. Notice we use mutate to create the new variables for the plot *word* (in the order of frequency) and *n*. We then filter by frequency, and pass the two new variables to the ggplot function. We also have to switch syntax at this point from the pipe ( %>% ) to the + sign between the layers of the ggplot() function. We flip the coordinates, as it allows us to keep the words in the horizontal aspect and makes it the plot easier to read.
+```{r}
+df_word %>%
+  count(word, sort = TRUE) %>%
+  mutate(word = reorder(word, n)) %>%
+  filter(n > 60) %>%
+  ggplot(aes(x = word, y = n)) +
+  geom_col()+
+  coord_flip()
+```
+
+This gives us an overview of the most commonly used words in dreams recalled by all four samples. But it would be more interesting to see how the word use differs between the samples. However, we should be prepared for the possibility that the length of dreams may vary between samples. To control for this, we might want to convert our raw counts of words to proportions from the dream text. Let's check for the variety of dream lengths by using str_count() function on our original dataset df - hence before we removed our stopwords. We will count the words in each dream and store the result in a vector called dream_lengths. The default for *str_count* is for the function to count characters if no pattern is given to match. However, if we pass it a second argument, specifying the regex for all sequences of non-space characters, it will count words instead. The regex includes the code for any non-white space character '\\S', with the addition of '+' sign to indicate one or more non-white space characters, and the initial escape character '\\' as '\\S' is not recognised as an escape character without it.
+
+```{r}
+
+dream_lengths <- str_count(df$dream, "\\S+")
+plot(dream_lengths, xlab = "Dream Number")
+```
+
+This is a good example of the use of the plot() function with a single vector in R. The default behaviour is to plot the values of the vector against the y-axis - dream_lengths in this case, and then use the index number (ie. the order in which each value occurs in the vector) as the x value. So our x-axis simple represents the order of the dreams, or as we have named this, the dream number. We can see here the range of dream lengths with the minimum being about 35 words and the maximum around 290 words. We could take the min, max, mean and SD if we wanted to be more specific.
+```{r}
+min(dream_lengths); max(dream_lengths); mean(dream_lengths); sd(dream_lengths)
+```
+
+
+There is a great deal of variability in the dream lengths, so proportions will be better than raw counts to represent the frequency of each word.
+
+# Calculating word frequencies as proportions
+
+We will want to count proportions after stopwords are removed. We have a choice here whether we want to express the frequency of individual words by proportion of a dream or proportion of a sample. These would have different interpretations. If the texts (in our case dreams) were much longer, proportion by text might be the better way to represent the data, but I suspect proportion by dream may not be very informative. Let's try it and see what the results look like. We will *group_by()* dream_number so as to create proportion by dream. Then we use a summarise function to create a word count, and we use mutate to convert this to percentage. I used a second mutate to clean this up into two decimal places with the *round()* function. Finally, we use the tidyverse equivalent of *sort()* which is the *arrange()* function - but because we want this to be largest-to-smallest, we also include the *desc()* descending function.
+
+```{r}
+df_word %>%
+  group_by(dream_number, word) %>%
+  summarise(n = n()) %>%
+  mutate(percent = (n / sum(n))*100) %>%
+  mutate(percent = round(percent, 2)) %>%
+  arrange(desc(percent)) %>%
+  ungroup
+```
+
+So in dream number 6 the word 'remember' accounted for 21% of the non-stopwords used. That seems like a high proportion. It might be more useful to look at the data aggregated across samples. We can change the code to group_by *sample* instead of *dream_number*, then recalculate the most frequently occurring words as a proportion of words by sample.
+
+```{r}
+df_word %>%
+  group_by(sample, word) %>%
+  summarise(n = n()) %>%
+  mutate(percent = (n / sum(n))*100) %>%
+  mutate(percent = round(percent, 2)) %>%
+  arrange(desc(percent)) %>%
+  ungroup()
+```
+
+We can see that for the college women, the word 'remember' features the most frequently across the whole sample of 100 dreams and makes up roughly 1.6% of the non-stopwords in the dreams recorded.  
+
+# Conclusion
+We have explored how to tokenise texts, do some basic text cleaning and creating counts and proportions and finally graphed the simple word counts. In the next post in this series, I will explore the dream data using a clever technique from Julia Silge and David Robinson's book that involves the *spread()* and *gather()* functions.
